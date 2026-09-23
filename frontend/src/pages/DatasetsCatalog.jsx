@@ -218,10 +218,10 @@ export default function DatasetsCatalog() {
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-2.5">
-              <span className="p-2 rounded-xl bg-blue-50 text-polar-blue">
+              <span className="p-2 rounded-xl bg-blue-50 text-blue-600 shadow-2xs">
                 <Database className="w-5 h-5" />
               </span>
-              <h1 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight">
+              <h1 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight font-heading">
                 Scientific Datasets Catalog
               </h1>
             </div>
@@ -232,14 +232,15 @@ export default function DatasetsCatalog() {
 
           <div className="flex items-center space-x-4 border-l border-slate-100 pl-4">
             <div>
-              <span className="text-xl font-extrabold text-slate-900">{total}</span>
+              <span className="text-xl font-black text-slate-900 font-heading">{total}</span>
               <span className="text-[11px] text-slate-400 block font-medium">Datasets Archived</span>
             </div>
             <div>
-              <span className="text-xl font-extrabold text-emerald-600">FAIR</span>
+              <span className="text-xl font-black text-emerald-600 font-heading">FAIR</span>
               <span className="text-[11px] text-slate-400 block font-medium">Gold Compliant</span>
             </div>
           </div>
+
         </div>
 
         {/* 2. Filters & Search Bar */}
