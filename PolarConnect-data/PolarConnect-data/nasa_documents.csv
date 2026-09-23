@@ -1,0 +1,1005 @@
+id,title,description,document_type,file_url,source,source_id,doi,publication_date,created_at
+21,MEaSUREs BedMachine Antarctica V004,"This data set, part of the NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) program, contains a bed topography and bathymetry map of Antarctica. Bed topography is deduced by subtracting ice thickness from the surface elevation; using Ice Flow Perturbation Analysis (IFPA); and by other methods. Surface elevations are obtained from the Reference Elevation Model of Antarctica (REMA) and high-resolution satellite maps.
+Short name: NSIDC-0756
+Version: 4
+Data center: NSIDC_CPRD
+Archive center: NASA NSIDC DAAC
+Organizations: NASA NSIDC DAAC, UC-IRVINE/PHYSSCI/ESS
+Platforms: MODELS
+Temporal coverage starts: 1970-01-01T00:00:00.000Z
+Temporal coverage ends: 2019-10-01T23:59:59.999Z
+Spatial coverage: -90 -180 -53 180
+NASA CMR Concept ID: C3973022985-NSIDC_CPRD",Dataset,https://search.earthdata.nasa.gov/search/granules?p=C3973022985-NSIDC_CPRD,NASA Earthdata,C3973022985-NSIDC_CPRD,10.5067/POJQI54A45HX,1970-01-01T00:00:00.000Z,2026-09-18 22:47:26.109321
+22,"Formation, Transformation, and Northward Spreading of Dense Saline Water Derived from Terra Nova Bay, Ross Sea, Antarctica","Non-Technical Abstract  The deep world ocean is flooded with near 0°C water, drawn from the margins of Antarctica. Antarctic Bottom Water, as it is referred to, is mainly derived from cold water formed the over the continental shelves of the Weddell and Ross Seas, where the coastal water is exposed to frigid polar air masses spreading off the Antarctic ice sheet. Antarctic Bottom Water is a key component of the global ocean overturning system, which is fundamental to the global ocean heat, carbon and nutrient inventories, and hence the climate and marine ecosystem. The processes producing the dense shelf waters involve small scale factors associated with ocean/atmosphere/sea and glacial ice interaction. What is lacking from previous work is a coordinated, synchronous observational study of the seaward spreading, from formation, to export across the continental shelf edge, to its descent into the deep ocean. This work fills the gap, by investigating the characteristics of dense shelf water formed within Terra Nova Bay, Ross Sea, its transformation, modification and northward spreading within the Drygalski Trough in the western Ross Sea, feeding into the spill-over at the continental slope into the deep boundary current adjacent to Cape Adare. The sequence of events will be observed with a series of instrumented moorings along the pathway from Terra Nova Bay, along the Drygalski Trough and onto the boundary current adjacent to Cape Adare.  The project is an international collaboration that involves the USA (this proposal), S. Korea, New Zealand and Italy.      Technical Abstract  The lower kilometer or two of the world ocean is flooded with near 0°C water derived from the Southern Ocean, the Antarctic Bottom Water (AABW). The cold end-member of AABW is formed over various sectors of the continental shelf of Antarctica, notable in the Weddell and Ross Seas.  The governing processes producing the dense shelf waters involve small scale spatial and temporal factors associated with ocean/sea ice interaction, often related to coastal polynyas and katabatic winds, along with further modification by ocean-glacial ice interaction. There have been studies of the formation of dense shelf water, of export of shelf water over the shelf/slope, the descent of gravity currents into the AABW realm, and of flow paths of AABW spreading across the deep ocean well into the northern hemisphere. What is lacking is a coordinated, synchronous observational study of the seaward spreading, from formation of the dense shelf water to its spreading to the shelf/slope break and descent into the deep ocean. This program fills the gap, by investigating the characteristics of dense shelf water formed within Terra Nova Bay (TNB), Ross Sea, its transformation, modification and northward spreading within the Drygalski Trough in the western Ross Sea, feeding into the spill-over at the continental slope and the deep boundary current adjacent to Cape Adare. The team will deploy a series of moorings – two heavily instrumented full water column moorings within TNB to capture high-salinity shelf water (HSSW) production and a series of bottom-focused moorings to evaluate the transformation and northward spreading of the dense saline water.  The broad science goals of the project will be addressed by this program through a coordinated analysis of these mooring measurements.  The project is an international collaboration that involves the USA (this proposal), S. Korea, New Zealand and Italy.    This award reflects NSF's statutory mission and has been deemed worthy of support through evaluation using the Foundation's intellectual merit and broader impacts review criteria.
+Short name: USAP-2332418
+Version: 1
+Data center: AMD_USAPDC
+Archive center: USAP-DC
+Organizations: USAP-DC
+Temporal coverage starts: 2024-05-15T00:00:00.000Z
+Temporal coverage ends: 2029-04-30T23:59:59.999Z
+Spatial coverage: -76 163 -71 175
+NASA CMR Concept ID: C3544681247-AMD_USAPDC",Dataset,http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=2332418,NASA Earthdata,C3544681247-AMD_USAPDC,,2024-05-15T00:00:00.000Z,2026-09-18 22:47:26.109327
+23,"Seasonal Metabolism Changes Across Redox Gradients in Photosynthetic Mats, Lake Fryxell, Antarctica","In the McMurdo Dry Valleys (MDV), the permanently ice-covered lakes are unusual aquatic environments that are home to unique communities of microbes. Mats of photosynthetic microbes grow on the floors of these lakes and are an important part of the ecosystems in MDV environments. They experience extreme seasonality that includes the challenge of months of winter darkness. Mats cannot photosynthesize during winter, but they do remain active, and this can impact their ability to respond when spring/summer conditions arrive. To understand these impacts, it is essential to study the seasonal differences in mat organism activity, particularly during winter and then during the transition to spring sunlight. This project aims to characterize winter season activity and chemistry in benthic microbial mats in Lake Fryxell, McMurdo Dry Valleys, Antarctica. To access winter-like conditions, temporary shades will be installed over mats to “extend” dark winter conditions into spring, when field access is possible. By sampling in extended winter and spring/summer this project will determine the changes in benthic mat community composition, identify interactions between cell activity and water chemistry, and understand the effects of spring photosynthesis initiation on mats that become anoxic over winter.    The permanently ice-covered lakes of the McMurdo Dry Valleys (MDV) are home to unique communities of microbes. Benthic mats of photosynthetic cyanobacteria are present in these lakes and are an important part of the primary productivity for ecosystems in MDV environments. Winter darkness inhibits mat photosynthesis, leading to anoxic conditions, limited viable metabolisms, and changes in mat biogeochemistry. With the return of sunlight photosynthesis begins again and metabolism and biogeochemistry changes. To better understand the interdependencies and impacts of these transitions, the project will characterize seasonal microbial diversity and metabolic differences in benthic mats, and the ecosystem effects caused by spring oxygen production in Lake Fryxell, McMurdo Dry Valleys, Antarctica. To access winter-like conditions, temporary shades will be installed over mats to “extend” dark winter conditions into spring, when field access is possible. The project will characterize the metabolic changes in mat communities using metagenomic and metatranscriptomic methods, in conjunction with pore water dissolved oxygen and sulfide measurements from the environment during the winter/spring transition.    This award reflects NSF''s statutory mission and has been deemed worthy of support through evaluation using the Foundation''s intellectual merit and broader impacts review criteria.
+Short name: USAP-2445119
+Version: 1
+Data center: AMD_USAPDC
+Archive center: USAP-DC
+Organizations: USAP-DC
+Temporal coverage starts: 2025-07-15T00:00:00.000Z
+Temporal coverage ends: 2028-06-30T23:59:59.999Z
+Spatial coverage: -77.63 163.02 -77.59 163.26
+NASA CMR Concept ID: C4270414145-AMD_USAPDC",Dataset,http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=2445119,NASA Earthdata,C4270414145-AMD_USAPDC,,2025-07-15T00:00:00.000Z,2026-09-18 22:47:26.10933
+24,"CAREER: A Comprehensive Seismic Investigation to the Crust and Uppermost Mantle Beneath the South Pole, East Antarctica","Nontechnical  Understanding the subsurface structure near the South Pole will answer some of the most exciting scientific questions in Antarctic Earth Science, ranging from the origin of the high subglacial mountains and the southernmost volcanic rocks to the existence of nearby subglacial lakes. However, it has been difficult to answer these questions since the area is remote and the ice cover is thick. Using seismic stations deployed on top of the ice sheet provides an alternative tool to image the continent through the ice, as seismic signals record sensitive information about the geology of the crust below. For example, crustal rocks with more radioactive elements may have caused the ice sheet to melt, creating subglacial lakes, and these rocks can be identified by their unique seismic signatures. This project plans to fill a knowledge gap by deploying new seismic sensors in the South Pole area and collecting data to perform a suite of modern seismic data analyses to produce a variety of seismic observables. These observables will be translated into maps illustrating the physical properties and chemical composition of the underlying crust, and further help determine the thermal properties of the underlying crust near the South Pole. These observations will provide a first-order assessment of the sub-ice geology and insights into the origins of the features such as the Transantarctic Mountains and numerous subglacial lakes.   The project will collaborate with K-12 school districts and community colleges in Long Island and provide  free geoscience tutoring, public lectures, and inviting K-12 educators to teach students from the field. These efforts will highlight the importance of polar geosciences in a changing climate and elevate the awareness of earth science as a viable career path for high school students.     Technical   The area within 300 km of the South Pole and its sub-ice structures are equally, if not more, critical in studying Antarctic earth sciences. Given its gateway locality between the high southern Transantarctic Mountains and East Antarctic craton, the area is critical for studying geological history and modern tectonism of the continent, modeling continental dynamics, and developing more accurate ice sheet dynamic models to predict their response to the global climate change. However, these properties have not been systematically studied due to both the remoteness of the continent and its thick ice coverage. In this proposed study, the team will deploy ~ 180 high-frequency 3-component portable seismic nodes and eight broadband sensors near the South Pole, encompassing the nearby southern Transantarctic Mountains and the polar subglacial basins. A combination of linear nodal arrays and 2-dimensional broadband arrays will provide both spatial coverage and the capability to resolve high-resolution subsurface structural variations. Once the data are collected the team will apply a suite of data processing schemes tailored for the array and study area, including 1) a comprehensive surface wave analysis that determines both the isotropic and anisotropic structure of its crust and uppermost mantle; 2) 2-layer receiver function analysis that measures sub-ice layering and Poisson’s ratio; 3) a joint surface wave and receive function inversion that builds seismic models with uncertainties; 4) a novel crustal compositional analysis which uses the seismic attributes to quantify the silica content of the crust, and 5) a joint Monte Carlo thermal inversion that combines Curie-depth measurements with seismologically constrained crustal heat generation to construct a self-consistent, uniform crustal geotherms. This research is complemented by a comprehensive educational component that provides high-quality earth science education to graduate students, as well as to high-need K-12 school districts and community colleges in Long Island.    This award reflects NSF's statutory mission and has been deemed worthy of support through evaluation using the Foundation's intellectual merit and broader impacts review criteria.
+Short name: USAP-2145410
+Version: 1
+Data center: AMD_USAPDC
+Archive center: USAP-DC
+Organizations: USAP-DC
+Temporal coverage starts: 2023-07-01T00:00:00.000Z
+Temporal coverage ends: 2028-06-30T23:59:59.999Z
+Spatial coverage: -90 -180 -60 180
+NASA CMR Concept ID: C4270413990-AMD_USAPDC",Dataset,http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=2145410,NASA Earthdata,C4270413990-AMD_USAPDC,,2023-07-01T00:00:00.000Z,2026-09-18 22:47:26.109332
+25,"Dynamics of Ocean Turbulence above the Western Weddell Sea Continental Shelf, Antarctica","The ocean beneath Antarctica’s sea ice plays a critical role in Earth’s system and supports unique polar ecosystems, yet it remains one of the least studied parts of the planet. This project focuses on understanding how turbulent mixing in the ocean moves heat, nutrients, and other properties between layers of water. These processes influence the stability of Antarctic ice shelves, the productivity of marine ecosystems, and the ocean’s ability to store heat. By collecting new observations from a rarely visited region in the western Weddell Sea, where thick multi-year sea ice hinders the access of research vessels, this research will improve scientific understanding of how the Antarctic Ocean functions.     The research will quantify turbulence and vertical mixing processes in the western Weddell Sea, a region characterized by dense water formation, thick sea ice cover, and strong ocean currents. Microstructure profilers will be deployed from the German research icebreaker RV Polarstern to collect direct measurements of turbulent kinetic energy dissipation. The study will examine the influence of tides, topography, and wind forcing on mixing rates and evaluate their effects on vertical fluxes of heat and nutrients. Observations will be used to estimate diapycnal diffusivities across a range of environmental conditions, vertical heat and nutrient fluxes. Results from this project are anticipated improve model predictions of ocean–ice interactions and contribute to a better understanding of the Antarctic system.    This award reflects NSF''s statutory mission and has been deemed worthy of support through evaluation using the Foundation''s intellectual merit and broader impacts review criteria.
+Short name: USAP-2502192
+Version: 1
+Data center: AMD_USAPDC
+Archive center: USAP-DC
+Organizations: USAP-DC
+Platforms: R/V POLARSTERN
+Temporal coverage starts: 2025-09-01T00:00:00.000Z
+Temporal coverage ends: 2027-08-31T23:59:59.999Z
+Spatial coverage: -70 -66 -62 -42
+NASA CMR Concept ID: C3839055116-AMD_USAPDC",Dataset,http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=2502192,NASA Earthdata,C3839055116-AMD_USAPDC,,2025-09-01T00:00:00.000Z,2026-09-18 22:47:26.109334
+26,Collaborative Research: The Drivers and Role of Immigration in the Dynamics of the Largest Population of Weddell Seals in Antarctica under Changing Conditions,"Part 1: Non-technical description  This is a continuation of a long-term population dynamics study (1978-present) using an intensive mark-recapture tagging of Weddell seals in Erebus Bay, Antarctica. Past work has become a global model for population studies of large animals. Results have documented strong annual variation in reproduction, abundance, and population composition. This program will add components to evaluate the demographic role of immigrant mothers, evaluate possible drivers of annual variation in overall population dynamics, assess genetic differences between immigrant and locally born mothers, and document patterns of gene flow among seal colonies in the Ross Sea region. These new aspects will focus on understanding of population structure, function, and genetics and provide key information for predicting how the seal population will respond to environmental change. The addition of genetic approaches will advance available data for multiple groups in multiple countries working on Weddell Seals. This work includes an early career scientists training program for faculty university graduate and undergraduate students and well as a defined program for data sharing. The research is paired with active education and outreach programs, social media, websites, educational resources, videos and high-profile public lecture activities. The informal science education program will expand on the project’s successful efforts at producing and delivering short-form videos that have been viewed over 1.6 million times to date. In addition, the education program will add new topics such as learning about seals using genomics and how seals respond to a changing world to a multimedia-enhanced electronic book about the project’s long-term research on Weddell seals, which will be freely available to the public early in the project.    Part 2: Technical description   Reliable predictions are needed for how populations of wild species, especially those at high latitudes, will respond to future environmental conditions. This study will use a strategic extension of the long-term demographic research program that has been conducted annually on the Erebus Bay population of Weddell seals since 1978 to help meet that need. Recent analyses of the study population indicate strong annual variation in reproduction, abundance, and population composition. The number of new immigrant mothers that join the population each year has recently grown such that most new mothers are now immigrants. Despite the growing number of immigrants, the demographic importance and geographic origins of immigrants are unknown. The research will (1) add new information on drivers of annual variation in immigrant numbers, (2) compare and combine information on the vital rates and demographic role of immigrant females and their offspring with that of locally born females, and (3) add genomic analyses that will quantify levels of genetic variation in and gene flow among the study population and other populations in the Ross Sea. The project will continue the long-term monitoring of the population at Erebus Bay and characterize population dynamics and the role of immigration using a combination of mark-recapture analyses, stochastic population modeling, and genomic analyses. The study will continue to provide detailed data on individual seals to other science teams, educate and mentor individuals in the next generation of ecologists, introduce two early-career, female scientists to Antarctic research, and add genomics approaches to the long-term population study of Erebus Bay Weddell seals. The research will be complemented with a robust program of training and an informal science education program.    This award reflects NSF's statutory mission and has been deemed worthy of support through evaluation using the Foundation's intellectual merit and broader impacts review criteria.
+Short name: USAP-2147553
+Version: 1
+Data center: AMD_USAPDC
+Archive center: USAP-DC
+Organizations: USAP-DC
+Temporal coverage starts: 2022-07-15T00:00:00.000Z
+Temporal coverage ends: 2027-06-30T23:59:59.999Z
+Spatial coverage: -78.4 162 -74.95 170
+NASA CMR Concept ID: C3843360043-AMD_USAPDC",Dataset,http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=2147553,NASA Earthdata,C3843360043-AMD_USAPDC,,2022-07-15T00:00:00.000Z,2026-09-18 22:47:26.109336
+27,Investigating Effects of Transient and Non-Newtonian Mantle Viscosity on Glacial Isostatic Adjustment Process and their Implications for GPS Observations in Antarctica,"Satellite observations of Earth?s surface gravity and elevation changes indicate rapid melting of ice sheets in recent decades in northern Antarctica Peninsula and Amundsen Sea Embayment of West Antarctica. This rapid melting may lead to significant global sea level rise which is a major societal concern. Measurements from the Global Positioning System (GPS) show rapid land uplift in these regions as the ice sheets melt. When an ice sheet melts, the melt water flows to oceans, causing global sea level to rise. However, the sea level change at a given geographic location is also influenced by two other factors associated with the ice melting process: 1) the vertical motion of the land and 2) gravitational attraction. The vertical motion of the land is caused by the change of pressure force on the surface of the solid Earth. For example, the removal of ice mass reduces the pressure force on the land, leading to uplift of the land below the ice sheet, while the addition of water in oceans increases the pressure force on the seafloor, causing it to subside. The sea level always follows the equipotential surface of the gravity which changes as the mass on the Earth?s surface (e.g., the ice and water) or/and in its interiors (e.g., at the crust-mantle boundary) is redistributed. Additionally, the vertical motion of the land below an ice sheet has important effects on the evolution and stability of the ice sheet and may determine whether the ice sheet will rapidly collapse or gradually stabilize. The main goal of this project is to build an accurate and efficient computer model to study the displacement and deformation of the Antarctic crust and mantle in response to recent ice melting. The project will significantly improve existing and publicly available computer code, CitcomSVE. The horizontal and vertical components of the Earth?s surface displacement depends on mantle viscosity and elastic properties of the Earth. Although seismic imaging studies demonstrate that the Antarctica mantle is heterogeneous, most studies on the ice-melting induced deformation in Antarctica have assumed that mantle viscosity and elastic properties only vary with the depth due to computational limitations. In this project, the new computational method in CitcomSVE avoids such assumptions and makes it possible to include realistic 3-D mantle viscosity and elastic properties in computing the Antarctica crustal and mantle displacement. This project will interpret the GPS measurements of the surface displacements in northern Antarctica Peninsula and Amundsen Sea Embayment of West Antarctica and use the observations to place constraints on mantle viscosity and deformation mechanisms. The project will also seek to predict the future land displacement Antarctica, which will lead to a better understand of Antarctica ice sheets. Finally, the project has direct implications for the study of global sea level change and the dynamics of the Greenland ice sheet.  Technical Description Glacial isostatic adjustment (GIA) is important for understanding not only fundamental science questions including mantle viscosity, mantle convection and lithospheric deformation but also societally important questions of global sea-level change, polar ice melting, climate change, and groundwater hydrology. Studies of rock deformation in laboratory experiments, post-seismic deformation, and mantle dynamics indicate that mantle viscosity is temperature- and stress-dependent. Although the effects of stress-dependent (i.e., non-Newtonian) viscosity and transient creep rheology on GIA process have been studied, observational evidence remains elusive. There has been significant ice mass loss in recent decades in northern Antarctica Peninsula (NAP) and Amundsen Sea Embayment (ASE) of West Antarctica. The ice mass loss has caused rapid bedrock uplift as measured by GPS techniques which require surprisingly small upper mantle viscosity of ~1018 Pas. The rapid uplifts may have important feedback effects on ongoing ice melting because of their influence on grounding line migration, and the inferred small viscosity may have implications for mantle rheology and deformation on decadal time scales. The main objective of the project is to test hypotheses that the GPS observations in NAP and ASE regions are controlled by 3-D non-Newtonian or/and transient creep viscosity by developing new GIA modeling capability based on finite element package CitcomSVE. The project will carry out the following three tasks: Task 1 is to build GIA models for the NAP and ASE regions to examine the effects of 3-D temperature-dependent mantle viscosity on the surface displacements and to test hypothesis that the 3-D mantle viscosity improves the fit to the GPS observations. Task 2 is to test the hypothesis that non-Newtonian or/and transient creep rheology controls GIA process on decadal time scales by computing GIA models and comparing model predictions with GPS observations for the NAP and ASE regions. Task 3 is to implement transient creep (i.e., Burgers model) rheology into finite element package CitcomSVE for modeling the GIA process on global and regional scales and to make the package publicly available to the scientific community. The project will develop the first numerical GIA model with Burgers transient rheology and use the models to examine the effects of 3-D temperature-dependent viscosity, non-Newtonian viscosity and transient rheology on GIA-induced surface displacements in Antarctica. The project will model the unique GPS observations of unusually large displacement rates in the NAP and ASE regions to place constraints on mantle rheology and to distinguish between 3-D temperature-dependent, non-Newtonian and transient mantle viscosity. The project will expand the capability of the publicly available software package CitcomSVE for modeling viscoelastic deformation and tidal deformation on global and regional scales. The project will advance our understanding in lithospheric deformation and mantle rheology on decadal time scales, which helps predict grounding line migration and understand ice sheet stability in West Antarctica. The project will strengthen the open science practice by improving the publicly available code CitcomSVE at github.
+Short name: USAP-2333940
+Version: 1
+Data center: AMD_USAPDC
+Archive center: USAP-DC
+Organizations: USAP-DC
+Platforms: COMPUTERS
+Temporal coverage starts: 2024-01-01T00:00:00.000Z
+Temporal coverage ends: 2026-12-31T23:59:59.999Z
+Spatial coverage: -90 -180 -60 180
+NASA CMR Concept ID: C2837691643-AMD_USAPDC",Dataset,http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=2333940,NASA Earthdata,C2837691643-AMD_USAPDC,,2024-01-01T00:00:00.000Z,2026-09-18 22:47:26.109338
+28,Antarctica as a Model System for Responses of Terrestrial Carbon Balance to Warming,"Part I: Non-technical description:  Earth’s terrestrial ecosystems have the potential to either slow down or hasten the pace of climate change. The direction depends in part on both plant and microbial responses to warming. This study uses Antarctica as a model ecosystem to study the carbon balance of a simplified ecosystem (simplified compared to terrestrial ecosystems elsewhere) in response to a warming treatment. Carbon balance is dictated by sequestered carbon (through photosynthesis) and released carbon (plant and microbial respiration). Hence, to best assess plant and microbial responses to warming, this study uses a plant gradient that starts at the glacier (no plants, only soil microbes) to an old site entirely covered by plants. Experimental warming in the field is achieved by open-top chambers that warm the air and soil inside. The net ecosystem carbon exchange, the net result of sequestered and released carbon, will be measured in warmed and control plots with a state-of-the art gas exchange machine. Laboratory temperature incubation studies will supplement field work to attribute changes in carbon fluxes to individual plant species and soil microbial taxa (i.e., “species”). Data from this study will feed into earth system climate change models. The importance of this study will be shared with the broader community through the production of a video series created by an award-winning science media production company, an Antarctic blog, and through interactions with schools in the United States (on-site through Skype and in-person visits).     Part II: Technical description:  Responses of the carbon balance of terrestrial ecosystems to warming will feed back to the pace of climate change, but the size and direction of this feedback are poorly constrained. Least known are the effects of warming on carbon losses from soil, and clarifying the major microbial controls is an important research frontier. This study uses a series of experiments and observations to investigate microbial, including autotrophic taxa, and plant controls of net ecosystem productivity in response to warming in intact ecosystems. Field warming is achieved using open-top chambers paired with control plots, arrayed along a productivity gradient. Along this gradient, incoming and outgoing carbon fluxes will be measured at the ecosystem-level. The goal is to tie warming-induced shifts in net ecosystem carbon balance to warming effects on soil microbes and plants. The field study will be supplemented with lab temperature incubations. Because soil microbes dominate biogeochemical cycles in Antarctica, a major focus of this study is to determine warming responses of bacteria, fungi and archaea. This is achieved using a cutting-edge stable isotope technique, quantitative stable isotope probing (qSIP) developed by the proposing research team, that can identify the taxa that are active and involved in processing new carbon. This technique can identify individual microbial taxa that are actively participating in biogeochemical cycling of nutrients (through combined use of 18O-water and 13C-bicarbonate) and thus can be distinguished from those that are simply present (cold-preserved). The study further assesses photosynthetic uptake of carbon by the vegetation and their sensitivity to warming. Results will advance research in climate change, plant and soil microbial ecology, and ecosystem modeling. Science communication will be achieved through an informative video series, a daily Antarctic blog, and online- and in-person visits to schools in the United States.    This award reflects NSF's statutory mission and has been deemed worthy of support through evaluation using the Foundation's intellectual merit and broader impacts review criteria.
+Short name: USAP-1947562
+Version: 1
+Data center: AMD_USAPDC
+Archive center: USAP-DC
+Organizations: USAP-DC
+Platforms: FIELD SURVEYS
+Temporal coverage starts: 2022-01-01T00:00:00.000Z
+Temporal coverage ends: 2026-12-31T23:59:59.999Z
+Spatial coverage: -65 -65 -64.5 -63
+NASA CMR Concept ID: C3843360086-AMD_USAPDC",Dataset,http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=1947562,NASA Earthdata,C3843360086-AMD_USAPDC,,2022-01-01T00:00:00.000Z,2026-09-18 22:47:26.10934
+29,EAGER: Pedogenic Carbonates Record Insolation Driven Surface Melting in Antarctica,"Non-technical abstract    Earth’s climatic changes have been recorded in the ice core collected from the Antarctic ice sheet.  While these records provide a high resolution view of how polar temperatures changed through time, it is not always clear what Earth process influence Antarctic climate. One likely contributor to Antarctic temperature changes is the cyclic changes in Earth’s orientation as it orbits the sun. These so-called Milankovitch cycles control the amount and pattern of sunlight reaching the polar regions, that in turn result in periods of climatic warming or cooling. While the orbital variations and control on incoming solar energy remain well understood, how they influence Antarctic climate remains unresolved. It is the goal of this project to determine how variations in Earth’s orbit may be locally influencing Antarctic temperatures. The researchers on this project are pursing this goal by identifying periods of past ice melting on the surface of Antarctica using minerals that precipitate from the meltwaters that resulted from past warm periods.  The timing of this past melting will be determined by radioisotopic dating of the minerals using the natural radioactive decay of uranium to thorium. By dating numerous samples, collected in past scientific expeditions throughout the Antarctic continent, these researchers aim to reconstruct the frequency and spatial pattern of past warming and in doing so,  determine what aspect of Earth’s orbital variations influences Antarctic ice loss.    Technical abstract    Antarctic ice cores provide high resolution records of Pleistocene Southern Hemisphere temperatures that show an overall coherence with Northern Hemisphere temperature variations. One explanation for this bi-hemispheric temperature covariance relies on changes in atmospheric CO2 that result from varying northern hemisphere insolation. An alternative posits that the apparent coherence of polar temperatures is due to the misleading covariance between northern hemisphere summer insolation and, the southern hemisphere summer duration.  At present there is an insufficient understanding of the role that local insolation plays in Antarctic climate. The goal of this research project is to identify the temporal spatial patterns of solar forcing in Antarctica. To reach this goal, the project team will: 1) develop a way to identify periods of past surface melt production in Antarctica using U-Th dating of pedogenic carbonates; and 2) utilize the evidence of past surface melting to calibrate energy balance models and interrogate past Antarctic surface temperatures and; 3) compare the timing of Antarctic warm periods to potential solar forcing mechanisms such as peak summer insolation or summer duration. A means of identifying the spatial and temporal pattern at which local insolation influences Antarctic temperature would provide a transformative solution to the contradiction in current climate records.    This award reflects NSF's statutory mission and has been deemed worthy of support through evaluation using the Foundation's intellectual merit and broader impacts review criteria.
+Short name: USAP-2423761
+Version: 1
+Data center: AMD_USAPDC
+Archive center: USAP-DC
+Organizations: USAP-DC
+Temporal coverage starts: 2024-10-01T00:00:00.000Z
+Temporal coverage ends: 2026-09-30T23:59:59.999Z
+Spatial coverage: -90 -180 -60 180
+NASA CMR Concept ID: C3544680896-AMD_USAPDC",Dataset,http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=2423761,NASA Earthdata,C3544680896-AMD_USAPDC,,2024-10-01T00:00:00.000Z,2026-09-18 22:47:26.109342
+30,Tellus Level-4 Antarctica Mass Anomaly Time Series from JPL GRACE/GRACE-FO Mascon CRI Filtered Release 06.3 version 04,"This dataset is a time series of mass variability averaged over all of Antarctica. It provides the ice mass changes of Antarctica over time. The mass variability are derived from JPL GRACE Mascon Ocean, Ice, and Hydrology Equivalent Water Height CRI Filtered RL063Mv04 dataset, which can be found at https://doi.org/10.5067/TEMSC-3JC634. A more detailed description on the Mascon solution, including the mathematical derivation, implementation of geophysical constraints, and solution validation, please see Watkins et al., 2015, doi: 10.1002/2014JB011547. The mass variability are provided as an ASCII table.
+Short name: ANTARCTICA_MASS_TELLUS_MASCON_CRI_TIME_SERIES_RL06.3_V4
+Version: RL06.3Mv04
+Data center: POCLOUD
+Archive center: NASA/JPL/PODAAC
+Organizations: NASA/JPL/PODAAC, NASA/JPL/GRACE-TELLUS-0001
+Platforms: GRACE, GRACE-FO
+Temporal coverage starts: 2002-04-01T00:00:00.000Z
+Spatial coverage: -90 -180 90 180
+NASA CMR Concept ID: C3206284786-POCLOUD",Dataset,https://search.earthdata.nasa.gov/search/granules?p=C3206284786-POCLOUD,NASA Earthdata,C3206284786-POCLOUD,,2002-04-01T00:00:00.000Z,2026-09-18 22:47:26.109344
+146,"Ar/Ar Age Determinations Southern McMurdo Sound, Antarctica","This data set contains <sup>40</sup>Ar/<sup>39</sup>Ar age determinations of
+minerals separates and whole rock lava samples from the Southern McMurdo Sound
+area, Western Ross Sea, Antarctica.",dataset,http://www.ees.nmt.edu/Geol/labs/Argon_Lab/DataRep/DataRep.html,NASA Earthdata,C1214622337-SCIOPS,,,2026-09-20 21:43:28.756062
+119,"Indirect measurement of the duration of female Antarctic fur seal feeding trips and attention to pups on Livingston Island, Antarctica","The data consist of the duration of the feeding trips by female Antarctic fur
+seal, as well as of its land permanence, measured indirectly according to the
+presence or absence of the female next to their puppy, considering it, an
+alternative technique to the use of transmitters.",dataset,,NASA Earthdata,C1214614752-SCIOPS,,,2026-09-20 21:43:27.737636
+111,IGN - Thermal monitoring in Deception Island (Antarctica) since 2024,Thermometric dataset from stations with thermal anomaly in Deception Island volcano since 2024,dataset,,NASA Earthdata,C3144287401-SCIOPS,,,2026-09-20 21:43:26.889322
+112,"Collaborative Research: Determining Magma Storage Depths and Ascent Rates for the Erebus Volcanic Province, Antarctica Using Diffusive Water Loss from Olivine-hosted Melt Inclusion","The depths at which magmas are stored, their pre-eruptive volatile contents, and the rates at which they ascend to the Earth's surface are important controls on the dynamics of volcanic eruptions. Basaltic magmas are likely to be vapor undersaturated as they begin their ascent from the mantle through the crust, but volatile solubility drops with decreasing pressure. Once vapor saturation is achieved and the magma begins to degas, its pre-eruptive volatile content is determined largely by the depth at which it resides within the crust. Magma stored in deeper reservoirs tend to experience less pre-eruptive degassing and to be richer in volatiles than magma shallower reservoirs. Eruptive style is influenced by the rate at which a magma ascends from the reservoir to the surface through its effect on the efficiency of vapor bubble nucleation, growth, and coalescence. The proposed work will advance our understanding of pre-eruptive storage conditions and syn-eruptive ascent rates through a combined field and analytical research program. Volatile measurements from olivine-hosted melt inclusions will be used to systematically investigate magma storage depths and ascent rates associated with alkaline volcanism in the Erebus volcanic province. A central goal of the project is to provide a spatial and temporal framework for interpreting results from studies of present-day volcanic processes at Mt Erebus volcano. The Erebus volcanic province of Antarctica is especially well suited to this type of investigation because: (1) there are many exposed mafic scoria cones, fissure vents, and hyaloclastites (exposed in sea cliffs) that produced rapidly quenched, olivine-rich tephra; (2) existing volatile data for Ross Island MIs show that magma storage was relatively deep compared to many mafic volcanic systems; (3) some of the eruptive centers ejected mantle xenoliths, allowing for comparison of ascent rates for xenolith-bearing and xenolith-free eruptions, and comparison of ascent rates for those bearing xenoliths with times estimated from settling velocities; and (4) the cold, dry conditions in Antarctica result in excellent tephra preservation compared to tropical and even many temperate localities. The project provides new tools for assessing volcanic hazards, facilitates collaboration involving researchers from three different institutions (WHOI, U Wyoming, and U Oregon), supports the researchers' involvement in teaching, advising, and outreach, and provides an educational opportunity for a promising young postdoctoral researcher. Understanding the interrelationships among magma volatile contents, reservoir depths, and ascent rates is vital for assessing volcanic hazards associated with alkaline volcanism across the globe.",dataset,https://www.usap-dc.org/view/dataset/601250,NASA Earthdata,C2532074600-AMD_USAPDC,,,2026-09-20 21:43:26.899584
+113,Metabolic studies in Deschampsia antarctica,"Studies related to the content of non-structural sweeten in Desachampsia
+antarctica, have been made since 1992.  It has been found that the plant
+accumulates high levels of saccharose and fructose. Another evaluation is the
+respiratory and photosynthetic plant capacity under different environmental
+conditions. This plant does not present the photoinhibition process. It has
+been determinate the temperature that inhibited the breathing.",dataset,,NASA Earthdata,C1214614514-SCIOPS,,,2026-09-20 21:43:26.90519
+114,"Periodic censuses of fur seal in focal beaches in Cape Shirreff, Livingston Island, Antarctica","Periodic censuses (daily, every second day and every two days)  of fur seal in
+focal beaches in cape Shirreff, Livingston Island, Antarctica  in three beaches
+(Daniel, Copihue and Lobería,  respectively), to observe the dynamics of each
+beach, arrival of females and to determine the date when the maximum of births
+appears.",dataset,,NASA Earthdata,C1214614689-SCIOPS,,,2026-09-20 21:43:26.90877
+115,"Registry of the growth of the Antarctic fur seal  pups,  Arctocephalus gazella, in Cape Shirreff, Livingston Island, Antarctica","The data show the weighing of pups following the standard method of CCAMLR 
+(Commission for the Conservation of Antarctic Marine Living Resources) C2,
+version B.  50 males and 50 females are weight every fortnight in one of the
+Cape beaches Copihue, with the propose of studying their growing during the
+season. This information is given annually to CCAMLR.",dataset,,NASA Earthdata,C1214614703-SCIOPS,,,2026-09-20 21:43:26.912507
+116,"Registry of the growth of the Antarctic fur seal  pups,  Arctocephalus gazella, on Daniel Beach, Cape Shirreff, Livingston Island, Antarctica","The data is related to  periodic weighing (between 5 and 10 days) of  pups of
+both sexes throughout the season. The data includes the corporal measures of
+the puppies (total length and pectoral width), to determine their corporal
+condition.
+
+The data are in tab-delimited and graphic formats.",dataset,,NASA Earthdata,C1214614704-SCIOPS,,,2026-09-20 21:43:26.91613
+117,"General observations of the behavior of the Antarctic fur seal, Arctocephalus gazella, in Cape Shirreff, Livingston Island, Antarctica","The data consist iof general information of the behavior of males, females and
+puppies of this species, including childbirth, copulas, breast-feeding periods
+and fights, as well as their duration.  Information was obtained through daily
+observations ad libitum on Daniel Beach.",dataset,,NASA Earthdata,C1214614765-SCIOPS,,,2026-09-20 21:43:27.725619
+118,"Measurement of the behaviour of the Antarctic fur seal, Arctocephalus gazella, in Cape Shirreff, Livingston Island, Antarctica","The data consist of  measurement of the behavior of males sultans, females and
+puppies on Daniel Beach, obtained through instantaneous focus animal
+registries.",dataset,,NASA Earthdata,C1214614766-SCIOPS,,,2026-09-20 21:43:27.732852
+120,"Harvesting of pinniped faeces for studies of diets, Cape Shirreff, Livingston Island, Antarctica","The data consist in samples of male and female Antarctic fur seal faeces,
+collected for studying their diet. During the season 1998/99 the harvesting of
+Weddell seals' faeces were added.",dataset,,NASA Earthdata,C1214614785-SCIOPS,,,2026-09-20 21:43:27.741753
+121,"Harvesting of pinniped tissue samples in Cape Shirreff, Livingston Island, Antarctica","Data originates from a collection of different tissue samples of dead Antarctic
+fur seals, including some seals found on beaches of the Cape. Tissue samples
+were  collected for the purpose of studying histopatologies. The analysis of
+the samples will  determine the possible cause of death, as well as foster
+study in any diseases from which  the animal may have suffered.",dataset,,NASA Earthdata,C1214614786-SCIOPS,,,2026-09-20 21:43:27.74494
+122,"Harvesting of pinniped skin samples on Cape Shirreff, Livingston Island, Antarctica","Data  consist of genetic studies from skin samples of Antarctic fur and Weddell 
+seals found both dead and alive.",dataset,,NASA Earthdata,C1214614802-SCIOPS,,,2026-09-20 21:43:27.748599
+123,"Harvesting of pinniped blood samples on Cape Shirreff, Livingston Island, Antarctica","Data consist of studies of blood samples from  Antarctic fur and Weddell seals
+found both dead and alive.  The studies involve searching for the presence of
+bacterial diseases.",dataset,,NASA Earthdata,C1214614736-SCIOPS,,,2026-09-20 21:43:27.753563
+124,"Patterns of face coloration on Antarctic fur seal pups, Arctocephalus gazella, on Cape Shirreff, Livingston Island, Antarctica","The data consist of eight patterns of face coloration in pups, which can be
+indicator of the genetics of the population on the Cape.",dataset,,NASA Earthdata,C1214614803-SCIOPS,,,2026-09-20 21:43:27.757551
+125,"Cosmogenic He-3 data from surface sediments above old buried ice in Beacon Valley, Antarctica","The cosmogenic He-3 data set created during this project provides three major constraints:
+
+*The cosmogenic 3He survey from Mullins Glaciers allows us to calculate for the first time paleo-flow rates of a glacier on the million year time scale. A simple calculation yields a paleo-flow rate of < a few mm y-1 over the last 4 My. This result is in striking agreement with the modern flow rates based on InSar data reported by Rignot et al (Rignot et al., 2002), indicating that Mullins Glacier flow velocity remained relatively constant over millions of years. The finding that a rather sensitive local rock glacier remained dynamically stable over millions of years can only be explained by very consistent climate conditions and the near absence of significant climate changes.
+
+*The depth profile experiment of surface sediment overlying the old buried ice in Beacon Valley indicates (i) that there have been probably some geomorphic processes active in the upper layer of the sublimation tills reworking the simple deeper=older stratigraphy; (ii) the cobble survey from the polygon center shows high degree of variety in sublimation age and disintegration and weathering characteristics of individual boulders, that is not mirrored by different morphologic appearances of the surfaces (all look old). 
+
+* The cosmogenic He-3 chronology from Kennar Glacier is one of the best glacial chronologies ranging from 10,000 to 3,000,000 yr to date, yielding a pulse of small amplitude glaciations 17 ky  180 ky  218 ky  325 ky  595 ky  950 ky - ?  1560 ky  2900 ky.",dataset,,NASA Earthdata,C1214589714-SCIOPS,,,2026-09-20 21:43:27.761145
+126,"Novel Be-10 and extraterrestrial He-3 depth profile in old, buried glacier ice of Mullins Glacier, upper Beacon Valley, Antarctica.","This research supports development of an innovative dating technique for application to ancient, relict ice bodies buried in the Western Dry Valleys of Antarctica.   Dating of surrounding sediments and volcanic ashes indicates that these ice bodies may be up to six million years in age, offering the oldest direct atmospheric and climate records available. This work is a proof of concept to develop a new dating technique using beryllium (10Be) of cosmogenic origin from the atmosphere and extraterrestrial helium (3He) contained in interplanetary dust particles. Both tracers are deposited to the Earth's surface and likely incorporated into the ice matrix at constant rates. Radioactive decay of 10Be versus the stable extraterrestrial 3He signal may offer way to directly measure the age of the ice. 
+
+The broader impacts of this work are development of a new analytical technique that may improve society's understanding of the potential for global climate change from the perspective of the deep time record.",dataset,,NASA Earthdata,C1214589813-SCIOPS,,,2026-09-20 21:43:27.765623
+127,"Growing in Antarctica, a challenge for white adipose tissue development in Adélie penguin chicks (Pygoscelis adeliae)","Rapid growth is of crucial importance for Adélie penguin chicks reared during the short Antarctic summer. It partly depends on the rapid ontogenesis of fat stores that are virtually null at hatching but then develop considerably (40) within a month to constitute both an insulative layer against cold and an energy store to fuel thermogenic and growth processes. The present study was aimed at identifying by
+RT-PCR the major transcriptional events that chronologically underlie the morphological transformation of adipocyte precursors into mature adipocytes from hatching to 30 days of age. The peak expression of GATA binding protein 3, a marker of preadipocytes, at day 7 posthatch indicates a key proliferation step, possibly in relation to the expression of C/EBPalpha (C/EBPalpha). High plasma total 3,5,3'-triiodo-Lthyronine (T3) levels and high levels of growth hormone receptor transcripts at hatching suggested that growth hormone and T3 play early activating roles to favor proliferation of preadipocyte precursors. Differentiation and growth of preadipocytes may occur around day 15 in connection with increased abundance of transcripts encoding IGF-1, proliferator-activated receptor-gamma, and C/EBPbeta, gradually leading to functional maturation of metabolic features of adipocytes including lipid uptake and storage (lipoprotein lipase, fatty-acid synthase) and late endocrine functions (adiponectin) by day 30. Present results show a close correlation between adipose tissue development and chick biology and a difference in the scheduled expression of regulatory factors controlling adipogenesis compared with in vitro studies using cell lines emphasizing the importance of in vivo approaches.",dataset,,NASA Earthdata,C1214598179-SCIOPS,,,2026-09-20 21:43:27.770368
+128,"Weekly censuses of birds and marine mammals, Greenwich Island, Antarctica (En Espanol: Censos semanales de aves y mamiferos marinos, Isla Greenwich, Antartica)","From January of 1994 and to date, weekly censuses of birds and  marine mammals
+have been taken in the coastal sector of Chile Bay, between the Caleton Iquique
+and the English Strait located near Greenwich Island. In addition, the activity
+of the animals and atmospheric variables were measured simultaneously. 
+
+En Espanol:
+Entre enero de 1994 y hasta la fecha, se han efectuado censo semanales de aves
+y mamiferos marinos en el sector costero de Bahia Chile, entre el Caleton
+Iquique y el Estrecho Ingles ubicado en Isla Greenwich. Ademas se registro la
+actividad de los animales y las variables atmosfericas del momento.",dataset,,NASA Earthdata,C1214615246-SCIOPS,,,2026-09-20 21:43:27.774153
+144,"NotApplicable Antarctica:PineIslandBay_Nitsche - Bathymetric Chart of Pine Island Bay, Antarctica","The NSF-supported research icebreaker  operates year-round in support of the U.S. Antarctic Program, carrying out global change studies in biological, chemical, physical, and oceanographic disciplines. 
+This data set consists of underway data from leg Antarctica:PineIslandBay_Nitsche on the NotApplicable. This leg started at  and ended at .",dataset,http://www.marine-geo.org/link/entry.php?id=Antarctica:PineIslandBay_Nitsche,NASA Earthdata,C1221434151-SCIOPS,,,2026-09-20 21:43:28.747091
+129,"Scanning Photometer Data in Zhongshan Station, Antarctica","The Meridian Scanning Photometer installed at Zhongshan Station is one of the
+Polar Research Institute of China (PRIC) and the National Institute of Polar
+Research (NIPR) of Japan cooperative projects, which observes aurora variations
+in three wavelengths (427.8nm, 557.7nm and 630nm) along the invariant meridian;
+its scanning range extends almost from horizon to horizon. The observation was
+started in March 1995. However, it was interrupted during the period of July
+1995 through Feb. 1997.  The data is only valid for dark time. In other words,
+there is no valid data during the middle of October to the beginning of March
+every year.",dataset,,NASA Earthdata,C1214608750-SCIOPS,,,2026-09-20 21:43:27.777907
+130,"Induction Magnetometer Observation at Zhongshan Station, Antarctica","This observation was started on Jan. 1996 at Zhongshan Station, Antarctica. It
+      is designed to investigate space plasma waves by observing earth's magnetic
+      field variation, including the horizontal component in north-south direction
+      (H), and the horizontal component in east-west direction (D). It is a
+      collaborative scientific project between Polar Research Institute of China and
+      Newcastle University of Australia and the Antarctic Division of Australia.",dataset,,NASA Earthdata,C1214608787-SCIOPS,,,2026-09-20 21:43:27.781506
+131,"Cosmogenic nuclide data for glacial erratics - Marble Hills, Ellsworth Mountains, Antarctica","This data set consists of cosmogenic nuclide concentrations in glacial erratics
+      from the Marble Hills, a group of peaks in the southern Heritage Range,
+      Antarctica. Approximately one-third of these samples have Holocene exposure
+      ages, indicating that they have been exposed by thinning of the West Antarctic
+      Ice Sheet since the last glacial maximum (LGM). The remainder of the samples
+      contain high concentrations of cosmogenic Be-10 and Al-26, indicating more
+      prolonged exposure, either at their present locations or at a source further
+      inland. 
+      
+      The primary data are sample locations, correction factors relating to
+      calculation of exposure ages, and concentrations of the cosmic-ray-produced
+      nuclides Be-10 and Al-26, measured in quartz. We list conventional exposure
+      ages for the samples, but have also provided sufficient information to allow
+      the ages to be recomputed if nuclide production rates or correction factors are
+      revised in future.",dataset,,NASA Earthdata,C1214622028-SCIOPS,,,2026-09-20 21:43:27.786406
+132,"Exposure ages of glacial deposits and bedrock surface samples, Beardmore and Shackleton Glaciers, Antarctica","This data set contains cosmogenic nuclide exposure ages for glacial deposits and bedrock surface samples from the Transantarctic Mountains.  The sites covered comprise The Cloudmaker, Mt Kyffin and Mt Hope on Beardmore Glacier, and Nilsen Peak, Mt Franke, Gemini Nunataks, Taylor Nunatak, Thanksgiving Point and Mt Heekin on Shackleton Glacier.  The data are formatted for input into the CRONUS online calculator (http://hess.ess.washington.edu/math/).  The calculator provides a means of calculating exposure ages using the present best estimates for the nuclide production rates.  For bedrock samples, apparent exposure ages can be calculated from Be-10, Al-26 and in some cases Cl-36 data, and represent minimum limits on the cumulative exposure time of the surfaces; combinations of the Cl-36, Al-26 and Be-10 data in these samples can also be used to place constraints on the long-term ice-cover history of the samples.
+",dataset,,NASA Earthdata,C1214603941-SCIOPS,,,2026-09-20 21:43:27.79057
+133,"Stratospheric Temperature profiles from Rayleigh-Mie Lidar at Dumont d'Urville, Antarctica","Instrument History:
+
+Since 1989, France leads a monitoring program on human impacts on the Antarctic polar stratosphere. A set of instruments designed to measure ozone and parameters linked to its chemical equilibrium, were implemented on the French Antarctic base, Dumont d'Urville. The French Polar Institute (IPEV, Institut Polaire Français Paul-Emile Victor) supplies recurrent funding and logistics. In this frame, ground-based lidar aerosol and PSC observations were first conducted within the POLE (Polar Ozone Experiment), a French-Italian collaboration between the Service d' Aeronomie-IPSL and the IROE-CNR. In 1989, a backscatter lidar to measure stratospheric particles was implemented. In 1991, this lidar became a multiwavelength system allowing sequential observations of the vertical distribution of ozone and stratospheric particles. Failures of this out of date instrument forced to completely stop ozone measurement in 2000. Stratospheric particles observations continued, but were almost unexploitable.
+
+A new instrument was then studied, since 2002, within a new French-Italian collaboration between Service d' Aeronomie-IPSL (becoming LATMOS-IPSL in 2009) and ISAC-CNR. Named LOANA (Lidar Ozone and Aerosols of NDACC in Antarctica), this new lidar system in Dumont d'Urville includes the upgrade of the aerosol/PSC lidar, of the ozone lidar and addition of a temperature lidar. Field implementation started in 2005 for a one year test. Stratospheric particles and temperature measurement are operational since 2006. Ozone measurements only started in 2008, due to THG (Third Harmonic Generator) and PM (Photo-Multipliers) failures. Today, this lidar system is the most complete and is unique on the Antarctic continent. In particular, the ozone lidar in Dumont d'Urville was and is now again the sole instrument of that type running in an operational mode in Antarctica.
+
+Instrument Description:
+
+The temperature lidar in Dumont d'Urville is a backscatter Rayleigh-Mie lidar also able to measure upper stratospheric temperatures at altitudes higher the 30 km. The system was primarily designed to observe particles in the lower stratosphere, roughly between 8 and 32 km (see Dumont d'Urville aerosols/PSC lidar metafile) and has common part with the ozone lidar (see Dumont d'Urville ozone lidar metafile). Here are the main characteristics of the instrument:
+
+- Emitted wavelengths of 532 and 1064 nm (Nd:YAG 10 Hz pulsed laser)
+- Aer/PSC/T and O3 switch box (manual change optical path)
+- Biaxial emission (~ 60 cm out of alignment)
+- Beam expander to get 0.5 mrad beam divergence
+- 80 cm Newton telescope
+- Mechanical chopper (cut signal between 0-5 km)
+- First beam splitter: UV / Visible and IR
+- Hamamatsu photomultipliers for 532 nm and 608 nm
+- Embedded Devices photodiode for 1064 nm
+- Photo-counting mode at 532 nm and 608 nm (60 m vertical resolution)
+- Analog mode at 1064 nm (15 m vertical resolution)
+- Aer/PSC/T and ozone electronical switch
+- Embedded Devices electronic acquisition cards
+- Labview acquisition software (developed in 2008)",dataset,,NASA Earthdata,C1214598230-SCIOPS,,,2026-09-20 21:43:27.794305
+134,"Erythemal UV dose from UV-B Broad band detector at Dumont d'Urville, Antarctica","Instrument History:
+
+The biometer was installed in 1995 at Dumont dUrville to monitoring the evolution of ultraviolet radiation (UV) over this region and to evaluate the influence of ozone depletion on UV. The biometer at Dumont dUrville is working continuously since 1995. The French Polar Institute (IPEV  Institut Polaire Français Paul-Emile Victor) supplies recurrent funding and logistics.
+
+Between 1995 and 2009 no calibration was performed. To ensure good quality data the instrument has to be calibrated regularly. A new biometer of the same model as the old one was installed in January 2008 at Dumont dUrville. The two instruments have been operated in parallel during a two months period, and then the 15 years old instrument was sent back to the laboratory in February 2008 for calibration. The calibration has taken place in a special laboratory equipped for certified UV-calibration at Davos, Switzerland in summer 2009.
+
+
+Instrument description:
+
+The biometer is a broadband radiometer commercialized by Solar Light (501 UV-Biometer Version 1.0). See http://www.solarlight.com/products/501.html for details.
+
+
+Algorithm description:
+
+The raw data daily provided by the instrument correspond to an erythemal dose every time step. Since 2000, measurements were performed each 5 minutes.",dataset,http://saoz.obs.uvsq.fr/UVB.html,NASA Earthdata,C1214598228-SCIOPS,,,2026-09-20 21:43:28.703945
+135,"Cloud Detector measurements made at Davis Station, Antarctica","It had been shown that remote cloud detection can be performed with the use of new generation Thermopile detectors. The detection method is based on the fact that a cloudy sky will be warmer than a clear sky. An ideal cloud detection system would also need to account for the effects of relative humidity and barometric pressure, however good performance can still be obtained by ignoring these effects. 
+
+AAD Thermopile Detector
+=====================
+A Thermopile detector is used to remotely measure the temperature of the sky. The TPS 534 Thermopile detector chosen is fitted with a 5.5um Longpass (standard) IR filter, which allows precise remote temperature measurement of an ideal black body source. 
+
+The TPS 534 Thermopile detector produces an output voltage that is positive when the temperature of the scene it is viewing is higher than the temperature of itself, and a negative output voltage when the temperature of the scene it is viewing is lower than the temperature of itself. For this reason it is necessary to compensate for the temperature of the detector. The TPS 534 Thermopile detector has an internal NTC Thermistor which can be used for temperature compensation. 
+
+This Cloud Detector design implements a very simple analogue form of temperature compensation. The main drawback of an analogue temperature compensation system is that the NTC Thermistor has a very non-linear response with temperature which can only be partially corrected using a linearization resistance network. The other main drawback of an analogue temperature compensation system is that the system gains and voltage levels must be precisely adjusted by trial and error to guarantee correct operation over the desired operational temperature range.
+
+The Cloud Detector is designed for an operational temperature range of -30 degrees to +25 degrees Celsius. Operation outside of this range may cause internal signal saturation, and incorrect temperature compensation performance. The Cloud Detector optical field of view has been constrained to a 30 degrees full angle with the use of a cylindrical baffle assembly fitted directly to the Thermopile detector. The dimensions of the cylindrical baffle assembly could in theory be defined such that any field of view up to 80 degrees could be achieved.
+
+The Cloud Detector provides three plus or minus 10V output voltage signals to the data logging hardware :
+
+- Uncompensated Sensor Output Signal :
+
+Thermopile detector output signal without any analogue temperature compensation.
+
+The output voltage is proportional to the amount of cloud detected within the field of view of the 	instrument.
+
+- Compensated Sensor Output Signal :
+
+Thermopile detector output signal with analogue temperature compensation.
+
+The output voltage is proportional to the amount of cloud detected within the field of view of the 	instrument.
+
+- Temperature Output Signal :
+
+Linearised NTC Thermistor output signal used to apply analogue temperature compensation to the Thermopile detector output signal.
+
+The output voltage is proportional to the temperature of the Thermopile detector. The output voltage is uncalibrated, however the temperature verses output voltage could easily be measured.
+
+Boltwood Cloud Sensor
+===================
+
+This is a commercial cloud sensor unit manufactured by diffraction limited.",dataset,https://secure3.aad.gov.au/proms/public/projects/report_project_public.cfm?project_no=4157,NASA Earthdata,C1214305668-AU_AADC,,,2026-09-20 21:43:28.708612
+145,"Antarctica:SouthOrkney_Dickens - A new bathymetric compilation for the South Orkney Islands, Antarctic Peninsula","The NSF-supported research icebreaker operates year-round in support of the U.S. Antarctic Program, carrying out global change studies in biological, chemical, physical, and oceanographic disciplines. 
+This data set consists of compilation data from the South Orkney Islands, Antarctica",dataset,http://www.marine-geo.org/link/entry.php?id=Antarctica:SouthOrkney_Dickens,NASA Earthdata,C1220580566-SCIOPS,,,2026-09-20 21:43:28.751681
+136,"Scanning Radiometer observations of hydroxyl airglow over Davis, Antarctica from 2017","These are 1 minute sampled low resolution 'images' of the hydroxyl airglow layer over Davis station, Antarctica (68 degrees S,78 degrees E) derived using a scanning radiometer developed at the University of Western Ontario, Canada. The scans are a 16x16 pixel array and represent hydroxyl airglow variations in a small region (24x24 km) of the night sky in the zenith, approximately 87km above Davis. The instantaneous field-of-view of the 12cm aperture catadioptric telescope is 1 degrees, or a 1.5km radius field at the airglow layer height. Dwell time per 'pixel' is 0.22 sec. The instrument is sensitive in the 1.0 - 1.6 micron infrared region, which encompasses the bright hydroxyl (2-0), (3-1), (4-2) and (5-3) ro-vibrational bands. Observations are made in all cloud conditions between civil twilight (Sun less than 6 degrees below horizon) each year (between about the 6-Feb and 5-Nov at Davis).",dataset,https://data.aad.gov.au/eds/5238/download,NASA Earthdata,C2102891802-AU_AADC,,,2026-09-20 21:43:28.713493
+137,El Glaciar Collins: Como Sensor Natural Del Calentamiento Global En La Antartica (Collins Glacier: A Natural Indicator of Global Warming in Antarctica),"Implementation of experimental pilot catchment areas for measuring continuous
+glacier discharge (output time series) and relation with meteorological
+parameters (input time series).",dataset,,NASA Earthdata,C1214614913-SCIOPS,,,2026-09-20 21:43:28.718077
+138,"Fossil-rich lacustrine deposits in the Dry Valleys, Antarctica","The data set includes fossil images,trace-element geochemical analyses of volcanic tephra, geochronologic data for Dry Valleys ashfall deposits, locations and description of soil pits in the Antarctic Dry Valleys, and surface meteorological data.",dataset,http://people.bu.edu/marchant/,NASA Earthdata,C1214594180-SCIOPS,,,2026-09-20 21:43:28.722749
+139,"Coastal Ecology, Antarctica","This project is being carried out through an agreement between the Argentine
+Antarctic Institute (IAA); the University of Mar del Plata, Argentina; Navy
+Hydrographic Survey, Argentina; University of Bahia Blanca, Argentina;
+University of Rosario, Argentina; and Scientific Research and High Education
+Center of Ensenada, Mexico.
+
+Project contacts for specific disciplines are listed below:
+   Project Chief:     Jose Francisco Gallo
+   Oceanography:      Silvia Ines Romero
+   Oceanography:      Walter Hugo Grismeyer
+   Biology:           Fabrizio Oyarbide
+   Biology:           Silvia Rodriguez
+   Tide Measurement:  Monica Adriana Stadelmann
+   Chemical Analysis: Patricia Liliana Castro
+   Chemical Analysis: Eduardo Mondino
+   Solar Radiation:   Eduardo Luccini
+   Ocean Optics:      Martin Montes",dataset,,NASA Earthdata,C1214608383-SCIOPS,,,2026-09-20 21:43:28.726775
+140,Longterm upper Air Ozone Soundings in Antarctica from the German Antarctic Station since 1985.,"Since 1985 regular ozone soundings have been performed at Georg Forster
+                                                Station (70#46'S, 11#41'E). In the beginning of 1992, this ozone sounding
+                                                program was moved to Neumayer (70#39'S, 8#15'W), which is located at the
+                                                same latitude 750 km further west. The results of both stations can be
+                                                regarded as one timeseries, now covering a whole decade with only minor
+                                                interruptions.
+                                                
+                                                Vertical atmospheric soundings are performed about weekly. They include profile
+                                                measurements of ozone partial pressure, air pressure, temperature, relative
+                                                humidity and wind vector. Usually the profiles start at ground level and end
+                                                between 15 and 37 km.
+                                                
+                                                The data obtained at Georg-Forster Station include mainly the mean pressure
+                                                levels while the data from Neumayer have a mean height resolution of about
+                                                50 meter.
+                                                
+                                                At AWI the ozone soundings of both stations are archived in a relational
+                                                database (SYBASE). Up to now only the data from Neumayer Station are available
+                                                online on WWW.
+                                                
+                                                Actual soundings normally reach the database once a year.
+                                                
+                                                The data can be retrieved with Web and are free of charge. The address
+                                                is: ",dataset,https://www.awi.de/nc/en/science/long-term-observations/atmosphere/antarctic-neumayer/meteorology.html,NASA Earthdata,C1214598346-SCIOPS,,,2026-09-20 21:43:28.73061
+141,Surface Radiation Measurements at the Neumayer Ground Station (Antarctica),"Since March 1982 surface radiation balance measurements have been carried out
+                                                at the German Antarctic Georg-von-Neumayer Station of the Alfred Wegener
+                                                Institute for Polar and Marine Research (AWI).
+                                                      
+                                                The radiation signals are taken at one minute intervals and stored as averages
+                                                over 10 minutes. They include:
+                                                      
+                                                - global radiation (pyranometer CM11, Kipp+Zonen),
+                                                - reflected solar radiation (pyranometer CM11, Kipp+Zonen),
+                                                - downward long-wave radiation (pyrradiometer Lange),
+                                                - upward long-wave radiation (pyrradiometer Lange),
+                                                - sunshine duration (Solar 111, Haenni).
+                                                      
+                                                In March 1992 the radiation measurements at Neumayer were extended in order to
+                                                fulfill the standards of the Baseline Surface Radiation Network (BSRN). The
+                                                pyrradiometer were replaced by pyrgeometers (PIR Eppley), the averaging period
+                                                was reduced to 5 minutes, and the  following quantities are now additionally
+                                                measured:
+                                                      
+                                                - diffuse sky radiation (pyranometer CM11, Kipp+Zonen),
+                                                - direct solar radiation (NIP, Eppley mounted on a sun tracker),
+                                                - OG1 (global>530nm, pyranometer CM11, Kipp+Zonen),
+                                                - RG8 (global>695nm, pyranometer CM11, Kipp+Zonen),
+                                                - UV (300-370nm, TUVR, Eppley).
+                                                      
+                                                The pyranometers and pyrgeometers are ventilated with slightly preheated air to
+                                                minimize hoar frost problems and zero offsets during cloudless and windless
+                                                conditions. The instruments were maintained continuously several times per day
+                                                throughout the year. After one year of operation they are re-calibrated at the
+                                                German Weather Bureau according the World Radiometric Reference (WRR).
+                                                      
+                                                At AWI, the radiation measurements - averaged over 10 & 5 minutes - are
+                                                archived together with the data from the mast measurements, daily upper air
+                                                soundings and routine synoptic surface observations in a relational database
+                                                (SYBASE). Additionally some derived quantities (Iqbal 1983) such as the solar
+                                                elevation, extraterrestrial solar insolation, astronomical sunshine duration
+                                                are available.
+                                                      
+                                                In order to obtain daily averaged radiation data, each day was subdivided into
+                                                eight 3-hourly intervals (0-3, 3-6, ..., 21-24 UTC). For each 3-hourly interval
+                                                an average was derived irrespective of the number of measurements. This
+                                                procedure was chosen in order to minimize problems resulting from missing
+                                                values.  If one or more 3-hourly averages were missing, no daily average was
+                                                calculated.
+                                                      
+                                                Daily averaged radiation data are available from 13 March 1982 till 28 February
+                                                1994. They can be retrieved directly via World Wide Web:
+                                                'http://www.bremerhaven.de/sixcms/detail.php?id=13742'.",dataset,https://www.awi.de/en/science.html,NASA Earthdata,C1214585734-SCIOPS,,,2026-09-20 21:43:28.735022
+142,Magnetic observations collected from Antarctica and Macquarie Island since 1952,"Final one minute average values of the absolute geomagnetic field in the north (X), east (Y) and vertical (Z) components in units of nanoTesla (nT).
+
+Magnetic variometer data have been collected at Macquarie Is. since 1952; Mawson since 1955; and Casey since 1988. Data were not digital from Macquarie Is. until late 1984; from Mawson until late 1986. They have been digital from Casey since 1988. Data that are currently available from the GA website are not complete, but improving. The status of data availability is available on the website.
+
+Particular magnetic elements can be chosen to be plotted or tabulated data are available.",dataset,http://www.ga.gov.au/scientific-topics/positioning-navigation/geomagnetism,NASA Earthdata,C1214311742-AU_AADC,,,2026-09-20 21:43:28.739593
+143,Adelie Penguin Dietary Data From Bechervaise Island Antarctica,"This dataset contains the results from surveys on the feeding habits of Adelie Penguins (Pygoscelis adeliae) on Bechervaise Island, Mawson, Antarctica.  Surveys have been conducted since 1991, and are ongoing to determine the diet composition and prey species of penguins.
+
+Data for this project were compiled by Megan Tierney, as part of her PhD Thesis, and are presented in two excel spreadsheets.
+
+Also provided in the Related URL section, is a link to a trophic database of ""A compilation of dietary and related data from the Southern Ocean"".  This database contains a large amount of other publicly available diet related data collected as part of the Australian Antarctic program.",dataset,https://data.aad.gov.au/eds/3173/download,NASA Earthdata,C1214311760-AU_AADC,,,2026-09-20 21:43:28.743474
+147,"Microprobe and noble gas analyses of rock and meteoritic debris at Graphite Peak, Antarctica.","Detailed microprobe data of the major and minor elements from samples collected
+      at Graphite Peak Antarctica.  Datasets include all Fosterite and Enstatite
+      analyses, metal grains, meteoritic metal, platinum group elements (PGEs), Fe-Ni
+      oxides, opaques, silicates, sulfides, SiAl.  In addition, noble gas
+      measurements on magnetic grains and carbon carriers (fullerenes) is included.
+      SEM and Microprobe picture are available for individual magnetic grains and
+      meteroritc fragments identified in these samples.",dataset,,NASA Earthdata,C1214586474-SCIOPS,,,2026-09-20 21:43:28.759866
+148,"BIOSTRATIGRAPHY AND SEDIMENTOLOGY OF THE SANTONIAN-MAASTRICHTIAN FROM THE JAMES ROSS BASIN, ANTARCTICA. PALEOBIOLOGICAL AND PALEOENVIRONMETAL EVENTS-PICTO 36326-2005","ENGLISH
+This proposal is directed to the study of important, but not yet totally solved, scientific questions involving geologic, paleobiologic, and paleoclimatic high-latitude events. The expected results will also have application in exploration activities requiring the utilization of high-resolution chronological charts. The excellent sedimentary record of the James Ross Basin, with thick, fossiliferous, and relatively complete Santonian-Danian and Eocene sections, is particularly apt for the study of global changes involved in the transition from the warm-temperate Cretaceous climatic conditions to the severe, cold Neogene climatic conditions. It is hypothesized that the faunal composition and geographic and stratigraphic distribution of the Late Cretaceous marine fossils (mega- and microfossils) should reflect the interaction of geologic, climatic, and biologic events associated to the splitting of Gondwana fragments and southern high-latitudes climatic and oceanographic changes. The knowledge of these interactions is hampered by the lack of a precise temporal and spatial ordering of geologic events and by an inadequate knowledge of the foraminiferal associations and paleo-environmental settings within the Basin, particularly near the transition of the major Santonian- Danian sedimentary cycles and the Eocene. The establishment of a detailed chronology, based on ammonite and foraminifera bio-stratigraphy, and the knowledge of the geologic evolution, paleo-ecology, sedimentary facies and paleoenvironmental settings, and sequence stratigraphy for the Santonian-Danian interval are one of the major expected results of this proposal. The expected faunal changes and events within the James Ross Basin will be precisely framed within this biostratigraphic scheme, and compared with faunal changes already known from Tierra del Fuego and ODP sites near Antarctica. During the Late Cretaceous and the Eocene, Antarctica and Tierra del Fuego were closer together than their present geographic position, thus a transect from shallow marine, typical for the James Ross Basin, to deep marine environments, typical for most of the Tierra del Fuego succession, could be evaluated.
+
+SPANISH
+
+Se propone estudiar un conjunto de acontecimientos geol�gicos, paleobiol�gicos y paleoclim�ticos desarrollados en altas latitudes del Hemisferio Sur, cuyo conocimiento es importante para resolver problemas cient�ficos con aplicaci�n en exploraci�n de recursos naturales que requieran la utilizaci�n de esquemas cronol�gicos de alta resoluci�n. El excelente registro sedimentario de la cuenca James Ross, con espesas secciones fosil�feras, relativamente continuas para el Santoniano-Daniano y el Eoceno, favorecen el estudio de cambios ambientales globales que involucran la transici�n entre las condiciones c�lidas y templadas del Cret�cico y las severas condiciones clim�ticas fr�as del Ne�geno. La investigaci�n de la composici�n, distribuci�n geogr�fica y estratigr�fica de f�siles (mega y microfauna) del Cret�cico superior deber�a reflejar la interacci�n de acontecimientos geol�gicos, clim�ticos y biol�gicos relacionados con la fragmentaci�n de Gondwana y los cambios clim�ticos y oceanogr�ficos ocurridos en altas latitudes del Hemisferio Sur. El estudio de estas interacciones est� dificultado por la falta de un adecuado ordenamiento espacial y temporal de acontecimientos y por la falta de conocimiento m�s detallado de las asociaciones de foramin�feros y paleoambientes sedimentarios, especialmente en las transiciones entre los grandes ciclos sedimentarios del Santoniano-Daniano y del Eoceno
+definidos en la cuenca. La obtenci�n de un adecuado marco cronol�gico de referencia, basado en la bioestratigraf�a de los amonites y los foramin�feros, y el entendimiento de la evoluci�n geol�gica, paleoecol�gica, de facies y paleoambientes sedimentarios y estratigraf�a secuencial del intervalo Santoniano-Maastrichtiano, imprescindible para abordar correctamente estas interacciones, constituye uno de los objetivos fundamentales del presente proyecto. Otro objetivo general es la comparaci�n de la
+columna del Cret�cico superior de Ant�rtida con la sucesi�n sedimentaria, recientemente establecida por el grupo de investigaci�n en la Isla Grande de Tierra del Fuego y con las determinadas en sitios del programa ODP (Ocean Drilling Project) en regiones ant�rticas. Dada la mayor proximidad geogr�fica de las regiones ant�rticas y fueguinas durante el Cret�cico tard�o, y el contraste generalizado de sus respectivos ambientes depositacionales (plataforma en la cuenca James Ross y marino profundo en Tierra del
+Fuego) permitir� evaluar una suerte de transecta comparativa entre ambientes de plataforma y marinos profundos para el Cret�cico superior. Por razones de continuidad estratigr�fica se contempla",dataset,,NASA Earthdata,C1214594404-SCIOPS,,,2026-09-20 21:43:28.763643
+149,GEOPHYSICAL INVESTIGATIONS OF THE MAGMATIC ARC IN THE NORTHWESTERN PENINSULA ANTARCTICA AND ITS TECTONIC DEVELOPMENT - PICTO 36177 2005,"ENGLISH
+This project comprises geophysical, structural, and petrologic studies aiming to define the geometry, lateral relationships, and tectonic evolution of the geologic units of the Mesozoic magmatic arc of the western Antarctic Peninsula. The obtained results will be correlated with the southernmost South America (Tierra del Fuego) which would have been part of the same Mesozoic magmatic arc. Processing of geophysical data (gravimetry, magnetic data, geoelectric data and reflection seismic) along with the petrologic study of plutonic, volcanic, and metamorphic rocks, accompanied by specific paleomagnetic and AMS surveys in some volcanic, intrusive and sedimentary bodies, will allow us to present maps with geologic and geophysical sections. Modeling of geophysical data will allow us to decipher the deep structural geometry of the western Antarctic Peninsula, whereas the surface structural survey will be directed towards the characterization of deformation mechanisms (both in the brittle and ductile regime) as well as the structural evolution of the studied area. The planned paleomagnetic studies aim to address the oroclinal vs. orogenic nature of the Antarctic Peninsula arc. Paleogeographic reconstructions from the Early Jurassic through Upper Cenozoic will be presented as well as balanced cross-sections with the pre-compressive configuration with the purpose of defining the geometry and paleogeographic boundaries of the old retro-arc and fore-arc basins.
+
+SPANISH
+El proyecto comprende escencialmente un estudio integral geofisico estructural y petrologico que apunta a definir la geometria,relaciones laterales y su desarrollo tectonico en superficie y en profundidad de las diferentes unidades geologicas del antiguo arco magmatico Mesozoico parcialmente aflorantes en el borde W de la Peninsula Antartica.Los resultados obtenidos en este sector antartico, seran correlacionados con el extremo de Sudamerica en el sector de Tierra del Fuego que habria formado parte de ese arco magmatico durante el Mesozoico.La elaboracion de los datos geofisicos(gravimetria,magnetometria, geoelectrica y sismica de reflexion). Estudios petrologicos de las rocas plutonicas, volcanicas y metamorficas,paleomagneticos y de anisotropia de susceptibilidad magnetica, especificos sobre cuerpos volcanicos, intrusivos y sedimentarios, permitiran presentar mapas y transectas geologicas y geofisicas que sinteticen la evolucion geodinamica del arco magmatico integrando estos resultados con la informacion del sector sudamericano.Todos los datos a adquirir en el terreno, seran georreferenciados con DGPS . La aplicacion 1 de 9 de modelos de inversion a los relevamientos geofisicos permitiran fundamentalmente reconstruir la geometria estructural profunda del borde W de la Peninsula Antartica, mientras que el relevamiento estructural apuntara a la determinacion de los mecanismos deformativos tanto en regimen ductil como fragil y contribuiran a la reconstruccion de la historia deformativa de la region. Los estudios paleomagneticos aqui propuestos coadyudaran a dilucidar si el arqueamiento de la Peninsula Antartica es primario u oroclinal o bien controlado por una serie de rotaciones locales que configuran la forma actual. Se realizaran reconstrucciones paleogeograficas desde el Jurasico temprano hasta el Cenozoico superior y perfiles balanceados estirados reconstruyendo las dimensiones pre-compresion con el fin de estimar geometria y limites paleogeograficos de la antigua cuenca de retro y antearco y espesores del relleno sedimentario afectado por la orogenia.",dataset,,NASA Earthdata,C1214594402-SCIOPS,,,2026-09-20 21:43:28.769527
+150,Biodiversity and ecology of algae from continental environments in Maritime Antarctica. Project No. 25  2002-2004,"ENGLISH:
+Project No. 25 2002-2004 (in cooperation with Buenos Aires University,
+Argentina)
+
+This project aims to obtain a thorough survey of the diversity of continental
+algae in three areas of the Maritime Antarctica: Hope Bay, Cierva Point and
+Potter Cove. Environmental features influencing both structure and functioning
+of freshwater algal communities (phytoplankton, phytoperiphyton) are analyzed. 
+Interactions between aquatic communities such as herbivory and competition are
+also studied, thus contributing to the knowledge of the integrated functioning
+of these communities.  On the other hand, the composition and structure of soil
+algal communities from Cierva Point is exhaustively studied.  On the basis of
+previous results obtained by our group, species or groups of species requiring
+deeper taxonomical studies through culturing and/or molecular techniques will
+be selected. Polimorphism of certain taxa will also be studied, together with
+physico-chemical factors involved.
+
+SPANISH:
+Diversidad y ecologia de algas de ambientes continentales de Antartica
+Maritima.Proyecto No 25  2002-2004 (En cooperacion con Universidad de Buenos
+Aires)
+
+Este proyecto apunta a obtener un relevamiento exhaustivo de la diversidad
+algal continental en tres zonas de la Antartica Maritima: Bahia Esperanza,
+Punta Cierva y Caleta Potter.  En el marco de este proyecto se analizan las
+condiciones ambientales que influyen en la estructura y funcionamiento de las
+comunidades algales (fitoplancton y fitoperifiton).  Las investigaciones
+propustas apuntan tambien a analizar las interacciones entre las comunidades
+acuaticas: efectos de herbivoria y fenomenos de competencia, asi como a obtener
+un conocimiento integrado del funcionamiento de las comunidades acuaticas de
+estos sistemas.  Por otro lado se efectuara un relevamiento completo de la
+ficoflora del suelo en la zona de Punta Cierva, estudiandose en forma
+particular aquellas especies que presenten interes ficologico.  Ademas, en base
+a la informacion obtenida previamente por nuestro grupo en estas zonas
+antarticas, se seleccionaran algunos taxa clave de estas comunidades cuyas
+identificaciones requieren estudios mas profundos mediante cultivos y tecnicas
+moleculares. Tambien se estudiara el polimorfismo de ciertos taxa y los
+factores fisico-quimicos involucrados.",dataset,,NASA Earthdata,C1214613597-SCIOPS,,,2026-09-20 21:43:28.774322
+151,"Breeding Biology of Male Southern Elephant Seals (Mirounga leonine) at South Shetland Islands, Antarctica. Project No. 44 2002-2004","Project: Breeding Biology of Male Southern Elephant Seals (Mirounga
+leonine) at South Shetland Islands, Antarctica. Project No. 44 2002-2004
+
+ENGLISH
+Project in cooperation with Universidad Nacional de La Plata, Buenos
+Aires, ARGENTINA
+
+The Southern elephant seal is a polygynous, sexual dimorphic species
+in which males are 4 -10 times greater than females. Males begin to
+arrive at the start of the breeding season and  fight each other in
+areas where females will settle to give birth. When pregnant females
+begin to arrive, they gather in groups called harems. The result of
+the encounters between males is a dominance hierarchy at each breeding
+area, which reduces access to the grouped females to the
+highest-ranking males, thus allowing them to increase their breeding
+success. Male size is an important variable to take into account in
+this social structure; however, additional factors such as prior
+residence at the breeding area, male age, and time spent on the beach
+could also be variables that affect male social rank in the dominance
+hierarchy and thus male breeding success.
+
+By combining different techniques (paternity analyses, body
+measurements, daily censuses) we propose to study the breeding biology
+of southern elephant seals at Stranger Point, King George Island,
+identifying potential different strategies displayed by males to
+increase their breeding success.
+
+SPANISH
+Biologia reproductiva de machos de elefante marino del sur (Mirounga
+leonina) en las Islas Shetland del Sur, Antartica. (Proyecto en
+cooperacion con la Universidad Nacional de La Plata)
+   Director: Lic. Alejandro Carlini
+   Co-Director:  ---
+
+Resumen del Proyecto: El elefante marino del sur es una especie
+poligamica y sexualmente dimorfica en la cual los machos son entre 4 y
+10 veces mas pesados que las hembras. Durante la estacion reproductiva
+los machos adultos compiten por el acceso a las hembras y como
+resultado de esta competencia se establece una jerarquizacion de los
+individuos dentro y en las proximidades de los harenes. El tamano
+parece ser una variable de gran importancia en dicha jerarquizacion
+pero otros factores, entre ellos el arribo temprano a la colonia, la
+edad y el tiempo de permanencia tambien podrian afectarla y por lo
+tanto hacer lo propio con el exito reproductivo. Ademas es posible que
+machos de diferentes jerarquias adopten distintas estrategias con el
+objeto de maximizar la probabilidad de fecundar hembras.
+
+Combinando diferentes metodologias (analisis de paternidad por
+microsatelites, medidas corporales, analisis de sonogramas y
+monitoreos periodicos a lo largo de la estacion reproductiva) se
+propone estudiar la biolog?a reproductiva de los machos de la especie,
+en la colonia situada en Punta Stranger, Isla 25 de Mayo, a fin de
+identificar las posibles estrategias individuales empleadas por ellos
+para maximizar su exito reproductivo.",dataset,,NASA Earthdata,C1214614057-SCIOPS,,,2026-09-20 21:43:28.778487
+152,Life sciences - Environmental Monitoring Data for Antarctica from the Instituto Antartico Argentino,"This data set contains the monitoring of environmental features and assessment
+of human impacts in the vicinity of Argentine Stations in Antarctica, including
+the monitoring of population parameters of bird colonies in relation to human
+activities (Tourism, Logistics, Science).
+
+This data set also contains the analysis of plant communities in protected
+areas of Antarctica.",dataset,,NASA Earthdata,C1214611669-SCIOPS,,,2026-09-20 21:43:29.523234
+153,"Geodetic Data from Belgrano Base II Automatic Recording Station (Belg), Antarctica","Geodetic data from GPS Automatic Recording Station (ARS) at Belgrano Base II
+(Belg), Antarctica",dataset,,NASA Earthdata,C1214614077-SCIOPS,,,2026-09-20 21:43:29.531505
+154,"Geodetic Data from Jubany Base Automatic Recording Station (Dall), Antarctica","Ongoing GPS Monitoring at Jubany Base (Dall) as part of research being carried
+out by the Instituto Antartico Argentino (IAA) in cooperation with Alfred
+Wegener Institute (AWI), Germany.",dataset,,NASA Earthdata,C1214614078-SCIOPS,,,2026-09-20 21:43:29.538849
+155,"Geodetic Data from the San Martin Base Automatic Recording Station (Smrt), Antarctica","Ongoing GPS Monitoring at San Martin Base, Antarctica, as part of research
+conducted by  the Instituto Antartico Argentino (IAA) in cooperation with
+Alfred Wegener Institute (AWI), Germany.",dataset,,NASA Earthdata,C1214614115-SCIOPS,,,2026-09-20 21:43:29.546474
+156,"Jurassic Trees at Jason Peninsula, Antarctica","A new discovery of Jurassic flora (tree trunks and stemps), located in
+Ramirez nunatak, Jason Peninsula, on the East side of Antarctic Peninsula is
+described. Together with another fossil flora locality at Brebbia Nunatak
+(Jason Peninsula), they showing evidence of a subaereal eruption character
+of the ignimbritic rocks  where the fossil flora was found, and the positive
+character of Jason Peninsula in the Larsen Basin during the Jurassic-Early
+Cretaceous time.",dataset,,NASA Earthdata,C1214611548-SCIOPS,,,2026-09-20 21:43:29.552977
+157,"Age and environment of Miocene - Pliocene glaciomarine deposits, James Ross Island, Antarctica","Knowledge of the late Miocene - Pliocene climate of West Antarctica,
+recorded by sedimentary units within the James Ross Island Volcanic
+Group, is still fragmentary. Late Miocene glaciomarine deposits at the
+base of the group in eastern James Ross Island (Hobbs Glacier
+Formation) and Late Pliocene (3 Ma) interglacial strata at its local
+top on Cockburn Island (Cockburn Island Formation) have been studied
+extensively, but other Neogene sedimentary rocks on James Ross Island
+have thus far not been considered in great detail. Here, we document
+two further occurrences of glaciomarine strata, included in an
+expanded Hobbs Glacier Formation, which demonstrate the stratigraphic
+complexity of the James Ross Island Volcanic Group: reworked
+diamictites intercalated within the volcanic sequence at Fiordo Bel?n,
+northern James Ross Island, are dated by 40Ar/39Ar and 87Sr/86Sr at
+c. 7 Ma (Late Miocene), but massive diamictites which underlie
+volcanic rocks near Cape Gage, on eastern James Ross Island, yielded
+an Ar - Ar age of <3.1 Ma (Late Pliocene). These age assignments are
+confirmed by benthic foraminiferal index species of the genus
+Ammoelphidiella. The geological setting and Cassidulina-dominated
+foraminiferal biofacies of the rocks at Fiordo Belen suggest
+deposition in water depths of 150 - 200 m. The periglacial deposits
+and waterlain tills at Cape Gage were deposited at shallower depths
+(<100 m), as indicated by an abundance of the pectinid bivalve
+""Zygochlamys"" anderssoni and the epibiotic foram Cibicides
+lobatulus. Macrofaunal and foraminiferal biofacies of glaciomarine and
+interglacial deposits share many similarities, which suggests that
+temperature is not the dominant factor in the distribution of late
+Neogene Antarctic biota. Approximately 10 m.y. of Miocene - Pliocene
+climatic record is preserved within the rock sequence of the James
+Ross Island Volcanic Group. Prevailing glacial conditions were
+punctuated by interglacial conditions around 3 Ma.",dataset,,NASA Earthdata,C1214613994-SCIOPS,,,2026-09-20 21:43:29.55714
+168,"Cosmic Ray Associated Atmospheric Pressure and Wind Speed Records, Antarctica","Records of atmospheric pressure and wind speed used in conjunction with cosmic ray data recorded at corresponding Antarctic cosmic ray observatories. Data has been collected from Australian Antarctic cosmic ray observatories during operational times at Macquarie Island, Casey, Wilkes and Mawson.  Individual observatory operating periods are available on request.",dataset,,NASA Earthdata,C1214313427-AU_AADC,,,2026-09-20 21:43:30.47386
+158,"Lakumasaurus antarcticus, n. gen. et sp., a new mosasuaur (Reptilia, Squamata) fron the Upper Cretaceous of Antarctica","Mosasaurs were large predatory lizards that typically inhabited warm,
+epicontinental seas during the last 20 millon years of the Mesozoic
+Era. Evidence of their taxonomic diversity derives mainly from
+significant finds from Late Cretaceous rocks of North America, Europe,
+and Northen Africa. In contrast, the mososaue recordd from Southern
+Hemisphere is partial and much less informative. Mosasaur remains from
+Antarctica are mostly limited to isolated teeth and fragmentary bones,
+thus restricting their potential implications for mosasaur phylogeny
+and paleobiogeography. Here we report on a new tylosaurine mosasaur,
+Lakumasaurus antarcticus gen. et sp. nov., discovered in the Late
+Cretaceous beds of James Ross Island, northeast Antarctic Penindula.
+
+Lakumasaurus is the most complete mosasaur yet recorder in
+Antarctica, thus providing insights on mosasaur diversification in the
+southern seas.
+
+This discovery, together with Late Cretaceous mosasaur from New
+Zealand, suggest that distinction betwen Creataceous marine reptile
+faunas of the Southern and Northern hemisphere were greater than has
+been thought.",dataset,,NASA Earthdata,C1214612197-SCIOPS,,,2026-09-20 21:43:29.561079
+159,"Paleontology of vertebrates, James Ross Basin, Antarctica","This data set consists of a collection of fossil vertebrates,
+invertebrates, and plants from the Lopez de Bertodano, Sobral,
+Cross Valley, and La Meseta Formations of Seymour Island, Antarctica.",dataset,,NASA Earthdata,C1214611364-SCIOPS,,,2026-09-20 21:43:29.565018
+160,"Geology of Seymour Island, Antarctica","Currently, the data set is comprised of approximately 450
+granulometric analyses of 70 loose grain mineralogical preparations
+from 30 geological sections of Seymour Island, Antarctica.  The data
+set also includes 100 microprobe heavy mineral analyses of sandstones from
+the La Meseta Formation.  Fifty thin sections of sandstones from the Sobral,
+Cross Valley, and La Meseta Formations have been prepared.",dataset,,NASA Earthdata,C1214610940-SCIOPS,,,2026-09-20 21:43:29.570871
+161,"SISMOANTAR, Seismological Data from Stations in Antarctica from the Instituto Antartico Argentino","This data set contains 450 earthquake sections digitally recorded in
+Antarctica.",dataset,,NASA Earthdata,C1214611675-SCIOPS,,,2026-09-20 21:43:29.574893
+162,"Study of Submarine Gas Leakage at Admiralty Sound, Antarctica","The submarine leakage of non volcanic gases, composed mainly by methane (CH4)
+an traces of CO2 and SH2 observed at Admiralty Sound (Estrecho Bouchard)
+suggests that accumulation of methane hydrates probably occur below the sea
+bottom.",dataset,,NASA Earthdata,C1214610971-SCIOPS,,,2026-09-20 21:43:29.578697
+163,Volcanology Data for Deception Island in the South Shetland Islands off Antarctica from the Instituto Antartico Argentino,"Instituto Antartico Argentino Antarctic Data Base describes volcano
+data from Deception Island in the South Shetland Islands off Antarctica.
+The data includes 400 terrestrial gravimetric measurement points, 200
+terrestrial magnetic measurement points, 2000 seismic event dates, 100
+geochemical analyses, and about 50 analyses of fumarole gas.",dataset,,NASA Earthdata,C1214611557-SCIOPS,,,2026-09-20 21:43:29.582906
+164,Oceanography - Oceanografia Costera Data for Antarctica from the Instituto Antartico Argentino,"This data set is the result of a coastal dynamics study which involved
+the determination of circulation in different coastal areas, and their
+influence on the nearby seas.",dataset,,NASA Earthdata,C1214611650-SCIOPS,,,2026-09-20 21:43:29.587483
+165,"CEOS Cal Val Test Site - Dome C, Antarctica - Instrumented Site","On the background of these requirements for sensor calibration, intercalibration and product validation, the subgroup on Calibration and Validation of the Committee on Earth Observing System (CEOS) formulated the following recommendation during the plenary session held in China at the end of 2004, with the goal of setting-up and operating an internet based system to provide sensor data, protocols and guidelines for these purposes:
+
+Background:
+
+Reference Datasets are required to support the understanding of climate change and quality assure operational services by Earth Observing satellites. The data from different sensors and the resulting synergistic data products require a high level of accuracy that can only be obtained through continuous traceable calibration and validation activities.
+Requirement:
+
+Initiate an activity to document a reference methodology to predict Top of Atmosphere (TOA) radiance for which currently flying and planned wide swath sensors can be intercompared, i.e. define a standard for traceability. Also create and maintain a fully accessible web page containing, on an instrument basis, links to all instrument characteristics needed for intercomparisons as specified above, ideally in a common format. In addition, create and maintain a database (e.g. SADE) of instrument data for specific vicarious calibration sites, including site characteristics, in a common format. Each agency is responsible for providing data for their instruments in this common format. Recommendation : The required activities described above should be supported for an implementation period of two years and a maintenance period over two subsequent years. The CEOS should encourage a member agency to accept the lead role in supporting this activity. CEOS should request all member agencies to support this activity by providing appropriate information and data in a timely manner.
+
+Instrumented Sites:
+Dome C, Antarctica is one of eight instrumented sites that are CEOS Reference Test Sites. The CEOS instrumented sites are provisionally being called LANDNET. These instrumented sites are primarily used for field campaigns to obtain radiometric gain, and these sites can serve as a focus for international efforts, facilitating traceability and inter-comparison to evaluate biases of in-flight and future instruments in a harmonized manner.  In the longer-term it is anticipated that these sites will all be fully automated and provide surface and atmospheric measurements to the WWW in an autonomous manner reducing some of the cost of a manned campaign, at present three can operate in this manner.",dataset,http://calvalportal.ceos.org/web/guest/home,NASA Earthdata,C1220566821-USGS_LTA,,,2026-09-20 21:43:30.456821
+166,Elevated cadmium accumulation in marine organisms from Terra Nova Bay (Antarctica) during 1989-1991,"As a contribution towards identification of the principal environmental factors
+involved in cadmium accumulation in Antarctic marine organisms and the
+establishment of a baseline near the Italian Antarctic Station Baia Terra Nova,
+surface sediments, plankton and benthic organisms were studied in coastal
+waters of Terra Nova Bay (Ross Sea). The cadmium content of sediments was
+similar to that regarded as background in most marine coastal areas, whereas in
+surface water, phyto-and zooplankton it was similar to values measured in areas
+of enhanced upwelling. Algal and animal taxa dominating benthic associations
+had higher cadmium content than related species from other seas. Very high
+concentrations of the metal were found in sponges (10-80 mg/g dw) and in the
+digestive glands of molluscs (up to 345 mg/g in Nebucciinum eatoni). The rapid
+regeneration of cadmium and its natural occurrence and bioavailability in
+highly productive coastal waters seems to be responsible for cadmium
+accumulation in the tissue of marine organisms near the Baia Terra Nova
+station.",dataset,,NASA Earthdata,C1214620874-SCIOPS,,,2026-09-20 21:43:30.464808
+167,"Water temperature and pressure, 2000, Cape Armitage, McMurdo Sound,Antarctica","Water and pressure data were collect throughout the year at 2 min
+      intervals at a depth of 18 meters with a moored SB-39 Seabird
+      temperature logger.
+      
+      The data are plotted as a function of time.  Data is also being
+      collected from the same site for the year of 2001.  The temperature
+      data is plus or minus about 0.005oC.and show daily as well as yearly
+      variation.  Pressure data allows one to calculate the tidal excursions
+      for the same period.",dataset,,NASA Earthdata,C1214610577-SCIOPS,,,2026-09-20 21:43:30.469435
+169,"Cosmic Ray Surface Muon Data, Antarctica","Data have been collected from muon detectors in cosmic ray observatories/laboratories at Macquarie Island, Wilkes, Casey and Mawson.  Data have been collected from varied detectors and detecting systems, specific operational times and detector information are available on request.
+  
+This dataset contains normalised counting rate records from the combined north/south pointing proportional counter telescopes P2 and P3 in low and high zenith angle modes, corrected for atmospheric pressure variation.  No correction has been made for height or temperature of the 125mb level resulting in a significant seasonal variation but no diurnal variation at Antarctic latitudes.
+
+The telescope output consists of the sum of the 2-fold coincidence counting rates.  Coincidence counts from individual counter pairs are summed into thirteen possible arrival zenith angles and two arrival directions (north or south).  The low zenith data are hourly sums of coincidences from the seven lowest zenith angles of arrival (34 degrees -51 degrees) and the high zenith data are hourly sums of coincidences of the remaining six zenith angles of arrival (55 degrees -79 degrees).
+
+The accidental rate is removed from the total coincidence rate using a resolving time difference method (See  Jacklyn R M and Duldig M L, 20th Int. Cosmic Ray Conf. Papers, Moscow,  Vol 4, pp. 380-383, 1987).
+
+Further information is also provided in ANARE Research Notes 102, 50 Years of cosmic ray research in Tasmania.  A copy of this research note is available for download from the provided URL.",dataset,,NASA Earthdata,C1214308508-AU_AADC,,,2026-09-20 21:43:30.478348
+170,"Cosmic Ray Underground Muon Data, Mawson, Antarctica","Hourly muon data collected from detectors housed in an underground (11 m.w.e.)  vault at Mawson. Data are recorded from two viewing directions:
+(a) North - Zenith 24 deg., Azimuth 330 deg (P6, P7) and 
+(b) South-West - Zenith 40 deg, Azimuth 205 deg (P9, P10).
+Data are available in raw form or count rates that have been corrected for atmospheric pressure variations.
+Detecting methods range from geiger counter telescopes, installed in 1972, to proportional counter telescopes, installed in 1982 and still in operation.
+  
+This data contain normalised counting rate records from the combined north pointing proportional counter telescopes P6 and P7 and the southwest pointing proportional counter telescopes P9 and P10, corrected for atmospheric pressure variation.
+
+The telescope output consists of the sum of the 2-fold coincidence counting rates from two identical modules.
+
+The accidental rate is removed from the total coincidence rate using a resolving time difference method (See  Jacklyn R M and Duldig M L, 20th Int. Cosmic Ray Conf. Papers, Moscow,  Vol 4, pp. 380-383, 1987).
+
+Further information is also provided in ANARE Research Notes 102, 50 Years of cosmic ray research in Tasmania.  A copy of this research note is available for download from the provided URL.",dataset,,NASA Earthdata,C1214308430-AU_AADC,,,2026-09-20 21:43:30.482463
+171,"Automatic Weather Station Data obtained at Dome A (Argus), Antarctica","Automatic Weather Station data obtained at Dome A (Argus), Antarctica.
+
+Data from this AWS are currently available from 2005-2017. At this stage the AWS remains operational, and the data record will be updated as data become available. 
+
+The surface elevation of Dome Argus (Dome A) is 4093 m, i.e., at one of the highest place in Antarctica. Our Automatic Weather Station has been deployed near one end of an elongated ridge (about 60 km long and 10 km wide). At this location the thickness of the glacial ice sheet is in excess of 3000 m, overlaying the subglacial Gamburtsev Mountains. We consider this location as a potential site to collect an ice core to provide a record of past climate and atmospheric gas composition going back more than one million years.
+
+The Dome A AWS measures:
+- wind speed (knots)
+- air temperature - with sensors mounted on mast arms at 1 m, 2 m and 4 m above the snow surface (degrees Celsius) 
+- snow temperature at 0.1 m, 1 m, 3 m and 10 m depth
+- atmospheric pressure (hPa)
+- wind direction (degrees)
+- incoming solar radiation (MJ per square metre)
+- relative humidity (percent)
+- snow-fall rate.
+(We note that sensor heights decrease as precipitation settles at the site.)
+
+Time is given in UTC.",dataset,https://data.aad.gov.au/eds/4521/download,NASA Earthdata,C1214313418-AU_AADC,,,2026-09-20 21:43:30.487304
+172,"AFI 07/02_02 Subglacial Lake Ellsworth - GPS data, Antarctica, 2007/08",Geographical Positioning System (GPS) data recorded in the region of Subglacial Lake Ellsworth. Recording instruments: Leica geodetic receivers. Four locations with continuous data records; all other locations (~70) occupied for short periods (mostly 1 hour).,dataset,,NASA Earthdata,C1214594535-SCIOPS,,,2026-09-20 21:43:30.491935
+173,"AFI 07/02_03 Subglacial Lake Ellsworth - RADAR data, Antarctica, 2007/08",Radar data acquired in the region of Subglacial Lake Ellsworth. Recording instrument: the British Antarctic Survey's (BAS) DELORES 1 and DELORES II radar systems. Line length between 1 and 45 km. Simultaneous GPS data acquired with Leica geodetic GPS receiver at 1 sec intervals.,dataset,,NASA Earthdata,C1214594554-SCIOPS,,,2026-09-20 21:43:30.496073
+174,"AFI 07/02_04 - Subglacial Lake Ellsworth - METEOROLOGICAL data, Antarctica, 2007/08","Meteorological data acquired in the region of Subglacial Lake Ellsworth. Recording instrument: HOBO Weather Station (HOBO AWS) recording wind speed, wind direction, temperature, pressure, humidity, solar radiation.  HOBO - registered trademark of the Onset Computer Corporation",dataset,,NASA Earthdata,C1214594536-SCIOPS,,,2026-09-20 21:43:30.500547
+175,"AFI 07/02_06 - Subglacial Lake Ellsworth - ICE CORE data, Antarctica, 2007/08","Analysis of shallow ice cores collected in the region of Subglacial Lake Ellsworth. Three cores drilled to ~20 m depth. Two cores returned to UK for analysis. One core measured for density-depth in the field, then discarded. One of the two cores returned to UK has been sent to Bristol University for major anion/cation analysis; the other core is at the British Antarctic Survey (BAS) and will be analysed for accumulation rate. Density data is complete. Accumulation and chemical analysis is in progress.",dataset,,NASA Earthdata,C1214594556-SCIOPS,,,2026-09-20 21:43:30.505954
+176,Measurements made off King George Island near Antarctica,Measurements made off King George Island near Antarctica between 2000 and 2001.,dataset,https://seabass.gsfc.nasa.gov/experiment/KingSejong/,NASA Earthdata,C1633360409-OB_DAAC,,,2026-09-20 21:52:22.752544
+177,Palmer Station Antarctica (PAL) Long Term Ecological Research Network (LTER),Measurements made under the Long Term Ecological Research Network (LTER) Palmer Station Antarctica (PAL) program.,dataset,https://seabass.gsfc.nasa.gov/experiment/PAL-LTER/,NASA Earthdata,C1633360585-OB_DAAC,,,2026-09-20 21:52:22.760903
+178,"Measurements off James Ross Island, Antarctica",Measurements made off James Ross Island near Antarctica in 2005.,dataset,https://seabass.gsfc.nasa.gov/experiment/Proantar/,NASA Earthdata,C1633360623-OB_DAAC,,,2026-09-20 21:52:22.766161
+179,"Cosmogenic nuclide data for bedrock samples from the Ford Ranges, Marie Byrd Land, West Antarctica","This data set consists of cosmogenic nuclide concentrations in samples from
+      bedrock surfaces in the Ford Ranges, Marie Byrd Land, West Antarctica. These
+      surfaces have been exposed by ice retreat since the last glacial maximum,
+      approximately 10,500 years ago. However, the majority of samples contain
+      nuclide concentrations indicating much longer and more complicated exposure
+      histories.
+      
+      The primary data are concentrations of the cosmic-ray-produced nuclides Be-10
+      and Al-26 measured in quartz, and Cl-36 measured in K-feldspar, sample
+      locations, and the duration of recent exposure inferred from measurements on
+      co-existing glacial erratics. In addition, the data set contains detailed
+      information about the sites and samples, chemical compositions of the minerals
+      analyzed and compositions of the host rocks, as required to compute nuclide
+      production rates.  This information is provided so that the data can be
+      re-interpreted if nuclide production rates or correction factors are revised in
+      future.",dataset,http://www.usap-dc.org/view/dataset/600002,NASA Earthdata,C1214615474-SCIOPS,,,2026-09-20 21:52:23.553354
+180,"Exposure ages of glacial deposits and bedrock, Scott Glacier, Antarctica","This data set consists of exposure ages for glacial deposits on nunataks and ice-free areas adjacent to Scott Glacier, Transantarctic Mountains. Most samples are glacially transported clasts deposited during the last glacial period or exposed by subsequent retreat of the glacier, ca. 16,000 yr B.P. to present. These ages are based on concentrations of the cosmic-ray-produced nuclide Be-10. There are also data from bedrock samples on Mt Rigby, which have longer and more complicated exposure histories. For these samples, concentrations of the cosmogenic nuclides Al-26 and Be-10, and associated ""ages"" are the result of repeated exposure punctuated with periods of ice cover and may have been affected by glacial erosion.  Apparent ages for the bedrock samples should not be taken as indicative of prolonged single-stage exposure.  The primary data are sample locations and exposure ages. Ages are calculated using currently accepted nuclide production rates and correction factors, as described in the footnotes. The data set also contains chemical and isotopic data needed to re-compute exposure ages if nuclide production rates or correction factors are revised in future.",dataset,,NASA Earthdata,C1214598050-SCIOPS,,,2026-09-20 21:52:23.565418
+181,"Battye Glacier Formation Paleontology and Sedimentology, Beaver Lake Region, Antarctica","Glacimarine strata of the Battye Glacier Formation (c.130 m thick),
+      Pagodroma Group, exposed in the Amery Oasis of East Antarctica,
+      provide a record of late Miocene palaeoenvironmental conditions in an
+      ice-distal setting. The formation overlies the Amery Erosion Surface
+      (c.300 m to c.270 m above sea level) that formed during an advance of
+      the Lambert Glacier, at least 750 km further north than today, into
+      Prydz Bay (ODP Site 739). Two lithological members: a grey and muddier
+      Lower Member and a brown, sand-rich Upper Member, reflect variation in
+      proximity to the terminus of the Lambert Glacier. Ice-distal,
+      glacimarine, diatom-bearing mud (up to 12% biogenic silica) and in
+      situ articulated molluscs occur in the Lower Member. Similar Neogene
+      strata are known on land only from the Pliocene Sorsdal Formation in
+      the Vestfold Hills, near the Antarctic coast. The Battye Glacier
+      Formation is significant because of its inland location, which
+      indicates that ice-distal marine conditions existed 250 km inland from
+      the current Amery Ice Shelf edge. Three stratigraphic intervals of
+      diatom-bearing mud are recognized from glacially reworked clasts and
+      from in situ strata informally referred to as the McLeod Beds and
+      Bed A.
+      
+      The diatom-bearing mud also contains sponge spicules and minor
+      silicoflagellates and ebridians. Marine diatom biostratigraphy
+      constrains the age of the beds to between 10.7 and 9.0 Ma (late
+      Miocene). Abundant benthic diatoms suggest deposition within shallow
+      euphotic depths. The high abundance of intercalary valves of Eucampia
+      antarctica from an interval of the McLeod Beds suggests that there was
+      less winter sea-ice than in Prydz Bay today. It is unlikely that
+      sea-ice was perennial because the presence of Thalassionema spp. and
+      Stellarima stellaris (Roper) Hasle et Sims suggests that summer
+      sea-surface temperatures were too warm (> 0 degrees C and > 3 degrees
+      C respectively). The palaeoclimate at the time of deposition appears
+      to have been analogous to that in modern fjords of East Greenland
+      (e.g. Kangerdlugssuaq Fjord), which is consistent with the
+      depositional model proposed previously for the Pagodroma Group. The
+      three diatom-bearing mud intervals were deposited in the Amery Oasis,
+      c.250 km inland of the current Amery Ice Shelf edge, when the East
+      Antarctic Ice Sheet was reduced in size relative to today.
+      
+      Further information can be found in reference:
+      
+      Whitehead, J.M., Harwood, D.M. and McMinn, A., 2003. Ice-distal upper
+      Miocene marine strata from inland Antarctica. Sedimentology v. 50,
+      22pp.",dataset,,NASA Earthdata,C1214613460-SCIOPS,,,2026-09-20 21:52:24.393358
+182,Marine Mammal Monitoring Data for Antarctica from the Instituto Antartico Argentino,"The objective to be reached by these projects is to improve quality
+and objectivity in planning efforts of conservation in Antarctica
+through defining strategies of rational resource management.
+
+Monitoring of selected predator species like penguins and seals has
+been doing since the last ten years in Antarctica. This information is
+useful not only for fisheries management but also to know how the
+global climate change progress is affecting the ecosystem.
+
+The idea to carry out related studies on Antarctica and Patagonia were
+begun in 1979 when we started to work with the comparative study of
+the population dynamic of southern elephant seal as a predator in a
+big scale from Antarctica and Patagonia.  The original data was
+analized in the University of Minnesota in 1981.
+
+To continue working in this way we have formalized a multidisciplinary
+group formed by several institutions as National Parks Administration,
+Wildlife Service of Rio Negro State, Argentine Center for
+Radiocommunication Studies and Electromagnetic Compatibility
+(CAERCEM), and Sea World Foundation.  In international order it is
+included Alfred Wegener Institute (AWI) and European Space Agency
+(ESA).
+
+The researchers Stanganelli,  Z. and  Vergani, D. have concluded
+their work for the Instituto Antartico Argentino in 1997 .",dataset,,NASA Earthdata,C1214611495-SCIOPS,,,2026-09-20 21:52:24.431114
+183,Use of Infrared Sensors as a New Method in Estimating Wilson's Storm Petrels' Population Density in Antarctica,"As a new method for localization of Wilson's Storm Petrel Oceanites
+oceanicus (Oceanitidae) nests, an infrared sensor was used at Cierva
+Point, Gerlache Strait, in the Antarctic Peninsula. It detects the
+heat emitted by breeding birds beneath debris. Seven other coastal
+areas with an  average surface of 548 m2 were sampled. The infrared
+sensor showed to be highly sensitive to the presence of birds beneath
+rocks; no error sources were found. This method was compared to
+another conventional method to estimate effectiveness. Besides
+providing reliable density values, the use of infrared sensor has
+reduced human impact on colonies because no traumatic methods were
+used in order to find nests.",dataset,,NASA Earthdata,C1214612175-SCIOPS,,,2026-09-20 21:52:25.173808
+184,"Cryology Data from Automatic Recording Stations on James Ross Island, Antarctica","The data includes air, soil, and basement temperatures from various automatic
+recording stations in Antarctica.",dataset,,NASA Earthdata,C1214614014-SCIOPS,,,2026-09-20 21:52:25.179138
+185,Geodetic Data from Automatic Recording Stations in Antarctica,"Data sets are comprised of geodetic data from various automatic recording
+stations in Antarctica.",dataset,,NASA Earthdata,C1214614114-SCIOPS,,,2026-09-20 21:52:25.186394
+186,The Ordovician System in Antarctica,"Ordovician rocks were recognized in the Trans Antarctic Mountains, Ross Orogen, inside the sector claimed by Argentina, and close to this area, in the Ellsworth Mountains. In the Trans Antarctic Mountains, coarse sediments of a probable Ordovician age and radiometrically dated volcanics were recognized. The Pensacola and Patuxent Mounts comprise the Neptune Group, which consists largely of conglomerate to quartzose sandstone. In Shackleton Range the Blaiklock Group overlies the Shackleton Range Metamorphic Complex. Some other areas like Bowers Terrane and Robertson Bay Terrane display remarkable Ordovician outcrops. The Ross Orogen is largely represented with several magmatic exposures.
+
+Resumen: EL SISTEMA ORDOVICICO EN ANTARTIDA. 
+En el Territorio Antartico, el Ordovicico ha sido reconocido en localidades en el ambito de los Montes Transantarticos, el denominado orogeno de Ross o Sistema de Ross dentro del sector reclamado por la Republica Argentina y en areas cercanas tales como los montes Ellsworth. En el ambito del los Montes Transantarticos se ha reconocido sedimentos gruesos de probable edad ordovicica y vulcanitas con dataciones radimetricas. En los Montes Pensacola y Patuxent se encuentra el Grupo Neptuno, el cual incluye conglomerados y areniscas cuarzosas. En los Montes Shackleton el Grupo Glaciar Blailock se apoya sobre el Complejo Metamorfico Montes Shackleton. Algo mas alejadas, se han encontrado afloramientos ordovicos en los Terrenis Bowers, y Bahia Robertson. La orogenia Ross se encuentra ampliamente distribuida con presencia de rocas magmaticas.",dataset,,NASA Earthdata,C1214613380-SCIOPS,,,2026-09-20 21:52:25.206074
+187,"Early and middle Holocene fossil-bearing marine sediments from Potter Peninsula, King George Island (South Shetland Islands, Antarctica)","Holocene sections composed of marine sediments and glacial as well as alluvial
+fan deposits are exposed on the coasts of Potter Peninsula, King George
+Island/Isla 25 de Mayo, South Shetland Islands (Antarctica) (Fig. 1) (Valle et
+al. 2002, 2003):
+
+Section 1 (Fig. 2): 2.6 m-thick early-to-middle Holocene succession exposed
+(1.17-3.77 m above sea level: a.s.l.) at ""Pingfo II"" locality (62 degrees 14
+minutes S, 58 degrees 48 minutes W) (Fig. 1) composed of (from base to top): a)
+Marine silty-sands (0.85 m thick: 1.17-2.02 m a.s.l.) deposited in open fjord
+with Laternula sp shells in growth position, which are radiocarbon dated to c.
+9600 cal yrs BP, b) Glacial-marine deposits (0.15 m thick: 2.02-2.17 m a.s.l.),
+c) Marine beach sands and fine-grained gravels (0.60 m thick: 2.17-2.77 m
+a.s.l.) with marine invertebrates, seaweed, and seal and penguin bones (Table
+1) radiocarbon dated to c. 7500 cal yrs BP (Table 2), and d) Glacial till (1 m
+thick: 2.77-3.77 m a.s.l.) covered by a thin coat of marine pebbles (Table 3).
+
+Section 2 (Fig. 3): 2.90 m-thick middle Holocene succession exposed (14.4-17.3
+m a.s.l.) at ""Pingfo I"" locality (62 degrees 15 minutes S, 58 degrees 37
+minutes W) (Fig. 1) formed of alluvial fan gravels alternated with marine beach
+sands that form three layers between 14.7-16.7 m a.s.l. The raised beach
+sediments contain bones of flying birds, seals, and penguins (Table 1)
+radiocarbon dated to c. 5500 cal yrs BP (Tables 2 and 3).
+
+These data allow to reconstruct part of the Holocene history of sea level (Fig.
+4) and constrain the age of early-to-middle Holocene environmental changes on
+the Potter Peninsula coastal area (Table 4): The early Holocene withdrawal of
+glaciers from Potter Cove (south-west King George Island) acompanied by a sea
+level high stand allowed marine sedimentation in an open fjord c. 9600 years
+ago (Section 1). This high stand of sea level may be related to the 10-9 ka BP
+marine transgression that drowned the Maxwell Bay coasts (south-west King
+George Island) (Fig. 1) down to 25-30 m depths. After a short-live episode of
+glacial-marine sedimentation, an early-middle Holocene (c. 9600-7500 yr BP)
+lowering of the relative sea level allowed marine beach sediments to be
+deposited on the fjord sediments (Section 1). The glacial till that covers the
+marine beach sediments (Section 1) is thought to be deposited during the middle
+Holocene (post-7500 yr BP) glacial advance named ""Pu nta Baliza"" (PBGA:
+Birkenmajer 1998). The thin coat of raised marine gravels, which covers PBGA
+reworked glacial till at c. 3.77 m a.s.l. (Section 1), suggests that probably
+during the culmination of PBGA the sea penetrated well into the coastal area of
+Potter Peninsula. Additionally the raised marine beach sediments 14.7-16.7 m
+dated to c. 5500 yr BP (Section 2), confirm that the sea drowned the coasts of
+Potter Peninsula down c. 10-12 m depths during middle Holocene periods of open
+marine water conditions.",dataset,,NASA Earthdata,C1214613608-SCIOPS,,,2026-09-20 21:52:25.215458
+188,"Submarine Volcanism in Bransfield Strait, Antarctica","En Espanol:
+Entre 1993 y 1994, como extension de los trabajos volcanologicos y
+geomorfologicos en el sector noreste de la Peninsula Antartica se
+estudiaron los volcanes submarinos, en parte activos, del estrecho de
+Bransfield, ""Rifting and Volcanism on the Antarctic Peninsula,
+proyecto de investigacion NSF OPP-8817126 del College of
+Oceanography. de la Universidad del Estado de Oregon, EEUU dirigido
+por el Dr. M. Fisk.
+
+In English:
+Between 1993 and 1994, as an extension of volcanological and
+geomorphological studies in the northeast sector of the Antarctic
+Peninsula, researchers studied  partially active submarine volcanoes
+of the Bransfield Strait.  This work is conducted as part of the
+United States National Science Foundation Office of Polar Programs
+(NSF OPP) project, Rifting and Volcanism on the Antarctic Peninsula,
+Antarctica (NSF OPP Project No. 8817126).  The project was directed by
+Dr. M. Fisk, College of Oceanic & Atmospheric Sciences, Oregon State
+University, USA.",dataset,,NASA Earthdata,C1214613402-SCIOPS,,,2026-09-20 21:52:25.228175
+189,"EFFECTS OF UV-RADIATION AND HERBIVORY ON PHYSIOLOGY, STRUCTURE SUCCESSION  OF BENTHIC MICRO-MACROALGAL SPECIES OF POTTER COVE (SOUTH SHETLAND, ANTARCTICA)","ENGLISH
+
+Due to the depletion of the stratospheric ozone layer, solar ultraviolet-B
+radiation is increasing on the Earth's surface. UV-B radiation has demonstrated
+to be an environmental stress factor that can cause a harmful effect on the
+physiology and development of organisms. One of the most particularly affected
+areas is the Antarctic region. The overall objective of this study is the
+estimation of the impact of UV radiation on benthic organisms in Potter Cove
+(South Shetlands, Antarctica). The successional patterns of macro and
+microalgal communities will be investigated in field experiments under
+different UV radiation conditions, and in the absence or presence of grazers.
+The experiments will be carried out on artificial substrata which will be
+placed in the mesolittoral and sublittoral zones in Potter Cove. This project
+has started in October 2003 and it is planned to start the activities of the
+second year in October 2004.The results will contribute to evaluate the effect
+of UV radiation on the structure and dynamics of the benthic primary producers
+community and to obtain valid information for the preservation of marine
+Antarctic ecosystem.
+
+SPANISH
+
+La disminucion de la concentracion del ozono estratosferico ha provocado el
+incremento de la radiacion ultravioleta B (UV-B) sobre la superficie de la
+tierra. Esta ultima constituye un factor de estres ambiental que puede danar a
+los organismos actuando sobre su fisiologia y desarrollo. Una de las regiones
+mas afectadas por este fenomeno es la Antartida. Mediante la implementacion de
+este proyecto se propone el estudio de la incidencia de la radiacion UV sobre
+los diferentes organismos bentonicos de Caleta Potter (Shetland del Sur,
+Antartida).  Su objetivo es conocer los patrones de colonizacion de las micro y
+macroalgas  bajo diferentes condiciones de radiacion, en presencia y ausencia
+de herbivoros sobre sustrato artificial mediante la utilizacion de un
+experimento de sucesion ubicado en el mesolitoral y sublitoral de Caleta Potter
+El presente proyecto se inicio en Octubre de 2003 y se preve el comienzo del
+segundo ano para Octubre de 2004. La informacion obtenida contribuira a evaluar
+el efecto de la radiacion UV sobre la estructura y dinamica de la comunidad de
+productores primarios bentonicos aportando conocimientos para la preservacion
+del ecosistema marino antartico.",dataset,,NASA Earthdata,C1214620700-SCIOPS,,,2026-09-20 21:52:25.238668
+196,Extremophiles in Antarctica during 1989-2004,"Studies on biodiversity of microorganisms in Antarctica were carried out since
+20 years. Particularly attention was made on those microorganisms defined for
+their growth conditions extremophiles. The studies were also devoted to
+cyanobacteria in that these prokaryoted are interesting for the studies on
+earth evolution. Many new extremophiles were isolated belonging to bacteria
+domain as new species of genus Bacillus, Halomonas, Micrococcus,
+Alicyclobacillus. They were thermophiles and halophilic and alkalophiles.
+Studies on lipid composition and its modulation under stressed growth
+conditions were carried out. Exo- and endopolymers were isolated and studies as
+well as hydrolytic enzymes.",dataset,,NASA Earthdata,C1214620811-SCIOPS,,,2026-09-20 21:52:26.265845
+190,"UPPER APTIAN TO UPPER ALBIAN BIOSTRATIGRAPHY OF THE GUSTAV GROUP. AN INTEGRATED STUDY OF THE SEQUENCE EXPOSED IN THE JAMES ROSS ISLAND, ANTARCTICA","ENGLISH
+
+The investigations will be carried out on the cretaceous outcrops (Aptiano
+superior-Albiano), Gustav Group, James Ross Island, Antarctic. The
+stratigraphic sequence and the fossiliferous content will be studied.  The
+bioestratigraphic succession will be determined and ammonites and bivalves
+isotopic analysis (strontium and carbon) will be carried out to establish
+correlations with the 87Sr/86Sr and d13C values, known for this period, in the
+Northern Hemisphere. The results will have importance for the bioestratigraphy
+of this area and to establish a linking with other cretaceous localities of the
+Southern Hemisphere.
+
+SPANISH
+Bioestratigrafia del Aptiano superior-Albiano superior del Grupo Gustav: Un
+estudio integrado de la secuencia expuesta en la Isla James Ross, Antartica
+(PICTA-17-2004).
+
+Se realizaran investigaciones sobre los afloramientos de edad cretacica
+(Aptiano superior-Albiano) del Grupo Gustav, Isla James Ross, Antartica. Se
+estudiara la secuencia estratigrafica y su contenido fosilifero. Se determinara
+la sucesion bioestratigrafica y se realizaran analisis isotopicos de estroncio
+y carbono sobre conchillas de amonites y bivalvos para establecer correlaciones
+con los valores de  87Sr/86Sr y d13C, conocidos para esta epoca, en el
+hemisferio norte. Los resultados tendran importancia para la bioestratigrafia
+de la region y permitiran establecer una vinculacion con otras localidades
+cretacicas del hemisferio austral.",dataset,,NASA Earthdata,C1214620814-SCIOPS,,,2026-09-20 21:52:26.216073
+191,"GEOLOGY OF LIVINGSTON AND HALF MOON ISLANDS, SOUTH SHETLAND, ANTARCTICA","ENGLISH
+
+Most of the geological features described for the South Shetlands are sustained on isolated and scattered information (except for King George Island). The goal expected in this project is based on the continuity of the former project and the new obtained data on field information, geochemistry, stable isotopes and geochronology trying to link all into the regional geological and paleogeographical settings. The development of detailed sampling, mapping, profiles and transects will be necessary. Samples will be processed by petrography and selected ones for geochemistry (major, minor and trace elements), geochronology (Rb/Sr, Ar/K) and stable isotopes (18-O and 13-C). Because one of the main problems in the Shetlands is the positioning with elder maps, it is necessary to make corrections, sometimes very deeply, with GPS technology to made accurate maps.  The use of a portable lab for thin sections had demonstrated to be very useful for a better understanding of the lithologies in the field.
+
+SPANISH
+
+La evolucion geologica de las islas Shetland del Sur por el momento se halla sustentada sobre datos aislados e informacion procedente de observaciones de escasa significacion para las modernas tecnologias aplicadas al campo de la geologia y la tectonica. Se pretende profundizar el conocimiento evolutivo de las Shetland sobre bases geoquimicas,  geocronologicas y observaciones de campo detalladas, con el fin de integrarlas al contexto regional.  Se torna imprescindible el muestreo prolijo, mapeo y construccion de perfiles o transectas en el terreno. Las muestras se analizan petrograficamente y se seleccionan para su procesamiento en laboratorios para analisis quimicos (mayoritarios, minoritarios y traza) e isotopicos (tanto para geoquimica isotopica -Sr, 18-O, 13-C, Nd, como para geocronologia, metodos Rb/Sr, K/Ar). Como apoyo al desarrollo del Proyecto, y ya se ha efectuado anteriormente (isla Media Luna), es menester efectuar un prolijo posicionamiento con GPS de diversos accidentes geograficos.  En cuanto a las tareas de laboratorio en el terreno, la experiencia demuestra que contar con el laboratorio de cortes petrograficos portatil resulta en un mejor conocimiento la litologia en el terreno  su interpretacion, y optimizacion de los muestreos para posteriores analisis.",dataset,,NASA Earthdata,C1214620920-SCIOPS,,,2026-09-20 21:52:26.221126
+192,"UPPER CRETACEOUS STRATIGRAPHY OF JAMES ROSS BASIN, ANTARCTICA","ENGLISH
+
+Establishment of a reference stratigraphic and chronologic framework for the
+James Ross Basin on the basis of the distribution of the ammonite faunas.
+Sedimentology and paleoenvironments.
+
+SPANISH
+
+ESTRATIGRAFIA DEL CRETACICO SUPERIOR DE LA CUENA JAMES ROSS, ANTARTIDA
+
+Trata de establecer un marco estratigrafico y cronologico de referencia para el
+Santoniano-Maastrichtiano de la Cuenca James Ross en base al estudio de
+amonites. Sedimentologia y paleoambientes.",dataset,,NASA Earthdata,C1214621346-SCIOPS,,,2026-09-20 21:52:26.226839
+193,"Core and Borehole Fractures from the Cape Roberts Drilling Project, Southern Victoria Land, Antarctica: Transantarctic Mountains Front Stress Field History","Natural and drilling-induced fractures in core, and fractures in
+      borehole walls, were logged from three Cape Roberts Project drillholes
+      located in the western Ross Sea, Antarctica.  Core fracture data
+      includes depth, dip and dip azimuth (core coordinates), and
+      fractographic features.  Records were kept of intact core intervals,
+      which are continuous lengths of core where no internal relative motion
+      occurred.  Approximately one quarter of the core from CRP-2 and CRP-3
+      drillholes was oriented by feature matching between oriented borehole
+      televiewer logs and whole-core digital scans.  Tables of rotation
+      angles to restore intact intervals of core to in situ coordinates are
+      available.  Digital records obtained by this project include
+      whole-core scans of most of the core, scans of the entire slabbed
+      core, and borehole televiewer imagery of portions of CRP-2 and CRP-3
+      borehole walls.  The fracture, intact interval and orientation tables
+      are available as Excel files from the project investigators.  The
+      digital core records can be provided on CD-ROM for the cost of the
+      recording media.  Detailed description of the data sets and
+      interpretations made from them can be found in the Cape Roberts
+      Project Intital Reports and Science Reports volumes for each
+      drillhole; see  Reference section.",dataset,,NASA Earthdata,C1214611611-SCIOPS,,,2026-09-20 21:52:26.234676
+194,"Neodymium, strontium and lead isotope data from onshore and marine tills in Ross Sea and vicinity, Antarctica","This data set includes neodymium, strontium and lead isotope data from the < 63
+      micron size fraction from both onshore and marine surface tills from the Ross
+      Sea and vicinity.  From western Antarctica, onshore tills were analyzed
+      associated with the Whillans, Kamb and MacAyeal ice streams.  In eastern
+      Antarctica, onshore tills from the Beardmore and Darwin glaciers were analyzed,
+      and from Mt. Archenar and the Allan Hills.  Marine tills from the RISP cores
+      and from numerous cores throughout the Ross Sea were analyzed.",dataset,,NASA Earthdata,C1214614915-SCIOPS,,,2026-09-20 21:52:26.239291
+195,Diagnostic Precipitation Data of Antarctica,"In this gridded dataset, the precipitation for Antarctica from 1979-99
+      has been retrieved by a vertical motion calculation using ECMWF
+      operational analyses (ECT, 1985-1999; twice daily) and reanalysis
+      (ERA-15, 1979-1993; 4 times daily). The use of the dynamic retrieval
+      method to calculate precipitation has been developed and verified for
+      the Greenland ice sheet.  Most major features in the spatial
+      distribution of Antarctic accumulation are well captured by the
+      dynamic retrieval results. In comparison with predicted precipitation
+      amounts from ERA-15 (1979-1993), ECT (1991-1999), and National Centers
+      for Environmental Prediction (NCEP) / Department of Energy,
+      Atmospheric Model Intercomparison Project Version 2 reanalysis
+      (1979-1999), dynamic retrieval calculations capture more mesoscale
+      features of the precipitation distribution over Antarctica. In
+      comparison to available glaciological measurements, the interannual
+      variability of the Antarctic precipitation is well represented by the
+      dynamic retrieval results at those measurement sites. A significant
+      upward trend of +1.2 to +1.7 mm yr-2 is found from retrieved and
+      forecast precipitation amounts for Antarctica that is consistent with
+      results reported by other investigators.
+      
+      Twenty-two sigma levels are used in the vertical, and a 40-km grid
+      size is used in the horizontal. The square model domain used in this
+      study consists of 181 grid points in each orthogonal direction,
+      centered at the South Pole, with a horizontal polar stereographic
+      projection resolution of 40 km. The model topography data over the
+      Antarctic continent are also interpolated from a 5-km resolution
+      digital elevation model using bi-linear interpolation from the nearest
+      points.  This dataset, as well as references to methodology and
+      validation, are currently available upon request from the Polar
+      Meteorology Group, Byrd Polar Research Center, Columbus, OH. Email
+      David Bromwich (bromwich@polarmet1.mps.ohio-state.edu).",dataset,,NASA Earthdata,C1214611890-SCIOPS,,,2026-09-20 21:52:26.258016
+197,Vector Topographic Data of Antarctica - The Antarctic Digital Database,"The Antarctic Digital Database (ADD) is the premier source of vector topographic data for Antarctica. First published on CD-ROM in 1993, the current version is available for download from http://www.add.scar.org/. The data are supplied in ARC/INFO uncompressed export format, compressed and encrypted for download using zip. The data are encrypted using an individual password which is supplied to registered users of the ADD site.  There is no charge for registration as a user. The aim of registration is to allow British Antarctic Survey (BAS) to contact the user if there are improvements in the data which may be of interest. It also ensures that BAS maintain the intellectual property rights on the data for the Scientific Committee on Antarctic Research (SCAR).  The data on the ADD site are available free of charge to research or non-profit organizations. Use of these data for commercial purposes is prohibited without prior authorization from SCAR. Those wishing to
+  use the data for commercial purposes must contact SCAR, who will enter into appropriate licensing arrangements.",dataset,http://www.add.scar.org/,NASA Earthdata,C1214594511-SCIOPS,,,2026-09-20 21:52:26.270888

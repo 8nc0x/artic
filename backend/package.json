@@ -1,0 +1,17 @@
+{
+  "name": "polar-portal-backend",
+  "version": "1.0.0",
+  "description": "NCPOR Polar Science Outreach and Knowledge Repository Backend",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/db/seed.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

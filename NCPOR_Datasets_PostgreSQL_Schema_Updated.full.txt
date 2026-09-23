@@ -1,0 +1,701 @@
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 1
+NCPOR Dataset Metadata
+PostgreSQL Schema
+Schema rebuilt from the supplied NCPOR NPDC dataset export
+Source records analyzed:
+ 900 JSON records and 900 CSV rows. The supplied records expose NCPOR NPDC metadata
+such as title, abstract, purpose, release information, scientific classification, project details, personnel, data center,
+instrument, platform, location and resource links.
+Design principle: preserve the source metadata faithfully, normalize repeated entities for relational querying, and retain the original raw
+metadata in JSONB so fields that are sparse or added by NCPOR later are not lost.
+1. What the supplied dataset actually contains
+The export includes a source identifier, title, abstract, release date and URLs at the record level. A representative record
+also contains structured Basic Information, Science Keywords, Project Details, Summary, Dataset Citation, Scientist Details,
+Data Center, Instrument Details, Location, Platform and Data Set Progress. 
+n
+filecite
+n
+turn0file0
+n
+L3-L59
+n
+Observed field
+Purpose in schema
+Observed coverage
+source
+Core dataset/resource metadata
+900 populated / 900
+source_id
+Core dataset/resource metadata
+900 populated / 900
+title
+Core dataset/resource metadata
+900 populated / 900
+abstract
+Core dataset/resource metadata
+900 populated / 900
+release_date
+Core dataset/resource metadata
+900 populated / 900
+detail_url
+Core dataset/resource metadata
+900 populated / 900
+xml_url
+Core dataset/resource metadata
+900 populated / 900
+pdf_url
+Core dataset/resource metadata
+900 populated / 900
+download_url
+Core dataset/resource metadata
+467 populated / 900
+original_resource_url
+Core dataset/resource metadata
+210 populated / 900
+raw_metadata
+Core dataset/resource metadata
+900 populated / 900
+2. Normalized database model
+The dataset-specific model is intentionally centered on 
+datasets
+. Personnel, science keywords, data centers, instruments,
+platforms, locations, external/download resources, versions and embeddings are separate child tables because these
+concepts repeat across records or require their own lifecycle. The source record itself is preserved through 
+raw_metadata
+JSONB
+.
+datasets
+Core dataset identity, descriptive metadata, publication/release metadata, and source links.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+npdc_metadata_id
+VARCHAR64
+UNIQUE, NOT NULL  e.g. metadata record ID
+source
+VARCHAR150
+NOT NULL
+source_url
+TEXT
+Nullable
+title
+TEXT
+NOT NULL
+abstract
+TEXT
+Nullable
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 2
+Column
+Type
+Constraint / meaning
+purpose
+TEXT
+Nullable
+release_date
+DATE
+Nullable
+data_set_progress
+VARCHAR50
+Nullable
+data_set_language
+VARCHAR50
+Nullable
+originating_center
+VARCHAR255
+Nullable
+expedition_type
+VARCHAR30
+Nullable
+expedition_year
+VARCHAR30
+Nullable
+project_number
+VARCHAR100
+Nullable
+project_name
+TEXT
+Nullable
+series_name
+VARCHAR100
+Nullable
+dataset_title
+TEXT
+Nullable
+release_place
+VARCHAR255
+Nullable
+version
+VARCHAR50
+Nullable
+detail_url
+TEXT
+Nullable
+xml_url
+TEXT
+Nullable
+pdf_url
+TEXT
+Nullable
+download_url
+TEXT
+Nullable
+original_resource_url
+TEXT
+Nullable
+raw_metadata
+JSONB
+Nullable  preserve source metadata
+created_at
+TIMESTAMPTZ
+DEFAULT now
+updated_at
+TIMESTAMPTZ
+DEFAULT now
+dataset_science_keywords
+Scientific classification and keyword metadata observed in the source.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+category
+VARCHAR255
+Nullable
+topic
+VARCHAR255
+Nullable
+iso_topic
+VARCHAR255
+Nullable
+keyword_text
+TEXT
+Nullable
+dataset_personnel
+Principal investigator / scientist information associated with a dataset.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+role
+VARCHAR100
+Nullable
+name
+VARCHAR255
+Nullable
+email
+VARCHAR320
+Nullable
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 3
+Column
+Type
+Constraint / meaning
+phone
+VARCHAR100
+Nullable
+mobile
+VARCHAR100
+Nullable
+organization_id
+UUID
+FK 
+®
+ institutions.id, nullable
+address
+TEXT
+Nullable
+city
+VARCHAR150
+Nullable
+state
+VARCHAR150
+Nullable
+postal_code
+VARCHAR30
+Nullable
+country
+VARCHAR100
+Nullable
+dataset_data_centers
+Data center responsible for or associated with the dataset.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+short_name
+VARCHAR100
+Nullable
+long_name
+VARCHAR255
+Nullable
+email
+VARCHAR320
+Nullable
+phone
+VARCHAR100
+Nullable
+address
+TEXT
+Nullable
+city
+VARCHAR150
+Nullable
+state
+VARCHAR150
+Nullable
+pin_code
+VARCHAR30
+Nullable
+country
+VARCHAR100
+Nullable
+dataset_instruments
+Instrument metadata. The supplied records often have empty instrument values, so all fields remain nullable.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+short_name
+VARCHAR150
+Nullable
+long_name
+VARCHAR255
+Nullable
+metadata
+JSONB
+Nullable
+dataset_platforms
+Platform metadata for acquisition/observation context.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+short_name
+VARCHAR150
+Nullable
+long_name
+VARCHAR255
+Nullable
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 4
+Column
+Type
+Constraint / meaning
+metadata
+JSONB
+Nullable
+dataset_locations
+Polar location context from the NPDC metadata.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+category
+VARCHAR255
+Nullable
+region
+VARCHAR100
+Nullable
+location_type
+VARCHAR150
+Nullable
+subregion
+VARCHAR255
+Nullable
+latitude
+DOUBLE PRECISION
+Nullable
+longitude
+DOUBLE PRECISION
+Nullable
+geometry
+JSONB
+Nullable  future spatial extension
+dataset_resources
+Downloadable or externally hosted resources linked to a dataset.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+resource_type
+VARCHAR50
+Nullable  data/pdf/xml/original/etc.
+label
+VARCHAR255
+Nullable
+url
+TEXT
+NOT NULL
+mime_type
+VARCHAR150
+Nullable
+storage_key
+TEXT
+Nullable  for object storage
+file_size_bytes
+BIGINT
+Nullable
+checksum
+VARCHAR128
+Nullable
+is_primary
+BOOLEAN
+DEFAULT false
+dataset_versions
+Version history for future re-releases of the same dataset.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+version_label
+VARCHAR50
+NOT NULL
+release_date
+DATE
+Nullable
+change_summary
+TEXT
+Nullable
+resource_id
+UUID
+FK 
+®
+ dataset_resources.id, nullable
+created_at
+TIMESTAMPTZ
+DEFAULT now
+dataset_embeddings
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 5
+Semantic-search chunks generated from dataset metadata/content.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+dataset_id
+UUID
+FK 
+®
+ datasets.id
+chunk_index
+INTEGER
+NOT NULL
+chunk_text
+TEXT
+NOT NULL
+embedding
+VECTOR1536
+Model-dependent
+model_name
+VARCHAR150
+NOT NULL
+metadata
+JSONB
+Nullable
+created_at
+TIMESTAMPTZ
+DEFAULT now
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 6
+3. PostgreSQL DDL
+Enable required extensions:
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE EXTENSION IF NOT EXISTS vector;
+Core table:
+CREATE TABLE datasets 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    npdc_metadata_id VARCHAR64 UNIQUE NOT NULL,
+    source VARCHAR150 NOT NULL,
+    source_url TEXT,
+    title TEXT NOT NULL,
+    abstract TEXT,
+    purpose TEXT,
+    release_date DATE,
+    data_set_progress VARCHAR50,
+    data_set_language VARCHAR50,
+    originating_center VARCHAR255,
+    expedition_type VARCHAR30,
+    expedition_year VARCHAR30,
+    project_number VARCHAR100,
+    project_name TEXT,
+    series_name VARCHAR100,
+    dataset_title TEXT,
+    release_place VARCHAR255,
+    version VARCHAR50,
+    detail_url TEXT,
+    xml_url TEXT,
+    pdf_url TEXT,
+    download_url TEXT,
+    original_resource_url TEXT,
+    raw_metadata JSONB,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now
+;
+Science keywords:
+CREATE TABLE dataset_science_keywords 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    category VARCHAR255,
+    topic VARCHAR255,
+    iso_topic VARCHAR255,
+    keyword_text TEXT
+;
+Personnel:
+CREATE TABLE dataset_personnel 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    role VARCHAR100,
+    name VARCHAR255,
+    email VARCHAR320,
+    phone VARCHAR100,
+    mobile VARCHAR100,
+    organization_id UUID REFERENCES institutionsid ON DELETE SET NULL,
+    address TEXT,
+    city VARCHAR150,
+    state VARCHAR150,
+    postal_code VARCHAR30,
+    country VARCHAR100
+;
+Data center:
+CREATE TABLE dataset_data_centers 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    short_name VARCHAR100,
+    long_name VARCHAR255,
+    email VARCHAR320,
+    phone VARCHAR100,
+    address TEXT,
+    city VARCHAR150,
+    state VARCHAR150,
+    pin_code VARCHAR30,
+    country VARCHAR100
+;
+Instrument and platform:
+CREATE TABLE dataset_instruments 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 7
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    short_name VARCHAR150,
+    long_name VARCHAR255,
+    metadata JSONB
+;
+CREATE TABLE dataset_platforms 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    short_name VARCHAR150,
+    long_name VARCHAR255,
+    metadata JSONB
+;
+Location:
+CREATE TABLE dataset_locations 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    category VARCHAR255,
+    region VARCHAR100,
+    location_type VARCHAR150,
+    subregion VARCHAR255,
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION,
+    geometry JSONB
+;
+Resources:
+CREATE TABLE dataset_resources 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    resource_type VARCHAR50,
+    label VARCHAR255,
+    url TEXT NOT NULL,
+    mime_type VARCHAR150,
+    storage_key TEXT,
+    file_size_bytes BIGINT,
+    checksum VARCHAR128,
+    is_primary BOOLEAN NOT NULL DEFAULT false
+;
+Versions:
+CREATE TABLE dataset_versions 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    version_label VARCHAR50 NOT NULL,
+    release_date DATE,
+    change_summary TEXT,
+    resource_id UUID REFERENCES dataset_resourcesid ON DELETE SET NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now
+;
+Embeddings:
+CREATE TABLE dataset_embeddings 
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid,
+    dataset_id UUID NOT NULL REFERENCES datasetsid ON DELETE CASCADE,
+    chunk_index INTEGER NOT NULL,
+    chunk_text TEXT NOT NULL,
+    embedding VECTOR1536,
+    model_name VARCHAR150 NOT NULL,
+    metadata JSONB,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now,
+    UNIQUE dataset_id, chunk_index
+;
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 8
+4. Indexing and semantic-search support
+CREATE INDEX idx_datasets_release_date
+    ON datasetsrelease_date;
+CREATE INDEX idx_datasets_expedition_type
+    ON datasetsexpedition_type;
+CREATE INDEX idx_datasets_project_number
+    ON datasetsproject_number;
+CREATE INDEX idx_dataset_keywords_category_topic
+    ON dataset_science_keywordscategory, topic;
+CREATE INDEX idx_dataset_locations_region_subregion
+    ON dataset_locationsregion, subregion;
+CREATE INDEX idx_dataset_resources_dataset
+    ON dataset_resourcesdataset_id;
+CREATE INDEX idx_dataset_versions_dataset
+    ON dataset_versionsdataset_id;
+CREATE INDEX idx_dataset_embeddings_dataset
+    ON dataset_embeddingsdataset_id;
+-- HNSW index; tune vector dimension/model to the selected embedding model.
+CREATE INDEX idx_dataset_embeddings_vector
+    ON dataset_embeddings
+    USING hnsw embedding vector_cosine_ops;
+For pgvector, VECTOR1536 is only an example dimension. The production dimension must match the embedding model actually
+selected by the team. If the embedding model changes, use a migration/versioning strategy rather than mixing incompatible vectors.
+5. Mapping from NCPOR metadata to the new schema
+NCPOR source section
+Target table / columns
+Record identity: id, source, source_id, title, abstract, release_date
+datasets.npdc_metadata_id, source, title, abstract, release_date
+Basic Information: progress, language, originating center
+datasets.data_set_progress, data_set_language, originating_center
+Science Keywords: category, topic, ISO topic, expedition year
+dataset_science_keywords + datasets.expedition_year
+Project Details: project number, project name
+datasets.project_number, datasets.project_name
+Dataset Citation: creator, editor, dataset title, series, release place, version
+dataset_personnel / datasets.dataset_title, series_name, release_place, version
+Scientist Details
+dataset_personnel
+Data Center
+dataset_data_centers
+Instrument Details
+dataset_instruments
+Location: type, subregion and future coordinates
+dataset_locations
+Platform
+dataset_platforms
+Online/download/PDF/XML/original resource
+datasets URL columns + dataset_resources
+Original structured metadata
+datasets.raw_metadata JSONB
+6. Source-data observations that affect the schema
+The records are sparse: many top-level fields are null even though corresponding information appears in
+raw_metadata/raw_text. For example, one supplied record has null values for fields such as science_category,
+project_number and scientist_name at the top level, while the raw metadata contains the corresponding structured values.
+n
+filecite
+n
+turn0file0
+n
+L9-L53
+n
+The source also exposes resource links including detail, XML and PDF exports, and in some records a download URL and
+original resource URL. These should be modeled as resources rather than assuming every dataset has one physical file.
+n
+filecite
+n
+turn0file0
+n
+L54-L59
+n
+Location is currently represented primarily by Antarctic/Arctic type and subregion metadata. Latitude/longitude are therefore
+nullable in the proposed schema; they should be populated only when the source or a verified enrichment supplies
+coordinates.
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 9
+7. Example seed mapping
+INSERT INTO datasets 
+    npdc_metadata_id, source, source_url, title, abstract,
+    release_date, data_set_progress, expedition_type,
+    expedition_year, project_number, project_name, version
+ VALUES 
+    'MF-651581924',
+    'NCPOR NPDC',
+    'https://npdc.ncpor.res.in/npdc/search_mf_data.action?...',
+    'Atmospheric Studies using Moveable Atmospheric Radar for Antarctica',
+    'Radar observations of atmospheric structure and turbulence...',
+    DATE '2021-03-01',
+    'Complete',
+    'Antarctic',
+    '2017-2018',
+    'AMS-12',
+    'Atmospheric Studies using Moveable Atmospheric Radar for Antarctica',
+    '1'
+;
+8. Recommended relationship to the wider portal schema
+This dataset model plugs into the previously designed portal through dataset_id relationships from publications, research
+projects, expeditions, media and saved items. The dataset remains the authoritative metadata entity; binary files belong in
+object storage, while PostgreSQL stores metadata, permissions, versions, provenance and searchable representations.
+Important implementation note:
+ keep the original NCPOR metadata payload. This gives the team a safe fallback when new
+metadata fields appear and supports audit/provenance without redesigning the relational schema for every source-side change.

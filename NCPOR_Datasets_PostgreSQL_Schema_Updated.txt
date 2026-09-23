@@ -1,0 +1,90 @@
+NCPOR Dataset Metadata  PostgreSQL Schema
+Page 1
+NCPOR Dataset Metadata
+PostgreSQL Schema
+Schema rebuilt from the supplied NCPOR NPDC dataset export
+Source records analyzed:
+900 JSON records and 900 CSV rows. The supplied records expose NCPOR NPDC metadata
+such as title, abstract, purpose, release information, scientific classification, project details, personnel, data center,
+instrument, platform, location and resource links.
+Design principle: preserve the source metadata faithfully, normalize repeated entities for relational querying, and retain the original raw
+metadata in JSONB so fields that are sparse or added by NCPOR later are not lost.
+1. What the supplied dataset actually contains
+The export includes a source identifier, title, abstract, release date and URLs at the record level. A representative record
+also contains structured Basic Information, Science Keywords, Project Details, Summary, Dataset Citation, Scientist Details,
+Data Center, Instrument Details, Location, Platform and Data Set Progress.
+n
+filecite
+n
+turn0file0
+n
+L3-L59
+n
+Observed field
+Purpose in schema
+Observed coverage
+source
+Core dataset/resource metadata
+900 populated / 900
+source_id
+Core dataset/resource metadata
+900 populated / 900
+title
+Core dataset/resource metadata
+900 populated / 900
+abstract
+Core dataset/resource metadata
+900 populated / 900
+release_date
+Core dataset/resource metadata
+900 populated / 900
+detail_url
+Core dataset/resource metadata
+900 populated / 900
+xml_url
+Core dataset/resource metadata
+900 populated / 900
+pdf_url
+Core dataset/resource metadata
+900 populated / 900
+download_url
+Core dataset/resource metadata
+467 populated / 900
+original_resource_url
+Core dataset/resource metadata
+210 populated / 900
+raw_metadata
+Core dataset/resource metadata
+900 populated / 900
+2. Normalized database model
+The dataset-specific model is intentionally centered on
+datasets
+. Personnel, science keywords, data centers, instruments,
+platforms, locations, external/download resources, versions and embeddings are separate child tables because these
+concepts repeat across records or require their own lifecycle. The source record itself is preserved through
+raw_metadata
+JSONB
+.
+datasets
+Core dataset identity, descriptive metadata, publication/release metadata, and source links.
+Column
+Type
+Constraint / meaning
+id
+UUID
+PK
+npdc_metadata_id
+VARCHAR(64)
+UNIQUE, NOT NULL  e.g. metadata record ID
+source
+VARCHAR(150)
+NOT NULL
+source_url
+TEXT
+Nullable
+title
+TEXT
+NOT NULL
+abstract
+TEXT
+Nullable

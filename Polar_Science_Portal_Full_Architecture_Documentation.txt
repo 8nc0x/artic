@@ -1,0 +1,50 @@
+Integrated Polar Science Outreach, Knowledge
+Repository & Media Dissemination Portal
+Problem Statement ID:
+26063   |
+Organization:
+Ministry of Earth Sciences (MoES)   |
+Department:
+NCPOR   |
+Theme:
+Smart
+Education
+Purpose:
+Single-source implementation guidance covering UI pages, feature architecture, backend APIs, database choice, AI service
+design, search, knowledge graph, notifications, social outreach, education and administration.
+1. Product Vision
+ Build a clean scientific knowledge portal that archives polar reports, datasets, publications, research, photographs, videos and
+institutional activities while enabling AI-assisted discovery, summarization, trend analysis and outreach.
+ Primary UX principle: Home is a discovery/intelligence surface; deeper functionality lives in the Sidebar and dedicated pages so the
+interface stays uncluttered.
+ Core pillars: Polar Knowledge Repository, Semantic Search, AI Research Assistant, Knowledge Graph, Research Connections, AI
+Outreach Engine and Polar Science Intelligence.
+2. Home Page
+ Hero: prominent semantic search accepting natural-language questions such as research/topic/location queries.
+ Quick Access: Expeditions, Reports, Scientific Datasets, Research, Publications, Photographs, Videos, Conferences, Seminars,
+Workshops and Awareness Events.
+ Recent Uploads: latest reports, datasets, publications, photographs and videos with type, date, institution and actions.
+ AI Data Trends: research activity, publication trends, expedition activity, dataset growth, topic frequency and emerging research
+areas.
+ Knowledge Graph Preview: interactive researcherinstitutionresearchpublicationdatasetexpedition relationships.
+ Featured Research: highlighted research/projects/publications selected by administrators or relevance.
+ Upcoming Institutional Activities: conferences, seminars, workshops, awareness events and outreach programs.
+ Notification icon at top-right: recent generated posts, new reports, dataset changes, new publications and activity updates.
+ Authentication: Login/Sign Up when logged out; Profile icon when logged in.
+3. Sidebar / Navigation
+ Main: Home, Explore, Expedition Explorer, Knowledge Repository.
+ Knowledge: Reports, Scientific Datasets, Research, Publications, Photographs, Videos.
+ Outreach: Social Media Studio, Institutional Activities, Conferences, Seminars, Workshops, Awareness Events.
+ Intelligence: AI Polar Intelligence, Knowledge Graph, Research Connections, Semantic Search.
+ User: Saved Content, History, Profile and Settings.
+4. Core Pages to Design
+ Home: discovery, search, recent uploads, AI trends, graph preview and activities.
+ Explore / Global Search: semantic search, filters, sorting, relevance scores and search history.
+ Expedition Explorer: interactive Arctic/Antarctic map, expedition timeline and related content.
+ Knowledge Repository: central content browser for all scientific and outreach assets.
+ Reports: searchable report library with filters and AI summaries.
+ Scientific Datasets: dataset catalog with metadata, versions, download and related research.
+ Research: research projects, domains, researchers, institutions and related outputs.
+ Publications: papers, authors, journals, DOI, year and related datasets/expeditions.
+ Photographs: searchable polar image gallery with expedition/location/date metadata.
+ Videos: expedition, educational, research, interview and institutional video library.

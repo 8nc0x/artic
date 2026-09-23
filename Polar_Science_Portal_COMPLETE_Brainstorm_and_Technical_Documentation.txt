@@ -1,0 +1,61 @@
+INTEGRATED POLAR SCIENCE OUTREACH,
+KNOWLEDGE REPOSITORY & MEDIA DISSEMINATION
+PORTAL
+Complete Brainstorm
+®
+Product Architecture
+®
+Pages
+®
+Features
+®
+APIs
+®
+Database
+®
+AI Service
+®
+Implementation
+Guidance
+Problem Statement ID
+26063
+Problem Statement
+Integrated Polar Science Outreach, Knowledge Repository and Media Dissemination Portal
+Organization
+Ministry of Earth Sciences (MoES)
+Department
+National Centre for Polar and Ocean Research (NCPOR)
+Category
+Software
+Theme
+Smart Education
+0. Original Product Brainstorm  Preserve the Full Intent
+The portal should be a comprehensive polar-science outreach and knowledge system rather than a generic document website. It should
+archive expedition reports, scientific datasets, research, publications, photographs, videos and institutional activities while also turning that
+knowledge into searchable, understandable and reusable public-facing content.
+ Home must remain clutter-free and act as a discovery/intelligence dashboard rather than exposing every feature at once.
+ Sidebar must expose Social Media Posts, Research Connection, Institutional Activities and AI as clear sections.
+ Semantic Search should be prominent in the top navigation/header because it is a core USP.
+ AI Data Trends should appear on Home as a visual intelligence section.
+ Knowledge Graph should have a Home preview and a dedicated full-page experience.
+ Notifications should be a top-right icon and include newly generated posts, newly added reports, data changes, new publications, new
+datasets and institutional activities.
+ Login and Signup should be visible when logged out; after login they should become a profile icon.
+ The portal should have a complete Polar Knowledge Repository covering expedition reports, scientific datasets, research, publications,
+photographs, reports, conferences, seminars, workshops and awareness events.
+ Search and filtering must work across repository content.
+ Reports should support AI summarization.
+ The platform should generate social media posts from scientific content.
+ USP features are Knowledge Graph, Research Connection and Semantic Search.
+ Recent uploaded data should be visible both as a Home feature and through notifications.
+ The Smart Education theme should be represented through a student-friendly learning experience and simplified scientific explanations.
+1. Product Goals
+ Centralize polar scientific knowledge in one searchable repository.
+ Make scientific content discoverable through both conventional and semantic search.
+ Connect researchers, institutions, expeditions, publications, datasets and locations.
+ Use AI to summarize, classify, connect and transform scientific content without removing human review.
+ Turn repository content into outreach material for websites and social platforms.
+ Provide trend intelligence from accumulated repository data.
+ Make complex polar science accessible to students and the public.
+ Maintain scientific provenance, source attribution and content/version history.
+ Provide an administration layer for ingestion, moderation, approvals and analytics.

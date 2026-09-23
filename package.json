@@ -1,0 +1,15 @@
+{
+  "name": "polar-science-portal",
+  "version": "1.0.0",
+  "description": "NCPOR Integrated Polar Science Outreach, Knowledge Repository and Media Dissemination Portal",
+  "scripts": {
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "start:backend": "npm --prefix backend run start",
+    "start:frontend": "npm --prefix frontend run dev",
+    "seed": "npm --prefix backend run seed",
+    "build": "npm --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
