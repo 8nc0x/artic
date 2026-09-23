@@ -15,10 +15,16 @@ import {
   Check,
   Tag,
   Eye,
-  Camera
+  Camera,
+  Sparkles,
+  GraduationCap,
+  Megaphone
 } from 'lucide-react';
+import SocialMediaStudio from './SocialMediaStudio';
+import SmartEducation from './SmartEducation';
 
 export default function MediaGallery() {
+  const [hubTab, setHubTab] = useState('gallery'); // 'gallery' | 'social' | 'education'
   const [mediaList, setMediaList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedType, setSelectedType] = useState('All'); // 'All' | 'photo' | 'video'
@@ -61,8 +67,58 @@ export default function MediaGallery() {
 
   return (
     <div className="space-y-6 pb-16 text-left">
-      {/* 1. Header Banner */}
-      <div className="bg-white rounded-2xl p-6 border border-polar-border shadow-sm">
+      {/* 0. Top Hub Mode Switcher */}
+      <div className="bg-white rounded-2xl p-2 border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div className="flex items-center space-x-1.5 w-full sm:w-auto">
+          <button
+            type="button"
+            onClick={() => setHubTab('gallery')}
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+              hubTab === 'gallery'
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <ImageIcon className="w-4 h-4" />
+            <span>Field Media &amp; Videos</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setHubTab('social')}
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+              hubTab === 'social'
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <Megaphone className="w-4 h-4" />
+            <span>AI Social Outreach Studio</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setHubTab('education')}
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+              hubTab === 'education'
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <GraduationCap className="w-4 h-4" />
+            <span>Smart Education (Students)</span>
+          </button>
+        </div>
+      </div>
+
+      {hubTab === 'social' && <SocialMediaStudio />}
+      {hubTab === 'education' && <SmartEducation />}
+
+      {hubTab === 'gallery' && (
+        <>
+          {/* 1. Header Banner */}
+          <div className="bg-white rounded-2xl p-6 border border-polar-border shadow-sm">
+
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-2">
@@ -343,6 +399,9 @@ export default function MediaGallery() {
           </div>
         </div>
       )}
+        </>
+      )}
     </div>
   );
 }
+

@@ -29,19 +29,30 @@ import {
   Activity,
   Globe
 } from 'lucide-react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom';
 
 export default function DatasetsCatalog() {
   const { id: urlDatasetId } = useParams();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [datasets, setDatasets] = useState([]);
   const [total, setTotal] = useState(0);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(searchParams.get('q') || '');
   const [category, setCategory] = useState('All');
   const [region, setRegion] = useState('All');
   const [page, setPage] = useState(0);
   const limit = 20;
+
+  // Sync if search query in URL changes (e.g. from Hero or Navbar search)
+  useEffect(() => {
+    const urlQ = searchParams.get('q');
+    if (urlQ !== null && urlQ !== query) {
+      setQuery(urlQ);
+      setPage(0);
+    }
+  }, [searchParams]);
+
 
   // Drawer / Detail state
   const [activeDataset, setActiveDataset] = useState(null);
