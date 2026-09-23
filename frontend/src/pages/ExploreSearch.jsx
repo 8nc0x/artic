@@ -17,12 +17,14 @@ export default function ExploreSearch() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
   const initialType = searchParams.get('type') || 'Semantic Search';
+  const initialRegion = searchParams.get('region') || 'All';
 
   const [query, setQuery] = useState(initialQuery);
-  const [selectedRegion, setSelectedRegion] = useState('All');
+  const [selectedRegion, setSelectedRegion] = useState(initialRegion);
   const [selectedType, setSelectedType] = useState('All');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+
 
   const executeSearch = (qText) => {
     setLoading(true);
@@ -90,18 +92,19 @@ export default function ExploreSearch() {
           <div className="flex items-center space-x-2 text-slate-500">
             <Filter className="w-3.5 h-3.5" />
             <span>Region:</span>
-            {['All', 'Antarctica', 'Arctic', 'Southern Ocean'].map((reg) => (
+            {['All', 'Antarctica', 'Arctic', 'Southern Ocean', 'Himalayas'].map((reg) => (
               <button
                 key={reg}
                 onClick={() => setSelectedRegion(reg)}
                 className={`px-2.5 py-1 rounded-lg transition-colors ${
-                  selectedRegion === reg ? 'bg-blue-100 text-blue-800' : 'text-slate-600 hover:text-slate-900'
+                  selectedRegion === reg ? 'bg-blue-600 text-white font-bold' : 'text-slate-600 hover:text-slate-900 bg-slate-100'
                 }`}
               >
                 {reg}
               </button>
             ))}
           </div>
+
 
           <div className="flex items-center space-x-2 text-slate-500 border-l border-slate-200 pl-4">
             <span>Resource Type:</span>

@@ -104,6 +104,13 @@ router.post('/social/posts/generate', async (req, res) => {
   res.json({ success: true, data: generated });
 });
 
+router.post('/social/posts/generate-carousel', async (req, res) => {
+  const { title, topic, platform } = req.body;
+  const result = await aiService.generateCarouselPost({ title, topic, platform });
+  res.json(result);
+});
+
+
 // Notifications
 router.get('/notifications', (req, res) => {
   res.json({ success: true, data: dbService.getNotifications() });
