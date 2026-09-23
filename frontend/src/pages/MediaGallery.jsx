@@ -33,6 +33,32 @@ export default function MediaGallery() {
   const [lightboxItem, setLightboxItem] = useState(null);
   const [copiedLink, setCopiedLink] = useState(false);
 
+  // AI Image Studio States
+  const [imagePrompt, setImagePrompt] = useState('Bharati research station in Antarctica under green aurora borealis');
+  const [generatedImage, setGeneratedImage] = useState(null);
+  const [generatingImage, setGeneratingImage] = useState(false);
+
+  const handleGenerateAiImage = async (customPrompt) => {
+    const p = customPrompt || imagePrompt;
+    setGeneratingImage(true);
+    try {
+      const res = await fetch('/api/media/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: p })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setGeneratedImage(data);
+      }
+    } catch (err) {
+      console.error('Image generation error:', err);
+    } finally {
+      setGeneratingImage(false);
+    }
+  };
+
+
   useEffect(() => {
     const params = new URLSearchParams({
       type: selectedType,
@@ -85,6 +111,22 @@ export default function MediaGallery() {
 
           <button
             type="button"
+            onClick={() => {
+              setHubTab('ai-image');
+              if (!generatedImage) handleGenerateAiImage();
+            }}
+            className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+              hubTab === 'ai-image'
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-purple-400" />
+            <span>AI Visual Studio (Images)</span>
+          </button>
+
+          <button
+            type="button"
             onClick={() => setHubTab('social')}
             className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
               hubTab === 'social'
@@ -113,6 +155,148 @@ export default function MediaGallery() {
 
       {hubTab === 'social' && <SocialMediaStudio />}
       {hubTab === 'education' && <SmartEducation />}
+
+      {/* ======================================================== */}
+      {/* TAB: AI POLAR IMAGE STUDIO                               */}
+      {/* ======================================================== */}
+      {hubTab === 'ai-image' && (
+        <div className="space-y-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="p-2 rounded-xl bg-purple-50 text-purple-700">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight font-heading">
+                    AI Polar Visual Studio
+                  </h2>
+                </div>
+                <p className="text-xs text-slate-500 mt-1 max-w-2xl">
+                  Generate photorealistic scientific illustrations, expedition concept art, and high-latitude field imagery powered by Gemini prompt engineering and Flux neural rendering.
+                </p>
+              </div>
+            </div>
+
+            {/* Presets */}
+            <div className="pt-2">
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                Curated Polar Presets:
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  'Bharati research station in Antarctica under green aurora borealis',
+                  'IndARC underwater moored oceanographic observatory in Kongsfjorden fjord',
+                  'Himadri Arctic research station in Ny-Ålesund under midnight sun',
+                  'Indian scientific research vessel navigating heavy pack ice in Southern Ocean',
+                  'High-altitude Himalayan glacier ice core drilling expedition at Chandra basin'
+                ].map((preset) => (
+                  <button
+                    key={preset}
+                    onClick={() => {
+                      setImagePrompt(preset);
+                      handleGenerateAiImage(preset);
+                    }}
+                    className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-purple-50 hover:text-purple-700 text-slate-700 text-xs font-semibold transition-colors border border-slate-200/60"
+                  >
+                    {preset.split(' in ')[0]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Custom Prompt Input */}
+            <div className="pt-2">
+              <label className="text-xs font-bold text-slate-700 block mb-1">
+                Custom Scientific Visual Prompt:
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={imagePrompt}
+                  onChange={(e) => setImagePrompt(e.target.value)}
+                  placeholder="e.g. Emperor penguin colony near ice shelf in Larsemann Hills..."
+                  className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 font-medium focus:outline-none focus:border-purple-500"
+                />
+                <button
+                  onClick={() => handleGenerateAiImage(imagePrompt)}
+                  disabled={generatingImage}
+                  className="px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center space-x-1.5 shadow-md transition-colors disabled:opacity-50"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>{generatingImage ? 'Synthesizing...' : 'Generate 8K Image'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Generated Image Showcase */}
+          {generatingImage ? (
+            <div className="bg-white rounded-3xl p-16 text-center border border-slate-200 shadow-xs">
+              <div className="w-10 h-10 border-3 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <h3 className="text-sm font-bold text-slate-900 font-heading">
+                Synthesizing Polar Image with Flux &amp; Gemini...
+              </h3>
+              <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto">
+                Expanding scientific prompt with atmospheric physics and rendering 1024x768 neural pixels.
+              </p>
+            </div>
+          ) : generatedImage ? (
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6">
+              <div className="relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 shadow-xl max-h-[550px] flex items-center justify-center">
+                <img
+                  src={generatedImage.imageUrl}
+                  alt={generatedImage.originalPrompt}
+                  className="w-full h-full object-contain max-h-[550px]"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
+                <div className="md:col-span-8 space-y-3">
+                  <div>
+                    <span className="text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded uppercase tracking-wider">
+                      Original Prompt
+                    </span>
+                    <h3 className="text-sm font-bold text-slate-900 mt-1">
+                      {generatedImage.originalPrompt}
+                    </h3>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-600 leading-relaxed">
+                    <span className="font-bold text-slate-800 block mb-0.5">Gemini Scientific Prompt Expansion:</span>
+                    <p className="italic">{generatedImage.expandedPrompt}</p>
+                  </div>
+                </div>
+
+                <div className="md:col-span-4 flex flex-col justify-end space-y-2">
+                  <a
+                    href={generatedImage.imageUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    download
+                    className="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-sm transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Full-Res (1024x768)</span>
+                  </a>
+
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(generatedImage.imageUrl);
+                      alert('Image link copied to clipboard!');
+                    }}
+                    className="w-full py-2.5 px-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs flex items-center justify-center space-x-2 transition-colors"
+                  >
+                    <Share2 className="w-4 h-4" />
+                    <span>Copy Direct Image Link</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      )}
+
 
       {hubTab === 'gallery' && (
         <>

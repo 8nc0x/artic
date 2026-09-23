@@ -383,5 +383,38 @@ Return a valid JSON object with:
         tags: ["Southern Ocean", "Sea Ice Dynamics", "Cryosphere", "Satellite Oceanography", "Climate Teleconnections"]
       }
     };
+  },
+
+  async generateAiImage({ prompt, style = 'photorealistic' }) {
+    const rawPrompt = prompt || 'Indian Polar Research Station Bharati in Antarctica with Aurora Australis';
+    let visualPrompt = `${rawPrompt}, ultra realistic 8k, scientific expedition photography, high latitude polar landscape, cinematic lighting, sharp focus`;
+
+    if (getApiKey()) {
+      try {
+        const expanderPrompt = `You are an expert AI image prompt engineer for earth and polar sciences.
+Enhance this user request into a photorealistic, National Geographic-tier image generation prompt:
+"${rawPrompt}"
+Return ONLY the expanded 1-2 sentence visual prompt describing lighting, snow/ice details, research instruments, and polar atmosphere. No conversational text.`;
+        const expanded = await callGemini(expanderPrompt);
+        if (expanded && expanded.length > 20) {
+          visualPrompt = expanded.trim();
+        }
+      } catch (err) {
+        console.warn('Gemini prompt expansion error:', err.message);
+      }
+    }
+
+    const seed = Math.floor(Math.random() * 1000000);
+    const encodedPrompt = encodeURIComponent(visualPrompt);
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1024&height=768&nologo=true&model=flux&seed=${seed}`;
+
+    return {
+      success: true,
+      imageUrl,
+      originalPrompt: rawPrompt,
+      expandedPrompt: visualPrompt,
+      seed
+    };
   }
 };
+

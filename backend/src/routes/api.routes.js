@@ -190,6 +190,14 @@ router.get('/media/:id', (req, res) => {
   res.json({ success: true, data: item });
 });
 
+// AI Polar Image Generation
+router.post('/media/generate-image', async (req, res) => {
+  const { prompt, style } = req.body;
+  const result = await aiService.generateAiImage({ prompt, style });
+  res.json(result);
+});
+
+
 // User Profile, Saved Items, History
 router.get('/users/me', (req, res) => {
   res.json({ success: true, data: dbService.getUserProfile() });
