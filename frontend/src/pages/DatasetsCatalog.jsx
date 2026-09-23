@@ -30,8 +30,10 @@ import {
   Globe
 } from 'lucide-react';
 import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom';
+import FormattedMarkdown from '../components/FormattedMarkdown';
 
 export default function DatasetsCatalog() {
+
   const { id: urlDatasetId } = useParams();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -780,8 +782,8 @@ export default function DatasetsCatalog() {
                     </div>
 
                     {aiSummary ? (
-                      <div className="mt-4 p-4 bg-white rounded-xl border border-blue-200 text-slate-700 leading-relaxed font-sans whitespace-pre-line text-xs shadow-sm">
-                        {aiSummary}
+                      <div className="mt-4 p-4 bg-white rounded-xl border border-blue-200 text-slate-700 leading-relaxed font-sans text-xs shadow-sm">
+                        <FormattedMarkdown content={aiSummary} />
                       </div>
                     ) : (
                       <p className="text-xs text-slate-500 mt-2">
@@ -829,8 +831,8 @@ export default function DatasetsCatalog() {
 
                     {aiAnswer && (
                       <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-slate-800 leading-relaxed text-xs">
-                        <span className="font-bold text-polar-blue block mb-1">AI Response:</span>
-                        {aiAnswer}
+                        <span className="font-bold text-polar-blue block mb-2">AI Response:</span>
+                        <FormattedMarkdown content={aiAnswer} />
                       </div>
                     )}
                   </div>

@@ -29,8 +29,10 @@ import {
   Check,
   User
 } from 'lucide-react';
+import FormattedMarkdown from '../components/FormattedMarkdown';
 
 export default function PaperDetailView() {
+
   const { id } = useParams();
   const [paper, setPaper] = useState(null);
   const [activeTab, setActiveTab] = useState('Overview');
@@ -531,8 +533,13 @@ export default function PaperDetailView() {
                       : 'bg-white text-slate-800 border border-slate-100 mr-4 shadow-2xs'
                   }`}
                 >
-                  <p className="leading-relaxed whitespace-pre-line">{msg.text}</p>
+                  {msg.role === 'user' ? (
+                    <p className="leading-relaxed whitespace-pre-line">{msg.text}</p>
+                  ) : (
+                    <FormattedMarkdown content={msg.text} />
+                  )}
                 </div>
+
               ))}
               {aiLoading && (
                 <div className="p-2 bg-white rounded-xl text-slate-400 text-xs flex items-center space-x-2">

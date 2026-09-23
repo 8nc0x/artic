@@ -22,8 +22,10 @@ import {
   Snowflake,
   Wind
 } from 'lucide-react';
+import FormattedMarkdown from '../components/FormattedMarkdown';
 
 export default function AIPolarIntelligence() {
+
   const [activeTab, setActiveTab] = useState('assistant'); // 'assistant' | 'analyzer' | 'trends'
   
   // Chat Assistant State
@@ -227,12 +229,17 @@ export default function AIPolarIntelligence() {
                       <div
                         className={`p-4 rounded-2xl text-xs leading-relaxed ${
                           isUser
-                            ? 'bg-polar-blue text-white rounded-tr-xs'
-                            : 'bg-slate-50 border border-slate-200/80 text-slate-800 rounded-tl-xs'
+                            ? 'bg-blue-600 text-white rounded-tr-xs'
+                            : 'bg-white border border-slate-200/90 text-slate-800 rounded-tl-xs shadow-xs'
                         }`}
                       >
-                        <p className="whitespace-pre-line">{m.text}</p>
+                        {isUser ? (
+                          <p className="whitespace-pre-line">{m.text}</p>
+                        ) : (
+                          <FormattedMarkdown content={m.text} />
+                        )}
                       </div>
+
 
                       {/* Citations & Metadata footer for AI responses */}
                       {!isUser && (

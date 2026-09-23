@@ -21,8 +21,10 @@ import {
   Download,
   Check
 } from 'lucide-react';
+import FormattedMarkdown from '../components/FormattedMarkdown';
 
 export default function HomeDashboard() {
+
   const [searchQuery, setSearchQuery] = useState('');
   const [knowledgeTab, setKnowledgeTab] = useState('datasets'); // 'research' | 'publications' | 'datasets'
   const [datasets, setDatasets] = useState([]);
@@ -759,8 +761,9 @@ export default function HomeDashboard() {
                     <span>Synthesizing scientific summary with Gemini...</span>
                   </div>
                 ) : (
-                  <div className="whitespace-pre-line">{selectedSummary.text}</div>
+                  <FormattedMarkdown content={selectedSummary.text} />
                 )}
+
               </div>
             </div>
 
