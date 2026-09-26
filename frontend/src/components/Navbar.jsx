@@ -19,6 +19,7 @@ import {
   ChevronDown,
   AlertTriangle
 } from 'lucide-react';
+import PolarConnectLogo from './PolarConnectLogo';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -97,27 +98,8 @@ export default function Navbar() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-2">
-            {/* 1. Official NCPOR Brand Identity */}
-            <Link to="/" className="flex items-center space-x-2.5 flex-shrink-0 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-sky-600 to-indigo-800 p-0.5 shadow-md shadow-blue-500/15 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <span className="text-base select-none">❄️</span>
-                </div>
-              </div>
-              <div className="text-left">
-                <div className="flex items-center space-x-2">
-                  <span className="font-black text-lg tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors font-heading">
-                    NCPOR
-                  </span>
-                  <span className="text-[10px] font-bold tracking-wide bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200/80">
-                    MoES Portal
-                  </span>
-                </div>
-                <p className="text-[10px] text-slate-500 font-medium hidden sm:block tracking-tight">
-                  National Centre for Polar and Ocean Research • Govt. of India
-                </p>
-              </div>
-            </Link>
+            {/* 1. Official PolarConnect Brand Identity */}
+            <PolarConnectLogo size="md" />
 
             {/* 2. Desktop Primary Navigation Links */}
             <nav className="hidden lg:flex items-center space-x-1">

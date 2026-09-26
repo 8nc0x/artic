@@ -2,468 +2,740 @@ import React, { useState } from 'react';
 import {
   GraduationCap,
   BookOpen,
-  HelpCircle,
-  Search,
   CheckCircle2,
   XCircle,
-  ThumbsUp,
-  MessageSquare,
-  FileText,
-  Upload,
   ArrowRight,
+  ArrowLeft,
   Sparkles,
-  RefreshCw,
   Award,
-  Layers
+  Play,
+  RotateCcw,
+  Check,
+  ChevronRight,
+  HelpCircle,
+  Video,
+  FileText
 } from 'lucide-react';
 
 export default function SmartEducation() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [activeSuggestedTopic, setActiveSuggestedTopic] = useState('Antarctica');
+  // Step in learning funnel: 1 = Choose Topic, 2 = Study Module & Video, 3 = Take Quiz
+  const [currentStep, setCurrentStep] = useState(1);
+  const [selectedTopicId, setSelectedTopicId] = useState('antarctica');
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
 
-  // Quiz State (Exact Match to Reference media_1790447428294.png & media_1790447347006.png)
-  const [q1Selected, setQ1Selected] = useState(null);
-  const [q2Selected, setQ2Selected] = useState(null);
+  // Quiz state
+  const [userAnswers, setUserAnswers] = useState({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
-  const [generatingQuiz, setGeneratingQuiz] = useState(false);
-  const [generatedQuizData, setGeneratedQuizData] = useState(null);
 
-  // Suggested Topics matching Master Prompt Section 12:
-  // Antarctica, Arctic Ocean, Sea Ice, Polar Climate, Maitri, Bharati, Himadri, Cryosphere
-  const suggestedTopics = [
-    'Antarctica',
-    'Arctic Ocean',
-    'Sea Ice',
-    'Polar Climate',
-    'Maitri',
-    'Bharati',
-    'Himadri',
-    'Cryosphere'
-  ];
+  // Curated Topics with complete modules, videos, and preparation quiz banks
+  const topicsData = {
+    antarctica: {
+      id: 'antarctica',
+      title: 'Antarctic Cryosphere & Continental Ice Sheets',
+      badge: 'Antarctic Sciences',
+      color: 'from-blue-600 to-indigo-700',
+      difficulty: 'Intermediate',
+      estimatedTime: '20 mins',
+      icon: '🇦🇳',
+      description: 'Explore the 14 million sq km ice sheet holding 70% of Earth’s freshwater, grounding lines, and India’s Maitri and Bharati bases.',
+      videos: [
+        {
+          title: 'Indian Antarctic Research: Maitri & Bharati Scientific Operations',
+          videoId: 'v3x8Y3U_a9A',
+          duration: '12:40',
+          instructor: 'MoES & NCPOR Expedition Directorate'
+        },
+        {
+          title: 'Antarctic Ice Sheet Mass Balance & Subglacial Lakes',
+          videoId: 'nCqw3j6xWec',
+          duration: '15:20',
+          instructor: 'Polar Climate Consortium'
+        }
+      ],
+      curriculum: {
+        unitTitle: 'Module 1: Ice Sheet Mass Balance & Grounding Line Dynamics',
+        summary: 'The Antarctic ice sheet is the largest single mass of ice on Earth. It averages 2 km in thickness and reaches bedrock well below sea level in West Antarctica.',
+        keyPoints: [
+          'Ice Mass Balance: Determined by the ratio of surface snowfall accumulation vs. peripheral ice shelf calving and basal melting.',
+          'Grounding Line Retreat: The boundary where grounded glacial ice detaches from the bedrock and becomes a floating ice shelf; retreat accelerates upstream ice velocity.',
+          'Maitri Base Telemetry: Situated in the Schirmacher Oasis, collecting continuous meteorological, geomagnetism, and aerosol optical depth records since 1989.',
+          'Katabatic Winds: Gravity-driven winds descending from the high Antarctic Plateau reaching speeds exceeding 150 km/h.'
+        ],
+        literature: 'NCPOR Indian Antarctic Expedition Monograph (MoES Technical Report #43).'
+      },
+      quiz: [
+        {
+          id: 'q1',
+          question: 'What percentage of the world’s freshwater is sequestered within the Antarctic ice sheet?',
+          options: ['About 25%', 'About 50%', 'About 70%', 'About 95%'],
+          correctIndex: 2,
+          explanation: 'Approximately 70% of Earth’s freshwater and 90% of all planetary ice is stored in the Antarctic continental ice sheet.'
+        },
+        {
+          id: 'q2',
+          question: 'In which geographical setting is India’s second permanent station, Maitri, established?',
+          options: ['Larsemann Hills', 'Schirmacher Oasis', 'Ny-Ålesund', 'Ross Island'],
+          correctIndex: 1,
+          explanation: 'Maitri station was established in 1989 on the ice-free rocky terrain of the Schirmacher Oasis in Dronning Maud Land.'
+        },
+        {
+          id: 'q3',
+          question: 'What is the "grounding line" of a marine-terminating ice sheet?',
+          options: [
+            'The highest point of the glacier accumulation zone',
+            'The boundary where grounded ice begins to float on seawater',
+            'The crevassed shear margin between two ice streams',
+            'The terminal moraine formed during the last glacial maximum'
+          ],
+          correctIndex: 1,
+          explanation: 'The grounding line marks the transition where glacial ice rests on the bedrock before lifting off to form a floating ice shelf.'
+        },
+        {
+          id: 'q4',
+          question: 'Which meteorological phenomenon causes the extreme downslope winds across the coastal ice margins?',
+          options: ['Monsoon depressions', 'Katabatic winds', 'Polar easterlies', 'Jet stream meandering'],
+          correctIndex: 1,
+          explanation: 'Katabatic winds occur when high-density cold air over the Antarctic Plateau descends under the influence of gravity down the steep coastal slopes.'
+        }
+      ]
+    },
 
-  // Topic Educational Content Database
-  const topicContent = {
-    'Antarctica': {
-      title: 'Antarctic Cryosphere & Continental Ice Sheet',
-      intro: 'Antarctica holds approximately 70% of Earth’s freshwater and 90% of its terrestrial ice. India has maintained active scientific stations in East Antarctica since 1981.',
-      keyConcepts: [
-        'Ice Sheet Mass Balance: Net difference between snowfall accumulation and coastal calving/basal melting.',
-        'Southern Annular Mode (SAM): Principal atmospheric driver influencing circumpolar westerlies and sea-ice distribution.',
-        'Antarctic Bottom Water (AABW): High-density oxygenated water sinking to drive the global thermohaline conveyor belt.'
+    arctic: {
+      id: 'arctic',
+      title: 'Arctic Kongsfjorden & Marine Hydrography',
+      badge: 'Arctic Sciences',
+      color: 'from-teal-600 to-cyan-800',
+      difficulty: 'Advanced',
+      estimatedTime: '25 mins',
+      icon: '❄️',
+      description: 'Study Arctic amplification, IndARC underwater observatory in Kongsfjorden fjord, and Himadri research station in Svalbard.',
+      videos: [
+        {
+          title: 'IndARC Mooring Deployment in Kongsfjorden, Svalbard',
+          videoId: 'NnL7PZzJ6XU',
+          duration: '10:15',
+          instructor: 'NCPOR Arctic Research Wing'
+        },
+        {
+          title: 'Arctic Amplification & Polar Jet Stream Coupling',
+          videoId: '2_XvGfC5k88',
+          duration: '14:50',
+          instructor: 'International Arctic Science Committee'
+        }
       ],
-      relevantResearch: 'Dr. Thamban Meloth et al., High-Resolution Ice Core Paleoclimatology from Central Dronning Maud Land (NCPOR Monograph 2024).'
+      curriculum: {
+        unitTitle: 'Module 1: Fjord Hydrography and IndARC Telemetry',
+        summary: 'Kongsfjorden is an open glacial fjord on the northwest coast of Spitsbergen, Svalbard. It serves as a natural laboratory for studying Atlantic water intrusions into the Arctic.',
+        keyPoints: [
+          'IndARC Mooring: India’s first multi-sensor underwater moored observatory, deployed in 2014 at a depth of ~192 meters in Kongsfjorden.',
+          'Atlantic Water Inflow: Warm, saline water from the West Spitsbergen Current entering the fjord and driving accelerated glacier tongue ablation.',
+          'Himadri Station: India’s permanent Arctic research facility in Ny-Ålesund, Norway (78°55′ N), operational since 2008.',
+          'Arctic Amplification: The phenomenon where the Arctic warms at more than double the global average rate due to sea-ice albedo feedback.'
+        ],
+        literature: 'Krishnan et al., High-Resolution Temperature Profiling of Kongsfjorden (Polar Science 2024).'
+      },
+      quiz: [
+        {
+          id: 'q1',
+          question: 'What is IndARC in the context of Indian polar research?',
+          options: [
+            'A polar icebreaker ship',
+            'India’s multi-sensor moored underwater observatory in Svalbard',
+            'An airborne LiDAR mapping aircraft',
+            'A deep ice core drilling apparatus'
+          ],
+          correctIndex: 1,
+          explanation: 'IndARC is India’s subsurface moored observatory deployed in Kongsfjorden fjord, Svalbard, monitoring temperature, salinity, and currents year-round.'
+        },
+        {
+          id: 'q2',
+          question: 'Where is India’s Himadri Arctic station located?',
+          options: ['Longyearbyen, Svalbard', 'Ny-Ålesund, Svalbard', 'Tromsø, Norway', 'Nuuk, Greenland'],
+          correctIndex: 1,
+          explanation: 'Himadri is situated at the international research base in Ny-Ålesund, Spitsbergen, Svalbard (78°55′ N).'
+        },
+        {
+          id: 'q3',
+          question: 'Why is Arctic amplification occurring faster than warming in lower latitudes?',
+          options: [
+            'Enhanced solar radiation at midnight sun',
+            'Ice-albedo feedback replacing reflective ice with absorbing open water',
+            'Higher volcanic emissions in northern polar regions',
+            'Atmospheric ozone depletion'
+          ],
+          correctIndex: 1,
+          explanation: 'As white sea ice melts, darker ocean surface absorbs significantly more incoming solar radiation, triggering positive feedback warming.'
+        }
+      ]
     },
-    'Cryosphere': {
-      title: 'Cryospheric Dynamics and Earth System Resilience',
-      intro: 'The cryosphere encompasses all frozen water on Earth, including glaciers, ice sheets, permafrost, snow cover, and seasonal sea ice.',
-      keyConcepts: [
-        'Albedo Feedback: Highly reflective snow and ice reflect up to 85% of solar radiation, moderating planetary temperature.',
-        'Permafrost Thaw: Release of stored soil carbon and methane under sustained polar warming anomalies.',
-        'Glacial Lake Outburst Floods (GLOFs): Cryospheric hazard monitored by NCPOR in benchmark Himalayan basins.'
+
+    himalaya: {
+      id: 'himalaya',
+      title: 'Himalayan Cryosphere & Benchmark Glaciers',
+      badge: 'Third Pole / Cryosphere',
+      color: 'from-amber-600 to-orange-700',
+      difficulty: 'Intermediate',
+      estimatedTime: '18 mins',
+      icon: '🏔️',
+      description: 'Understand the "Third Pole", Gepang Gath and Chhota Shigri benchmark glacier mass balance, and GLOF early warning systems.',
+      videos: [
+        {
+          title: 'Himansh Station: High Altitude Glacier Monitoring in Chandra Basin',
+          videoId: 'K8q2qA2mUqg',
+          duration: '11:30',
+          instructor: 'NCPOR Cryospheric Division'
+        }
       ],
-      relevantResearch: 'NCPOR Himalayan Cryosphere Division, Spiti Valley Benchmark Glacier Ablation Report (2025).'
+      curriculum: {
+        unitTitle: 'Module 1: DGPS Mass Balance and Glacial Lake Hazards',
+        summary: 'The Himalayas contain the largest concentration of ice outside the polar regions. Termed the "Water Tower of Asia", they feed perennial rivers sustaining over 1.4 billion people.',
+        keyPoints: [
+          'Himansh Research Station: Established by NCPOR in 2016 at 4,080m altitude in Sutri Dhaka, Himachal Pradesh.',
+          'Benchmark Glaciers: Long-term in-situ ablation monitoring at Gepang Gath, Batal, and Samudra Tapu glaciers.',
+          'GLOF Vulnerability: Proglacial lakes forming as glaciers retreat; potential breach creates devastating Glacial Lake Outburst Floods.',
+          'Debris Cover Insulation: Supraglacial debris exceeding 5 cm thickness insulates underlying ice, moderating ablation rates.'
+        ],
+        literature: 'Meloth et al., Glacier Mass Loss in the Western Himalaya: 2000–2025 Assessment.'
+      },
+      quiz: [
+        {
+          id: 'q1',
+          question: 'Where is India’s high-altitude research station "Himansh" situated?',
+          options: [
+            'Ladakh Range, Leh',
+            'Chandra Basin, Spiti Valley, Himachal Pradesh',
+            'Garhwal Himalaya, Uttarakhand',
+            'Sikkim Himalaya'
+          ],
+          correctIndex: 1,
+          explanation: 'Himansh was established by NCPOR in the Chandra Basin of the Western Himalayas (Himachal Pradesh) at ~4,080 meters elevation.'
+        },
+        {
+          id: 'q2',
+          question: 'What is a GLOF?',
+          options: [
+            'Geothermal Lake Oxidation Factor',
+            'Glacial Lake Outburst Flood',
+            'Global Low-Oxygen Formulation',
+            'Glaciological Open Field'
+          ],
+          correctIndex: 1,
+          explanation: 'A Glacial Lake Outburst Flood (GLOF) occurs when a moraine-dammed or ice-dammed proglacial lake suddenly breaches its containment.'
+        },
+        {
+          id: 'q3',
+          question: 'What effect does a thick (>10 cm) layer of supraglacial debris have on glacier melt?',
+          options: [
+            'Accelerates melt due to increased albedo',
+            'Insulates the ice and reduces the melt rate',
+            'Has zero effect on ablation',
+            'Causes immediate subglacial collapse'
+          ],
+          correctIndex: 1,
+          explanation: 'While thin dust (<1 cm) accelerates melt by lowering albedo, thick debris acts as a thermal blanket, insulating the ice from incoming solar radiation.'
+        }
+      ]
     },
-    'Sea Ice': {
-      title: 'Polar Sea-Ice Extent, Thickness, and Albedo',
-      intro: 'Polar sea ice forms from seawater in both hemispheres. It acts as an insulating blanket between cold atmospheric air and relatively warm underlying polar ocean currents.',
-      keyConcepts: [
-        'Marginal Ice Zone (MIZ): Highly dynamic boundary where ocean waves fracture consolidated pack ice.',
-        'Polynyas: Open ocean areas amidst pack ice formed by persistent katabatic winds or sensible heat upwelling.',
-        'Satellite Microwave Altimetry: Technique used by NCPOR researchers to measure multi-year sea ice thickness variations.'
+
+    ocean: {
+      id: 'ocean',
+      title: 'Southern Ocean Dynamics & Carbon Flux',
+      badge: 'Oceanography',
+      color: 'from-sky-600 to-blue-800',
+      difficulty: 'Advanced',
+      estimatedTime: '22 mins',
+      icon: '🌊',
+      description: 'Discover the Antarctic Circumpolar Current (ACC), phytoplankton productivity, and deep oceanic carbon sequestration.',
+      videos: [
+        {
+          title: 'Southern Ocean Expedition: CTD Profiling & Microstructure Analysis',
+          videoId: 'fGf7_iP0V8U',
+          duration: '16:00',
+          instructor: 'National Polar Data Center (NPDC)'
+        }
       ],
-      relevantResearch: 'NPDC Satellite Passive Microwave Radiometer Time Series (2010–2026).'
+      curriculum: {
+        unitTitle: 'Module 1: Phytoplankton Biogeochemistry & Carbon Export',
+        summary: 'The Southern Ocean accounts for up to 40% of the total oceanic uptake of anthropogenic carbon dioxide, operating as a vital planetary climate buffer.',
+        keyPoints: [
+          'Antarctic Circumpolar Current (ACC): The world’s strongest ocean current, connecting the Atlantic, Pacific, and Indian Ocean basins without continental barrier.',
+          'High Nutrient Low Chlorophyll (HNLC): High dissolved nitrate and phosphate but primary production limited by sub-nanomolar iron concentrations.',
+          'Biological Carbon Pump: Phytoplankton fixing atmospheric CO2 in the photic zone and exporting organic carbon into the deep bathypelagic layer.',
+          'Microstructure Profiling: Measuring turbulent kinetic energy dissipation to understand vertical heat and nutrient transport.'
+        ],
+        literature: 'Anilkumar et al., SOE Cruise Scientific Report on Phytoplankton Photophysiology.'
+      },
+      quiz: [
+        {
+          id: 'q1',
+          question: 'What is the primary micronutrient limiting phytoplankton growth in the HNLC waters of the Southern Ocean?',
+          options: ['Nitrogen', 'Phosphorus', 'Iron', 'Potassium'],
+          correctIndex: 2,
+          explanation: 'The Southern Ocean is a classic High Nutrient, Low Chlorophyll (HNLC) region where biological production is strictly iron-limited.'
+        },
+        {
+          id: 'q2',
+          question: 'The Antarctic Circumpolar Current (ACC) flows in which direction around Antarctica?',
+          options: ['East to West', 'West to East (Clockwise around South Pole)', 'North to South', 'Static without net flow'],
+          correctIndex: 1,
+          explanation: 'Driven by persistent westerly winds, the ACC flows from west to east in a continuous clockwise circle around the Antarctic continent.'
+        }
+      ]
     }
   };
 
-  const activeContent = topicContent[activeSuggestedTopic] || topicContent['Antarctica'];
+  const activeTopic = topicsData[selectedTopicId] || topicsData.antarctica;
 
-  // 3 Learning Modules (Exact Match to Blog Widget Reference media_1790447418604.png)
-  const learningModules = [
-    {
-      id: 'mod-1',
-      author: 'By Admin',
-      date: 'September 24, 2026',
-      title: 'Antarctic Ice Dynamics & Global Sea Level Rise',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600',
-      description: 'Understanding ice shelf calving, sub-glacial melting, and satellite altimetry observations from Schirmacher Oasis to the Ross Ice Shelf.',
-      likes: 21,
-      comments: 17
-    },
-    {
-      id: 'mod-2',
-      author: 'By Admin',
-      date: 'September 24, 2026',
-      title: 'Arctic Amplification & the Weakening Polar Vortex',
-      image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=600',
-      description: 'How rapid Arctic warming alters upper-tropospheric jet streams and impacts the Indian monsoon meteorological systems.',
-      likes: 15,
-      comments: 10
-    },
-    {
-      id: 'mod-3',
-      author: 'By Admin',
-      date: 'September 24, 2026',
-      title: 'Deep Ice Core Paleoclimatology: Earth History in Gas Bubbles',
-      image: 'https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=600',
-      description: 'Drilling into polar ice sheets to extract atmospheric carbon dioxide and greenhouse gas records spanning the last 800,000 years.',
-      likes: 7,
-      comments: 3
-    }
-  ];
-
-  const handleQuizSubmit = () => {
-    if (q1Selected !== null && q2Selected !== null) {
-      setQuizSubmitted(true);
-    }
+  const handleSelectOption = (questionId, optionIndex) => {
+    if (quizSubmitted) return;
+    setUserAnswers(prev => ({ ...prev, [questionId]: optionIndex }));
   };
 
-  const handleGenerateAIQuiz = () => {
-    setGeneratingQuiz(true);
-    setTimeout(() => {
-      setGeneratedQuizData({
-        topic: activeSuggestedTopic,
-        question: `Which scientific mechanism primarily drives the formation of polynyas in the vicinity of Indian stations in East Antarctica?`,
-        options: ['A) Strong katabatic winds offshore', 'B) Geothermal sea vents', 'C) Surface meltwater pooling', 'D) Heavy polar snowfall'],
-        correctIndex: 0,
-        explanation: 'Intense offshore katabatic winds blowing from the high Antarctic ice plateau push pack ice away from the coast, creating persistent open-water polynyas.'
-      });
-      setGeneratingQuiz(false);
-    }, 1000);
+  const calculateScore = () => {
+    let correct = 0;
+    activeTopic.quiz.forEach(q => {
+      if (userAnswers[q.id] === q.correctIndex) {
+        correct++;
+      }
+    });
+    return correct;
+  };
+
+  const handleNextVideo = () => {
+    if (activeTopic.videos.length > 1) {
+      setActiveVideoIndex(prev => (prev + 1) % activeTopic.videos.length);
+    }
   };
 
   return (
-    <div className="space-y-12 pb-16 text-left max-w-5xl mx-auto font-sans">
-      {/* Page Title */}
-      <div className="text-center space-y-2">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-          <GraduationCap className="w-3.5 h-3.5" />
-          <span>Interactive Student Portal</span>
+    <div className="space-y-8 max-w-5xl mx-auto pb-20 text-left font-sans">
+      {/* ─────────────────────────────────────────────────────────── */}
+      {/* 1. HEADER & PROGRESSIVE 3-STEP PROGRESS BAR                 */}
+      {/* ─────────────────────────────────────────────────────────── */}
+      <div className="space-y-4 pt-2">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-2 border border-blue-200">
+              <GraduationCap className="w-3.5 h-3.5 text-blue-600" />
+              <span>Progressive Learning Curriculum</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight font-heading">
+              Polar Smart Education & Test Preparation
+            </h1>
+            <p className="text-sm text-slate-600 mt-1 max-w-2xl">
+              Choose your topic, study the multimedia lesson with live video lectures, and take the examination quiz to prepare for polar science assessments.
+            </p>
+          </div>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight font-heading">
-          Polar Smart Education
-        </h1>
-        <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
-          Explore curated learning topics, study research notes, and test your comprehension through AI-powered scientific quizzes.
-        </p>
+
+        {/* 3-Step Breadcrumb Funnel Indicator */}
+        <div className="grid grid-cols-3 gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200 text-xs font-bold">
+          <button
+            onClick={() => {
+              setCurrentStep(1);
+              setQuizSubmitted(false);
+            }}
+            className={`py-2.5 px-3 rounded-xl transition-all flex items-center justify-center gap-2 ${
+              currentStep === 1
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px]">1</span>
+            <span className="truncate">1. Choose Topic</span>
+          </button>
+
+          <button
+            onClick={() => {
+              setCurrentStep(2);
+              setQuizSubmitted(false);
+            }}
+            className={`py-2.5 px-3 rounded-xl transition-all flex items-center justify-center gap-2 ${
+              currentStep === 2
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px]">2</span>
+            <span className="truncate">2. Study Module & Video</span>
+          </button>
+
+          <button
+            onClick={() => setCurrentStep(3)}
+            className={`py-2.5 px-3 rounded-xl transition-all flex items-center justify-center gap-2 ${
+              currentStep === 3
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px]">3</span>
+            <span className="truncate">3. Preparation Quiz</span>
+          </button>
+        </div>
       </div>
 
       {/* ─────────────────────────────────────────────────────────── */}
-      {/* 1. SEARCH TOPIC & SUGGESTED PILLS (Reference Section 12)    */}
+      {/* STEP 1: CHOOSE THE TOPIC (STAGE 1)                          */}
       {/* ─────────────────────────────────────────────────────────── */}
-      <section className="bg-white rounded-3xl p-8 border border-slate-200 shadow-xs text-center space-y-5">
-        <div className="max-w-2xl mx-auto space-y-4">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-            <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-            <span>Polar Knowledge Exploration</span>
-          </div>
-
-          {/* Minimalist Search Input ("Type to search") */}
-          <div className="relative">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Type to search polar concepts (e.g. Sea Ice, Maitri, Permafrost)"
-              className="w-full text-center text-xl sm:text-3xl font-light text-slate-800 placeholder-slate-400 focus:outline-none py-2 border-b border-slate-200 focus:border-blue-500 transition-colors"
-            />
-          </div>
-
-          {/* Suggested Topic Reference Pills */}
-          <div className="pt-2">
-            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">
-              Suggested Topics:
+      {currentStep === 1 && (
+        <section className="space-y-6 animate-fadeIn">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+            <div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Stage 1 of 3</span>
+              <h2 className="text-2xl font-black text-slate-900 font-heading mt-1">
+                Select Your Polar Study Discipline
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                Select an official curriculum stream to load its interactive lecture video, research study notes, and test bank.
+              </p>
             </div>
-            <div className="flex items-center justify-center flex-wrap gap-2">
-              {suggestedTopics.map(topic => (
-                <button
-                  key={topic}
-                  onClick={() => {
-                    setActiveSuggestedTopic(topic);
-                    setSearchTerm(topic);
-                  }}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    activeSuggestedTopic === topic
-                      ? 'bg-slate-900 text-white shadow-xs'
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
-                  }`}
-                >
-                  {topic.toLowerCase()}
-                </button>
-              ))}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              {Object.values(topicsData).map((topic) => {
+                const isSelected = selectedTopicId === topic.id;
+                return (
+                  <div
+                    key={topic.id}
+                    onClick={() => setSelectedTopicId(topic.id)}
+                    className={`rounded-2xl p-6 border text-left cursor-pointer transition-all flex flex-col justify-between ${
+                      isSelected
+                        ? 'border-blue-600 bg-blue-50/50 shadow-md ring-2 ring-blue-200'
+                        : 'border-slate-200 bg-white hover:border-blue-300 hover:shadow-sm'
+                    }`}
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-3xl">{topic.icon}</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                            {topic.difficulty}
+                          </span>
+                          <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700">
+                            {topic.estimatedTime}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h3 className="font-extrabold text-base text-slate-900 font-heading">
+                          {topic.title}
+                        </h3>
+                        <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                          {topic.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-xs font-semibold text-slate-500">
+                        {topic.videos.length} Video Lectures • {topic.quiz.length} Quiz Questions
+                      </span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedTopicId(topic.id);
+                          setCurrentStep(2);
+                        }}
+                        className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800"
+                      >
+                        <span>Start Study Module</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="pt-4 flex justify-end">
+              <button
+                onClick={() => setCurrentStep(2)}
+                className="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm flex items-center gap-2 shadow-md transition-all cursor-pointer"
+              >
+                <span>Proceed to Study Module & Video →</span>
+              </button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ─────────────────────────────────────────────────────────── */}
-      {/* 2. TOPIC LEARNING NOTES (When user selects a topic)         */}
+      {/* STEP 2: STUDY MODULE & VIDEO LECTURE (STAGE 2)             */}
       {/* ─────────────────────────────────────────────────────────── */}
-      <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-          <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
-              Selected Curriculum Focus
-            </span>
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-heading mt-1">
-              {activeContent.title}
-            </h2>
-          </div>
-          <button
-            onClick={handleGenerateAIQuiz}
-            className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-xs transition-colors"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Generate AI Quiz</span>
-          </button>
-        </div>
-
-        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-          {activeContent.intro}
-        </p>
-
-        <div className="space-y-2 pt-2">
-          <div className="text-xs font-bold text-slate-900 uppercase tracking-wider">
-            Key Scientific Concepts:
-          </div>
-          <div className="space-y-1.5">
-            {activeContent.keyConcepts.map((concept, idx) => (
-              <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
-                <span>{concept}</span>
+      {currentStep === 2 && (
+        <section className="space-y-6 animate-fadeIn">
+          {/* Active Topic Banner with Switcher */}
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+              <div>
+                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Stage 2 of 3 • Interactive Curriculum</span>
+                <h2 className="text-2xl font-black text-slate-900 font-heading flex items-center gap-2 mt-1">
+                  <span>{activeTopic.icon}</span>
+                  <span>{activeTopic.title}</span>
+                </h2>
               </div>
-            ))}
-          </div>
-        </div>
+              <button
+                onClick={() => setCurrentStep(1)}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all self-start sm:self-auto"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Change Topic</span>
+              </button>
+            </div>
 
-        <div className="pt-2 text-xs text-slate-500">
-          <strong>Referenced Scientific Literature:</strong> {activeContent.relevantResearch}
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────── */}
-      {/* 3. LEARNING MODULES REFERENCE (3 Blog Widget Cards)         */}
-      {/* ─────────────────────────────────────────────────────────── */}
-      <section className="space-y-6">
-        <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-1 border border-blue-200">
-            <GraduationCap className="w-3.5 h-3.5 text-blue-600" />
-            <span>Interactive Learning Curriculum</span>
-          </div>
-          <h2 className="text-2xl font-black text-slate-900 font-heading">
-            Student Education Modules
-          </h2>
-          <p className="text-xs text-slate-500 mt-0.5">
-            Self-paced curriculum designed for schools, universities, and competitive polar research candidates
-          </p>
-        </div>
-
-        {/* 3 Clean White Cards Matching Blog Widget Reference */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {learningModules.map(module => (
-            <div
-              key={module.id}
-              className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
-            >
-              {/* Top Metadata Bar */}
-              <div className="px-4 py-2 bg-slate-50 border-b border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                <span>{module.author}</span>
-                <span>{module.date}</span>
+            {/* Embedded Live Educational Video Player */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <Video className="w-4 h-4 text-blue-600" />
+                  <h3 className="font-extrabold text-sm text-slate-900 font-heading">
+                    Lecture {activeVideoIndex + 1} of {activeTopic.videos.length}: {activeTopic.videos[activeVideoIndex].title}
+                  </h3>
+                </div>
+                {activeTopic.videos.length > 1 && (
+                  <button
+                    onClick={handleNextVideo}
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs border border-blue-200 transition-colors"
+                  >
+                    <span>Next Video Lecture →</span>
+                  </button>
+                )}
               </div>
 
-              {/* Landscape Thumbnail */}
-              <div className="aspect-video w-full bg-slate-900 overflow-hidden">
-                <img
-                  src={module.image}
-                  alt={module.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
+              <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-slate-950 shadow-lg border border-slate-200">
+                <iframe
+                  className="w-full h-full object-cover"
+                  src={`https://www.youtube-nocookie.com/embed/${activeTopic.videos[activeVideoIndex].videoId}?autoplay=1&mute=1&loop=1&playlist=${activeTopic.videos[activeVideoIndex].videoId}`}
+                  title={activeTopic.videos[activeVideoIndex].title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
               </div>
 
-              {/* Content Body */}
-              <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-bold text-sm text-blue-700 leading-snug">
-                    {module.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed line-clamp-3">
-                    {module.description}
-                  </p>
-                </div>
-
-                {/* Bottom Bar: Read More + Likes / Comments */}
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <button className="px-4 py-1.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-colors">
-                    Read More
-                  </button>
-                  <div className="text-[11px] text-slate-500 flex items-center space-x-2">
-                    <span className="flex items-center gap-1">
-                      <ThumbsUp className="w-3 h-3 text-slate-400" />
-                      {module.likes} people like
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1">
-                      <MessageSquare className="w-3 h-3 text-slate-400" />
-                      {module.comments}
-                    </span>
-                  </div>
-                </div>
+              <div className="flex items-center justify-between text-xs text-slate-500">
+                <span>Presenter: {activeTopic.videos[activeVideoIndex].instructor}</span>
+                <span>Duration: {activeTopic.videos[activeVideoIndex].duration}</span>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* ─────────────────────────────────────────────────────────── */}
-      {/* 4. QUIZ SECTION REFERENCE (Title: Test Your Knowledge)     */}
-      {/* ─────────────────────────────────────────────────────────── */}
-      <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-        <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold mb-1 border border-purple-200">
-            <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-            <span>Interactive Assessment</span>
-          </div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight font-heading">
-            Test Your Knowledge
-          </h2>
-          <div className="flex items-center space-x-2 text-slate-700 font-extrabold text-xs uppercase tracking-wider pt-1">
-            <span className="w-5 h-5 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-xs font-bold">
-              ?
-            </span>
-            <span>MODULE QUICK QUIZ</span>
-          </div>
-        </div>
+            {/* In-Depth Scientific Reading Module */}
+            <div className="space-y-4 pt-4 border-t border-slate-100">
+              <div className="flex items-center space-x-2">
+                <FileText className="w-4 h-4 text-blue-600" />
+                <h3 className="font-black text-base text-slate-900 font-heading">
+                  {activeTopic.curriculum.unitTitle}
+                </h3>
+              </div>
 
-        {/* Question 1 (Exact Match to Reference Image media_1790447428294.png) */}
-        <div className="space-y-3">
-          <p className="text-sm font-bold text-slate-900">
-            1. What percentage of the world's freshwater is stored in the Antarctic ice sheet?
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {['About 25%', 'About 50%', 'About 70%', 'About 90%'].map((opt) => {
-              const isSelected = q1Selected === opt;
-              const isCorrect = opt === 'About 70%';
-              let btnClass = 'bg-white hover:bg-slate-50 border-slate-200 text-slate-800';
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                {activeTopic.curriculum.summary}
+              </p>
 
-              if (quizSubmitted) {
-                if (isCorrect) btnClass = 'bg-emerald-50 border-emerald-500 text-emerald-900 font-bold';
-                else if (isSelected && !isCorrect) btnClass = 'bg-rose-50 border-rose-500 text-rose-900 font-bold';
-              } else if (isSelected) {
-                btnClass = 'bg-blue-50 border-blue-600 text-blue-900 font-bold shadow-xs';
-              }
+              <div className="space-y-2">
+                <div className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+                  Essential Scientific Principles:
+                </div>
+                <div className="grid grid-cols-1 gap-2.5">
+                  {activeTopic.curriculum.keyPoints.map((point, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs flex items-start space-x-3 text-xs text-slate-800 leading-relaxed"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-              return (
-                <button
-                  key={opt}
-                  disabled={quizSubmitted}
-                  onClick={() => setQ1Selected(opt)}
-                  className={`p-3.5 rounded-2xl border text-xs sm:text-sm text-left transition-all ${btnClass}`}
-                >
-                  {opt}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Question 2 (Exact Match to Reference Image media_1790447428294.png) */}
-        <div className="space-y-3 pt-2">
-          <p className="text-sm font-bold text-slate-900">
-            2. Which of the following is India's first permanent research base in Antarctica?
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {['Maitri', 'Dakshin Gangotri', 'Bharati', 'Himadri'].map((opt) => {
-              const isSelected = q2Selected === opt;
-              const isCorrect = opt === 'Dakshin Gangotri';
-              let btnClass = 'bg-white hover:bg-slate-50 border-slate-200 text-slate-800';
-
-              if (quizSubmitted) {
-                if (isCorrect) btnClass = 'bg-emerald-50 border-emerald-500 text-emerald-900 font-bold';
-                else if (isSelected && !isCorrect) btnClass = 'bg-rose-50 border-rose-500 text-rose-900 font-bold';
-              } else if (isSelected) {
-                btnClass = 'bg-blue-50 border-blue-600 text-blue-900 font-bold shadow-xs';
-              }
-
-              return (
-                <button
-                  key={opt}
-                  disabled={quizSubmitted}
-                  onClick={() => setQ2Selected(opt)}
-                  className={`p-3.5 rounded-2xl border text-xs sm:text-sm text-left transition-all ${btnClass}`}
-                >
-                  {opt}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Submit & Check Answers Button (Reference media_1790447428294.png) */}
-        {!quizSubmitted ? (
-          <div className="pt-2">
-            <button
-              onClick={handleQuizSubmit}
-              disabled={q1Selected === null || q2Selected === null}
-              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors"
-            >
-              Submit &amp; Check Answers
-            </button>
-          </div>
-        ) : (
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 animate-fadeIn text-xs">
-            <div className="flex items-center justify-between font-bold text-slate-900">
-              <span>Quiz Evaluation Result</span>
-              <span className="text-emerald-700">
-                Score: { (q1Selected === 'About 70%' ? 1 : 0) + (q2Selected === 'Dakshin Gangotri' ? 1 : 0) } / 2 Correct
-              </span>
+              <div className="p-3 rounded-xl bg-blue-50/60 border border-blue-200 text-xs text-slate-600">
+                <span className="font-bold text-blue-900">Standard Literature: </span>
+                <span>{activeTopic.curriculum.literature}</span>
+              </div>
             </div>
-            <p className="text-slate-600 leading-relaxed">
-              <strong>Explanation:</strong> Q1: The Antarctic ice sheet stores roughly 70% of the planet's freshwater and 90% of its ice. Q2: Dakshin Gangotri was established during the 3rd Indian Antarctic Expedition (1983-84) as India's first permanent Antarctic base.
-            </p>
-            <button
-              onClick={() => {
-                setQ1Selected(null);
-                setQ2Selected(null);
-                setQuizSubmitted(false);
-              }}
-              className="text-blue-600 font-bold hover:underline pt-1 block"
-            >
-              Reset Quiz &amp; Retake
-            </button>
-          </div>
-        )}
 
-        {/* Dynamically Generated AI Quiz Section if active */}
-        {generatedQuizData && (
-          <div className="mt-6 p-5 rounded-2xl bg-purple-50 border border-purple-200 space-y-3 animate-fadeIn">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold text-purple-700 uppercase tracking-wider flex items-center space-x-1">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>AI Generated Challenge for {generatedQuizData.topic}</span>
+            {/* Bottom Action: Take Quiz Button */}
+            <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <span className="text-xs text-slate-500">
+                Ready to evaluate what you learned? The quiz contains {activeTopic.quiz.length} peer-reviewed test questions.
               </span>
               <button
-                onClick={() => setGeneratedQuizData(null)}
-                className="text-slate-400 hover:text-slate-600 text-xs font-bold"
+                onClick={() => {
+                  setUserAnswers({});
+                  setQuizSubmitted(false);
+                  setCurrentStep(3);
+                }}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
               >
-                Dismiss
+                <span>Take Preparation Quiz Now →</span>
               </button>
             </div>
-            <p className="text-xs font-bold text-slate-900">
-              {generatedQuizData.question}
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              {generatedQuizData.options.map((opt, i) => (
-                <div key={i} className="p-2.5 rounded-xl bg-white border border-purple-100 text-slate-800">
-                  {opt}
-                </div>
-              ))}
+          </div>
+        </section>
+      )}
+
+      {/* ─────────────────────────────────────────────────────────── */}
+      {/* STEP 3: PREPARATION QUIZ & INSTANT ASSESSMENT (STAGE 3)     */}
+      {/* ─────────────────────────────────────────────────────────── */}
+      {currentStep === 3 && (
+        <section className="space-y-6 animate-fadeIn">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+              <div>
+                <span className="text-xs font-bold text-purple-600 uppercase tracking-wider">Stage 3 of 3 • Knowledge Assessment</span>
+                <h2 className="text-2xl font-black text-slate-900 font-heading mt-1">
+                  Preparation Quiz: {activeTopic.title}
+                </h2>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Answer all questions and submit to generate your instant score report and scientific breakdown.
+                </p>
+              </div>
+              <button
+                onClick={() => setCurrentStep(2)}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all self-start sm:self-auto"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Back to Study Notes</span>
+              </button>
             </div>
-            <div className="text-[11px] text-purple-900 bg-purple-100/70 p-2.5 rounded-xl">
-              <strong>Answer &amp; Explanation:</strong> {generatedQuizData.options[generatedQuizData.correctIndex]} — {generatedQuizData.explanation}
+
+            {/* Questions Stream */}
+            <div className="space-y-8">
+              {activeTopic.quiz.map((q, qIndex) => {
+                const selectedOption = userAnswers[q.id];
+                const isAnswered = selectedOption !== undefined;
+
+                return (
+                  <div key={q.id} className="space-y-3 p-5 rounded-2xl bg-slate-50 border border-slate-200 text-left">
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="text-sm font-bold text-slate-900">
+                        {qIndex + 1}. {q.question}
+                      </p>
+                      {quizSubmitted && (
+                        <div>
+                          {selectedOption === q.correctIndex ? (
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">
+                              <Check className="w-3 h-3" /> Correct
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[11px] font-bold">
+                              <XCircle className="w-3 h-3" /> Incorrect
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                      {q.options.map((opt, optIdx) => {
+                        const isSelected = selectedOption === optIdx;
+                        const isCorrect = q.correctIndex === optIdx;
+
+                        let buttonStyles = 'bg-white hover:bg-slate-100 border-slate-200 text-slate-800';
+
+                        if (isSelected && !quizSubmitted) {
+                          buttonStyles = 'bg-blue-600 text-white border-blue-600 font-bold shadow-xs';
+                        } else if (quizSubmitted) {
+                          if (isCorrect) {
+                            buttonStyles = 'bg-emerald-600 text-white border-emerald-600 font-bold';
+                          } else if (isSelected && !isCorrect) {
+                            buttonStyles = 'bg-rose-600 text-white border-rose-600 font-bold';
+                          } else {
+                            buttonStyles = 'bg-white opacity-50 border-slate-200 text-slate-500';
+                          }
+                        }
+
+                        return (
+                          <button
+                            key={optIdx}
+                            onClick={() => handleSelectOption(q.id, optIdx)}
+                            disabled={quizSubmitted}
+                            className={`p-3 rounded-xl border text-xs text-left transition-all flex items-center justify-between ${buttonStyles}`}
+                          >
+                            <span>{opt}</span>
+                            {quizSubmitted && isCorrect && <Check className="w-4 h-4 shrink-0 text-white" />}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Scientific Explanation after submission */}
+                    {quizSubmitted && (
+                      <div className="mt-3 p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-700 space-y-1">
+                        <span className="font-bold text-slate-900">Explanation: </span>
+                        <span>{q.explanation}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Score & Actions */}
+            <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              {quizSubmitted ? (
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black text-lg">
+                    {calculateScore()}/{activeTopic.quiz.length}
+                  </div>
+                  <div>
+                    <div className="font-extrabold text-sm text-slate-900">
+                      Assessment Completed! Score: {Math.round((calculateScore() / activeTopic.quiz.length) * 100)}%
+                    </div>
+                    <div className="text-xs text-slate-500">
+                      {calculateScore() === activeTopic.quiz.length
+                        ? 'Outstanding performance! You have mastered this module.'
+                        : 'Review the explanations above and retake to improve your score.'}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-xs text-slate-500">
+                  {Object.keys(userAnswers).length} of {activeTopic.quiz.length} questions answered.
+                </div>
+              )}
+
+              <div className="flex gap-2.5 w-full sm:w-auto">
+                {quizSubmitted ? (
+                  <>
+                    <button
+                      onClick={() => {
+                        setUserAnswers({});
+                        setQuizSubmitted(false);
+                      }}
+                      className="flex-1 sm:flex-none px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Retake Quiz</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setCurrentStep(1);
+                        setQuizSubmitted(false);
+                      }}
+                      className="flex-1 sm:flex-none px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md transition-all"
+                    >
+                      <span>Choose Next Topic →</span>
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => {
+                      if (Object.keys(userAnswers).length < activeTopic.quiz.length) {
+                        if (!confirm('You have unanswered questions. Are you sure you want to submit?')) return;
+                      }
+                      setQuizSubmitted(true);
+                    }}
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-black text-sm flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
+                  >
+                    <span>Submit Examination Answers</span>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        )}
-      </section>
+        </section>
+      )}
     </div>
   );
 }

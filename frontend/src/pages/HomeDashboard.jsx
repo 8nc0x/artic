@@ -19,9 +19,10 @@ import {
 } from 'lucide-react';
 import MediaCard from '../components/MediaCard';
 import TourGuide from '../components/TourGuide';
+import OpenPolarMap from '../components/OpenPolarMap';
 
 export default function HomeDashboard() {
-  const [activeGraphNode, setActiveGraphNode] = useState('NCPOR');
+  const [activeGraphNode, setActiveGraphNode] = useState(null); // Disconnected by default
   const [selectedNodeDetails, setSelectedNodeDetails] = useState(null);
   const [hoveredStation, setHoveredStation] = useState(null);
   const [selectedMediaModal, setSelectedMediaModal] = useState(null);
@@ -54,7 +55,7 @@ export default function HomeDashboard() {
   ];
 
   // ─────────────────────────────────────────────────────────────
-  // 2. KNOWLEDGE GRAPH NODES (Meaningful scientific relationships)
+  // 2. KNOWLEDGE GRAPH NODES (Initially Disconnected, Real Relational Data)
   // ─────────────────────────────────────────────────────────────
   const graphNodes = [
     {
@@ -66,62 +67,74 @@ export default function HomeDashboard() {
       y: 48,
       size: 'w-24 h-24 text-xs',
       description: 'National Centre for Polar & Ocean Research, MoES Goa. Premier autonomous institute orchestrating Indian Polar Expeditions.',
-      links: ['Antarctica', 'Arctic', 'Himalayas', 'Southern Ocean', '44th IAE']
+      links: ['Antarctica', 'Arctic', 'Himansh', '44th IAE', 'IndARC'],
+      connectedNodeIds: ['Antarctica', 'Arctic', 'Himansh', '44th IAE', 'IndARC'],
+      recordUrl: '/explore?q=NCPOR'
     },
     {
       id: 'Antarctica',
-      label: 'Antarctica',
+      label: 'Antarctica Sector',
       category: 'Location',
       color: 'bg-teal-500 ring-teal-200',
       x: 22,
       y: 30,
       size: 'w-20 h-20 text-[11px]',
       description: 'Dronning Maud Land & Larsemann Hills research sectors covering Schirmacher Oasis to the South Pole.',
-      links: ['Maitri', 'Bharati', 'Cryosphere', 'Dr. Thamban']
+      links: ['Maitri', 'Bharati', 'NCPOR', '44th IAE'],
+      connectedNodeIds: ['Maitri', 'Bharati', 'NCPOR', '44th IAE'],
+      recordUrl: '/explore?q=Antarctica'
     },
     {
       id: 'Arctic',
-      label: 'Arctic',
+      label: 'Arctic Svalbard',
       category: 'Location',
       color: 'bg-sky-500 ring-sky-200',
       x: 78,
       y: 28,
       size: 'w-18 h-18 text-[11px]',
       description: 'Ny-Ålesund, Svalbard international research settlement (79°N) focusing on Arctic amplification.',
-      links: ['Himadri', 'IndARC', 'Atmosphere']
+      links: ['Himadri', 'IndARC', 'NCPOR'],
+      connectedNodeIds: ['Himadri', 'IndARC', 'NCPOR'],
+      recordUrl: '/explore?q=Arctic'
     },
     {
       id: 'Maitri',
-      label: 'Maitri Base',
+      label: 'Maitri Station',
       category: 'Station',
       color: 'bg-amber-600 ring-amber-200',
       x: 12,
       y: 62,
       size: 'w-16 h-16 text-[10px]',
-      description: 'India’s inland Antarctic station commissioned in 1989 in Schirmacher Oasis (70°45′S, 11°44′E).',
-      links: ['Antarctica', 'Meteorology']
+      description: 'India’s inland Antarctic station commissioned in 1989 in Schirmacher Oasis (70°45′S, 11°44′E). Logs continuous AWS meteorology.',
+      links: ['Antarctica', 'NCPOR', '44th IAE'],
+      connectedNodeIds: ['Antarctica', 'NCPOR', '44th IAE'],
+      recordUrl: '/explore?q=Maitri'
     },
     {
       id: 'Bharati',
-      label: 'Bharati Base',
+      label: 'Bharati Station',
       category: 'Station',
       color: 'bg-orange-600 ring-orange-200',
       x: 35,
       y: 78,
       size: 'w-16 h-16 text-[10px]',
-      description: 'State-of-the-art green research base in Larsemann Hills, East Antarctica (69°24′S, 76°11′E).',
-      links: ['Antarctica', 'Ice Cores']
+      description: 'State-of-the-art green research base in Larsemann Hills, East Antarctica (69°24′S, 76°11′E). Specializes in permafrost boreholes.',
+      links: ['Antarctica', 'NCPOR', '44th IAE'],
+      connectedNodeIds: ['Antarctica', 'NCPOR', '44th IAE'],
+      recordUrl: '/explore?q=Bharati'
     },
     {
       id: 'Himadri',
-      label: 'Himadri Base',
+      label: 'Himadri Station',
       category: 'Station',
       color: 'bg-cyan-600 ring-cyan-200',
       x: 88,
       y: 60,
       size: 'w-16 h-16 text-[10px]',
       description: 'India’s permanent Arctic research station established in 2008 at Ny-Ålesund, Svalbard, Norway.',
-      links: ['Arctic', 'IndARC']
+      links: ['Arctic', 'IndARC', 'NCPOR'],
+      connectedNodeIds: ['Arctic', 'IndARC', 'NCPOR'],
+      recordUrl: '/explore?q=Himadri'
     },
     {
       id: 'Himansh',
@@ -131,19 +144,23 @@ export default function HomeDashboard() {
       x: 65,
       y: 80,
       size: 'w-16 h-16 text-[10px]',
-      description: 'High-altitude research facility in Chandra Basin, Spiti Valley, Himachal Pradesh (4,000m ASL).',
-      links: ['Himalayas', 'Glaciology']
+      description: 'High-altitude research facility in Chandra Basin, Spiti Valley, Himachal Pradesh (4,050m ASL). Tracks benchmark glacier ablation.',
+      links: ['NCPOR'],
+      connectedNodeIds: ['NCPOR'],
+      recordUrl: '/explore?q=Himansh'
     },
     {
       id: '44th IAE',
-      label: '44th IAE',
+      label: '44th IAE Mission',
       category: 'Expedition',
       color: 'bg-indigo-600 ring-indigo-200',
       x: 36,
       y: 18,
       size: 'w-16 h-16 text-[10px]',
-      description: '44th Indian Antarctic Expedition (2024–2025) conducting deep ice-shelf drilling & atmospheric profiling.',
-      links: ['NCPOR', 'Antarctica', 'MV Golovnin']
+      description: '44th Indian Antarctic Expedition conducting deep ice-shelf cavity telemetry & atmospheric profiling at Prydz Bay.',
+      links: ['NCPOR', 'Antarctica', 'Maitri', 'Bharati'],
+      connectedNodeIds: ['NCPOR', 'Antarctica', 'Maitri', 'Bharati'],
+      recordUrl: '/explore?q=44th+Indian+Antarctic+Expedition'
     },
     {
       id: 'IndARC',
@@ -153,8 +170,10 @@ export default function HomeDashboard() {
       x: 82,
       y: 78,
       size: 'w-16 h-16 text-[10px]',
-      description: 'India’s first multi-sensor subsurface hydrographic observatory anchored in Kongsfjorden fjord, Svalbard.',
-      links: ['Arctic', 'Himadri']
+      description: 'India’s first multi-sensor subsurface hydrographic observatory anchored at 192m depth in Kongsfjorden fjord, Svalbard.',
+      links: ['Arctic', 'Himadri', 'NCPOR'],
+      connectedNodeIds: ['Arctic', 'Himadri', 'NCPOR'],
+      recordUrl: '/explore?q=IndARC'
     }
   ];
 
@@ -222,21 +241,27 @@ export default function HomeDashboard() {
   const videoMediaCards = [
     {
       id: 'video-1',
-      title: 'Launching High-Altitude Radiosonde Weather Balloon at Maitri Base',
-      description: 'IMD and NCPOR atmospheric scientists releasing a weather balloon to measure sub-zero vertical wind vectors and ozone profiles.',
+      title: 'Indian Antarctic Program: Science & Operations at Maitri & Bharati',
+      description: 'Official Ministry of Earth Sciences (MoES) documentary highlighting winter-over research, balloon launches, and polar station operations.',
       url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200',
+      youtubeEmbedUrl: 'https://www.youtube-nocookie.com/embed/5F2v_p-h1-c',
+      youtubeId: '5F2v_p-h1-c',
+      youtubeUrl: 'https://www.youtube.com/watch?v=5F2v_p-h1-c',
       duration: '03:45',
       resolution: '4K 60fps',
       location: 'Antarctica',
       station: 'Maitri Base',
       expedition: '43rd IAE',
-      author: 'IMD Polar Meteorological Unit'
+      author: 'NCPOR & MoES Media Division'
     },
     {
       id: 'video-2',
-      title: 'Kongsfjorden Fjord Hydrographic Mooring Deployment (IndARC)',
-      description: 'Marine division engineers lowering the subsurface multi-sensor acoustic mooring to monitor Atlantic water incursions.',
+      title: 'IndARC — India’s Underwater Polar Observatory in Kongsfjorden, Arctic',
+      description: 'Marine division engineers lowering the subsurface multi-sensor acoustic mooring at 192m depth to monitor Atlantic water incursions.',
       url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200',
+      youtubeEmbedUrl: 'https://www.youtube-nocookie.com/embed/lA8v2Gq5gD0',
+      youtubeId: 'lA8v2Gq5gD0',
+      youtubeUrl: 'https://www.youtube.com/watch?v=lA8v2Gq5gD0',
       duration: '05:12',
       resolution: '1080p 60fps',
       location: 'Arctic',
@@ -424,35 +449,77 @@ export default function HomeDashboard() {
           {/* Subtle Grid Dots */}
           <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-70" />
 
-          {/* Connected SVG Lines with Arrows */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-slate-300 stroke-[1.5]">
-            <line x1="50%" y1="48%" x2="22%" y2="30%" />
-            <line x1="50%" y1="48%" x2="78%" y2="28%" />
-            <line x1="22%" y1="30%" x2="12%" y2="62%" />
-            <line x1="22%" y1="30%" x2="35%" y2="78%" />
-            <line x1="78%" y1="28%" x2="88%" y2="60%" />
-            <line x1="78%" y1="28%" x2="82%" y2="78%" />
-            <line x1="50%" y1="48%" x2="65%" y2="80%" />
-            <line x1="50%" y1="48%" x2="36%" y2="18%" />
+          {/* Dynamic Animated Connection Lines (Rendered ONLY when a node is clicked) */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none">
+            {activeGraphNode && (() => {
+              const activeNode = graphNodes.find(n => n.id === activeGraphNode);
+              if (!activeNode || !activeNode.connectedNodeIds) return null;
+              
+              return activeNode.connectedNodeIds.map(targetId => {
+                const targetNode = graphNodes.find(n => n.id === targetId);
+                if (!targetNode) return null;
+                return (
+                  <g key={`${activeNode.id}-${targetNode.id}`}>
+                    {/* Glowing wider shadow line */}
+                    <line
+                      x1={`${activeNode.x}%`}
+                      y1={`${activeNode.y}%`}
+                      x2={`${targetNode.x}%`}
+                      y2={`${targetNode.y}%`}
+                      stroke="#38bdf8"
+                      strokeWidth="5"
+                      strokeOpacity="0.25"
+                      strokeLinecap="round"
+                    />
+                    {/* Animated pulsed connection line */}
+                    <line
+                      x1={`${activeNode.x}%`}
+                      y1={`${activeNode.y}%`}
+                      x2={`${targetNode.x}%`}
+                      y2={`${targetNode.y}%`}
+                      stroke="#0284c7"
+                      strokeWidth="2.5"
+                      strokeDasharray="6 4"
+                      strokeLinecap="round"
+                    >
+                      <animate attributeName="stroke-dashoffset" values="20;0" dur="1s" repeatCount="indefinite" />
+                    </line>
+                  </g>
+                );
+              });
+            })()}
           </svg>
 
           {/* Graph Nodes */}
-          {graphNodes.map((node) => (
-            <button
-              key={node.id}
-              onClick={() => {
-                setActiveGraphNode(node.id);
-                setSelectedNodeDetails(node);
-              }}
-              style={{ top: `${node.y}%`, left: `${node.x}%` }}
-              className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-full text-white font-bold flex items-center justify-center shadow-md transition-all hover:scale-115 active:scale-95 cursor-pointer ring-4 ${node.size} ${node.color} ${
-                activeGraphNode === node.id ? 'scale-115 ring-8 ring-blue-400 z-20 shadow-xl' : 'z-10'
-              }`}
-              title={`${node.label} (${node.category})`}
-            >
-              <span className="text-center px-1 leading-tight">{node.label}</span>
-            </button>
-          ))}
+          {graphNodes.map((node) => {
+            const isSelected = activeGraphNode === node.id;
+            const isConnected = activeGraphNode && graphNodes.find(n => n.id === activeGraphNode)?.connectedNodeIds?.includes(node.id);
+            return (
+              <button
+                key={node.id}
+                onClick={() => {
+                  if (activeGraphNode === node.id) {
+                    setActiveGraphNode(null);
+                    setSelectedNodeDetails(null);
+                  } else {
+                    setActiveGraphNode(node.id);
+                    setSelectedNodeDetails(node);
+                  }
+                }}
+                style={{ top: `${node.y}%`, left: `${node.x}%` }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-full text-white font-bold flex items-center justify-center shadow-md transition-all cursor-pointer ${node.size} ${node.color} ${
+                  isSelected
+                    ? 'scale-125 ring-8 ring-blue-500 z-30 shadow-2xl'
+                    : isConnected
+                    ? 'scale-110 ring-4 ring-sky-400 z-20 shadow-lg animate-pulse'
+                    : 'opacity-90 hover:opacity-100 hover:scale-105 z-10'
+                }`}
+                title={`${node.label} (${node.category})`}
+              >
+                <span className="text-center px-1 leading-tight">{node.label}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Selected Node Details Drawer / Card */}
@@ -489,16 +556,20 @@ export default function HomeDashboard() {
 
             <div className="flex items-center space-x-2 flex-shrink-0 self-end sm:self-center">
               <button
-                onClick={() => setSelectedNodeDetails(null)}
+                onClick={() => {
+                  setSelectedNodeDetails(null);
+                  setActiveGraphNode(null);
+                }}
                 className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-200"
               >
                 <X className="w-4 h-4" />
               </button>
               <Link
-                to={`/explore?q=${encodeURIComponent(selectedNodeDetails.label)}`}
-                className="px-3.5 py-1.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 shadow-xs transition-colors"
+                to={selectedNodeDetails.recordUrl || `/explore?q=${encodeURIComponent(selectedNodeDetails.label)}`}
+                className="px-3.5 py-1.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 shadow-xs transition-colors flex items-center space-x-1"
               >
-                Browse Records
+                <span>Browse Records</span>
+                <ExternalLink className="w-3 h-3 ml-1" />
               </Link>
             </div>
           </div>
@@ -637,53 +708,21 @@ export default function HomeDashboard() {
           ))}
         </div>
 
-        {/* Global Terrain Map with Interactive Station Pins */}
-        <div className="pt-4 border-t border-slate-800">
-          <div className="flex items-center justify-between mb-3 text-xs">
-            <span className="font-bold text-slate-300 uppercase tracking-wider">
-              Geographic Deployment Map
+        {/* Live Geographic Deployment Map (OpenStreetMap & Leaflet with Station Telemetry) */}
+        <div className="pt-6 border-t border-slate-800 space-y-3">
+          <div className="flex items-center justify-between text-xs">
+            <span className="font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-2">
+              <MapPin className="w-4 h-4 text-sky-400" />
+              <span>Live Geographic & Outpost Deployment Map (OpenStreetMap)</span>
             </span>
-            <span className="text-slate-400 text-[11px]">
-              Hover pin to view station details
+            <span className="text-emerald-400 font-mono text-[11px] flex items-center space-x-1">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>4 Active Polar Observatories</span>
             </span>
           </div>
 
-          <div className="relative w-full h-56 sm:h-64 rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden flex items-center justify-center">
-            {/* World Map Background Graphic */}
-            <img
-              src="https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=1400"
-              alt="World Polar Terrain Map"
-              className="w-full h-full object-cover opacity-25 filter grayscale contrast-125"
-            />
-            <div className="absolute inset-0 bg-radial-at-c from-transparent via-slate-950/70 to-slate-950" />
-
-            {/* Station Pins */}
-            {polarStations.map((station) => (
-              <div
-                key={station.id}
-                style={{ top: `${station.mapY}%`, left: `${station.mapX}%` }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 z-20 group"
-                onMouseEnter={() => setHoveredStation(station)}
-                onMouseLeave={() => setHoveredStation(null)}
-              >
-                <div className="relative cursor-pointer">
-                  <div className="w-4 h-4 rounded-full bg-rose-500 ring-4 ring-rose-400/40 animate-ping absolute inset-0" />
-                  <div className="w-4 h-4 rounded-full bg-rose-600 border border-white flex items-center justify-center shadow-lg">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                  </div>
-                </div>
-
-                {/* Hover Tooltip */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden group-hover:block z-30 w-48 bg-slate-900/95 backdrop-blur-md text-white rounded-xl p-2.5 shadow-xl border border-slate-700 text-left pointer-events-none">
-                  <div className="font-bold text-xs text-sky-300">{station.station}</div>
-                  <div className="text-[10px] text-slate-300">{station.region}</div>
-                  <div className="text-xs font-black text-rose-400 mt-1">{station.temp}</div>
-                  <div className="text-[9px] text-emerald-400 font-medium">{station.condition}</div>
-                  <div className="text-[8px] text-slate-500 mt-0.5">{station.timestamp}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Real Leaflet OpenStreetMap View */}
+          <OpenPolarMap />
         </div>
       </section>
 

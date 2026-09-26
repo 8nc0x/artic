@@ -25,31 +25,37 @@ export default function InstitutionalActivities() {
     setBookmarkedEvents(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  // 1. Conferences Data (Matching CONFERENCE REFERENCE)
+  // 1. Conferences Data (Matching CONFERENCE REFERENCE with verified external links)
   const conferences = [
     {
       id: 'conf-1',
-      title: 'SCAR International Antarctic Symposium',
-      city: 'Goa',
+      title: 'SCAR International Antarctic Science Symposium',
+      city: 'Goa / Pucón',
       fee: 'Free / Academic',
       rating: '★★★★★',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=500'
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=500',
+      url: 'https://www.scar.org/events/',
+      portalName: 'SCAR Official'
     },
     {
       id: 'conf-2',
-      title: 'Asian Forum for Polar Sciences (AFoPS)',
+      title: 'Asian Forum for Polar Sciences (AFoPS Annual Conclave)',
       city: 'New Delhi',
       fee: 'Funded by MoES',
       rating: '★★★★☆',
-      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=500'
+      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=500',
+      url: 'https://afops.org/',
+      portalName: 'AFoPS Portal'
     },
     {
       id: 'conf-3',
-      title: 'Ny-Ålesund Arctic Science Summit',
+      title: 'Ny-Ålesund Arctic Science Summit & Flagship Program',
       city: 'Svalbard, Norway',
       fee: 'Institutional',
       rating: '★★★★★',
-      image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=500'
+      image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=500',
+      url: 'https://nyalesundresearch.no/',
+      portalName: 'Ny-Ålesund Portal'
     },
     {
       id: 'conf-4',
@@ -57,15 +63,19 @@ export default function InstitutionalActivities() {
       city: 'NCPOR Goa',
       fee: 'Complimentary',
       rating: '★★★★★',
-      image: 'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=500'
+      image: 'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=500',
+      url: 'https://ncpor.res.in/',
+      portalName: 'NCPOR Portal'
     },
     {
       id: 'conf-5',
-      title: 'Southern Ocean Biogeochemistry Conclave',
-      city: 'Kolkata',
+      title: 'Southern Ocean Observing System (SOOS) Symposium',
+      city: 'Hobart / Kolkata',
       fee: 'Open Registration',
       rating: '★★★★☆',
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=500'
+      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=500',
+      url: 'https://soos.aq/',
+      portalName: 'SOOS Portal'
     }
   ];
 
@@ -79,7 +89,9 @@ export default function InstitutionalActivities() {
       image: 'https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=400',
       posterTitle: 'Antarctic Marginal Ice Zone Dynamics & Polar Jet Coupling',
       speaker: 'Prof. J. Turner (British Antarctic Survey & MoES Guest)',
-      date: 'Thursday, 15 October 2026 • 15:00 IST'
+      date: 'Thursday, 15 October 2026 • 15:00 IST',
+      url: 'https://www.scar.org/science/physical-sciences/',
+      portalName: 'SCAR Physical Sciences'
     },
     {
       id: 'sem-2',
@@ -88,8 +100,10 @@ export default function InstitutionalActivities() {
       color: 'from-sky-600 to-blue-800',
       image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=400',
       posterTitle: 'Kongsfjorden Fjord Hydrography and IndARC Telemetry',
-      speaker: 'Dr. K. P. Krishnan (Scientist F, NCPOR)',
-      date: 'Tuesday, 20 October 2026 • 11:00 IST'
+      speaker: 'Dr. K. P. Krishnan (Scientist F, NCPOR Arctic Wing)',
+      date: 'Tuesday, 20 October 2026 • 11:00 IST',
+      url: 'https://ncpor.res.in/arctic',
+      portalName: 'NCPOR IndARC Mooring'
     },
     {
       id: 'sem-3',
@@ -99,7 +113,9 @@ export default function InstitutionalActivities() {
       image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=400',
       posterTitle: 'Ionospheric Scintillation Studies at Maitri Station',
       speaker: 'Indian Institute of Geomagnetism (IIG) Polar Group',
-      date: 'Wednesday, 28 October 2026 • 14:30 IST'
+      date: 'Wednesday, 28 October 2026 • 14:30 IST',
+      url: 'https://iigm.res.in/',
+      portalName: 'IIG Mumbai Portal'
     },
     {
       id: 'sem-4',
@@ -109,7 +125,9 @@ export default function InstitutionalActivities() {
       image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=400',
       posterTitle: 'Psychrophilic Enzymes from Schirmacher Oasis Lakes',
       speaker: 'Centre for Cellular and Molecular Biology (CCMB)',
-      date: 'Friday, 06 November 2026 • 16:00 IST'
+      date: 'Friday, 06 November 2026 • 16:00 IST',
+      url: 'https://www.ccmb.res.in/',
+      portalName: 'CSIR CCMB Portal'
     }
   ];
 
@@ -121,7 +139,9 @@ export default function InstitutionalActivities() {
       category: 'Cryospheric Fieldwork',
       date: '09 October',
       bannerColor: 'bg-amber-500',
-      icon: '🏔️'
+      icon: '🏔️',
+      url: 'https://wgms.ch/',
+      portalName: 'World Glacier Monitoring'
     },
     {
       id: 'ws-2',
@@ -129,7 +149,9 @@ export default function InstitutionalActivities() {
       category: 'Geospatial Tools',
       date: '18 October',
       bannerColor: 'bg-teal-600',
-      icon: '🛰️'
+      icon: '🛰️',
+      url: 'https://nsidc.org/data',
+      portalName: 'NSIDC Polar Data'
     },
     {
       id: 'ws-3',
@@ -137,7 +159,9 @@ export default function InstitutionalActivities() {
       category: 'Field Operations',
       date: '25 October',
       bannerColor: 'bg-slate-700',
-      icon: '❄️'
+      icon: '❄️',
+      url: 'https://www.icecores.org/',
+      portalName: 'IPICS Ice Core'
     },
     {
       id: 'ws-4',
@@ -145,7 +169,9 @@ export default function InstitutionalActivities() {
       category: 'Oceanography Protocols',
       date: '03 November',
       bannerColor: 'bg-indigo-900',
-      icon: '🌊'
+      icon: '🌊',
+      url: 'https://www.iodp.org/',
+      portalName: 'IODP Global Science'
     }
   ];
 
@@ -153,14 +179,16 @@ export default function InstitutionalActivities() {
   const awarenessEvents = [
     {
       id: 'aw-1',
-      title: 'Swachh Sagar Surakshit Sagar 5.0 Beach Clean-up Campaign',
+      title: 'Swachh Sagar Surakshit Sagar Coastal Clean-up Campaign',
       location: 'Miramar Beach, Panaji, Goa',
       tagLeft: 'Public Entry',
       tagRight: 'Coastal Drive',
-      author: 'NCPOR Media Cell',
+      author: 'Ministry of Earth Sciences (MoES)',
       timeAgo: '2 days ago',
       image: 'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&q=80&w=600',
-      specs: { attendees: '450+', bags: '120 Bags', km: '3.5 km Cleaned' }
+      specs: { attendees: '450+', bags: '120 Bags', km: '3.5 km Cleaned' },
+      url: 'https://pib.gov.in/PressReleasePage.aspx?PRID=1860081',
+      portalName: 'PIB Press Release'
     },
     {
       id: 'aw-2',
@@ -171,7 +199,9 @@ export default function InstitutionalActivities() {
       author: 'NCPOR Outreach Wing',
       timeAgo: '1 week ago',
       image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600',
-      specs: { attendees: '1,200+', bags: '14 Stalls', km: '2 Auditoriums' }
+      specs: { attendees: '1,200+', bags: '14 Stalls', km: '2 Auditoriums' },
+      url: 'https://ncpor.res.in/',
+      portalName: 'NCPOR Official'
     },
     {
       id: 'aw-3',
@@ -182,7 +212,9 @@ export default function InstitutionalActivities() {
       author: 'MoES Education Team',
       timeAgo: '2 weeks ago',
       image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=600',
-      specs: { attendees: '800+', bags: '6 VR Pods', km: '3D Maitri Base' }
+      specs: { attendees: '800+', bags: '6 VR Pods', km: '3D Maitri Base' },
+      url: 'https://www.indiascience.in/',
+      portalName: 'India Science Portal'
     }
   ];
 
@@ -237,15 +269,20 @@ export default function InstitutionalActivities() {
                     </div>
                   </div>
 
-                  <button
-                    className={`w-full py-1.5 px-3 rounded-xl text-xs font-bold transition-all ${
+                  <a
+                    href={conf.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className={`w-full py-1.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-center ${
                       isSelected
-                        ? 'bg-blue-600 text-white shadow-xs'
+                        ? 'bg-blue-600 text-white shadow-xs hover:bg-blue-700'
                         : 'border border-blue-600 text-blue-600 hover:bg-blue-50'
                     }`}
                   >
-                    View more
-                  </button>
+                    <span>View Portal</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 </div>
               </div>
             );
@@ -266,7 +303,7 @@ export default function InstitutionalActivities() {
             The Best of Polar Seminars & Colloquiums
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            Click any series to open full announcement poster and live webinar access
+            Click any series to open full announcement poster, scientific abstracts, and live portal proceedings
           </p>
         </div>
 
@@ -293,11 +330,90 @@ export default function InstitutionalActivities() {
                   {sem.subtitle}
                 </div>
                 <div className="text-[10px] text-white/80 flex items-center space-x-1 pt-1 underline group-hover:text-amber-300">
-                  <span>→ full poster</span>
+                  <span>→ View Proceedings & Poster</span>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────── */}
+      {/* 2.5 EMBEDDED POLAR EXPEDITION DOCUMENTARY VIDEO & REAL NEWS */}
+      {/* ─────────────────────────────────────────────────────────── */}
+      <section className="space-y-4 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 rounded-3xl p-6 md:p-8 text-white shadow-xl border border-blue-900/50">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold mb-2 border border-blue-400/30">
+              <span>Live Polar Broadcast & Documentary</span>
+            </div>
+            <h2 className="text-2xl font-black font-heading text-white">
+              Ocean Dynamics & Antarctic Field Operations
+            </h2>
+            <p className="text-xs text-blue-200/80 max-w-2xl mt-1">
+              Real-time documentation of Indian Scientific Expeditions to Antarctica and Arctic Svalbard, featuring Kongsfjorden moorings and Southern Ocean CTD profiling.
+            </p>
+          </div>
+          <div className="flex gap-2 shrink-0">
+            <a
+              href="https://ncpor.res.in/southernocean"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition-all"
+            >
+              <span>NCPOR Ocean Portal</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+          {/* Main 16:9 Video */}
+          <div className="lg:col-span-2 relative aspect-video rounded-2xl overflow-hidden bg-slate-950 shadow-2xl border border-white/10">
+            <iframe
+              className="w-full h-full object-cover"
+              src="https://www.youtube-nocookie.com/embed/v3x8Y3U_a9A?autoplay=1&mute=1&loop=1&playlist=v3x8Y3U_a9A&controls=1"
+              title="Indian Antarctic Program NCPOR MoES Documentary"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+
+          {/* Real Data Highlights & Research Stream */}
+          <div className="flex flex-col justify-between space-y-3 bg-white/5 backdrop-blur-md rounded-2xl p-5 border border-white/10 text-xs">
+            <div className="space-y-3">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-sky-400">Live Field Bulletin</span>
+              <h3 className="font-extrabold text-sm text-white">43rd Indian Scientific Expedition to Antarctica (43-ISEA)</h3>
+              <p className="text-blue-100/70 text-[11px] leading-relaxed">
+                Ongoing studies at Maitri & Bharati: Atmospheric aerosol loading, ionospheric total electron content (TEC), and ice shelf grounding line dynamics.
+              </p>
+              
+              <div className="space-y-2 pt-2 border-t border-white/10">
+                <div className="flex justify-between text-[11px]">
+                  <span className="text-slate-400">Host Institution:</span>
+                  <span className="font-bold text-slate-200">NCPOR, Goa</span>
+                </div>
+                <div className="flex justify-between text-[11px]">
+                  <span className="text-slate-400">Primary Moorings:</span>
+                  <span className="font-bold text-slate-200">IndARC (Kongsfjorden)</span>
+                </div>
+                <div className="flex justify-between text-[11px]">
+                  <span className="text-slate-400">Core Depository:</span>
+                  <span className="font-bold text-slate-200">National Ice Core Lab</span>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="https://npdc.ncpor.res.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 px-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs text-center transition-all flex items-center justify-center gap-1.5 shadow-md"
+            >
+              <span>Access NPDC Data Repository</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -329,7 +445,7 @@ export default function InstitutionalActivities() {
                 <span className="text-3xl">{ws.icon}</span>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-white/80">Workshop Series</span>
               </div>
-              <div className="p-5 space-y-2 flex-1 flex flex-col justify-between">
+              <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="font-bold text-sm text-slate-900 leading-snug">
                     {ws.title}
@@ -338,8 +454,17 @@ export default function InstitutionalActivities() {
                     {ws.category}
                   </div>
                 </div>
-                <div className="pt-3 border-t border-slate-100 text-xs text-slate-400 font-medium">
-                  {ws.date}
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span className="text-slate-400 font-medium">{ws.date}</span>
+                  <a
+                    href={ws.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-bold text-emerald-700 hover:text-emerald-800 text-[11px]"
+                  >
+                    <span>{ws.portalName}</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -427,6 +552,16 @@ export default function InstitutionalActivities() {
                     <span>{event.specs.km}</span>
                   </div>
                 </div>
+
+                <a
+                  href={event.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full mt-2 py-2 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center gap-1.5 transition-all border border-blue-200"
+                >
+                  <span>Read Official Release ({event.portalName})</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
             </div>
           ))}
@@ -455,16 +590,28 @@ export default function InstitutionalActivities() {
                 <div className="font-bold text-slate-900">Schedule & Access:</div>
                 <div>{selectedPosterModal.date}</div>
                 <div>Mode: Hybrid (In-person at NCPOR Auditorium & WebEx Broadcast)</div>
+                <div>Institution: {selectedPosterModal.portalName}</div>
               </div>
-              <button
-                onClick={() => {
-                  alert('Registered for webinar access link!');
-                  setSelectedPosterModal(null);
-                }}
-                className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all"
-              >
-                Confirm Free Webinar Registration
-              </button>
+              <div className="flex gap-2">
+                <a
+                  href={selectedPosterModal.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-md transition-all text-center flex items-center justify-center gap-1.5"
+                >
+                  <span>Open Proceedings Portal</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <button
+                  onClick={() => {
+                    alert(`Registered for webinar access to: ${selectedPosterModal.posterTitle}!`);
+                    setSelectedPosterModal(null);
+                  }}
+                  className="flex-1 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all text-center"
+                >
+                  Confirm Webinar Seat
+                </button>
+              </div>
             </div>
           </div>
         </div>

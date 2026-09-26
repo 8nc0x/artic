@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PolarConnectLogo from './PolarConnectLogo';
 import {
   Compass,
   MapPin,
@@ -20,17 +21,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Column 1: Organization & Branding */}
           <div className="space-y-4 md:col-span-1">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-sky-400 p-0.5 flex items-center justify-center shadow-lg shadow-blue-900/30">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <span className="text-sm select-none">❄️</span>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-black tracking-tight text-white font-heading">NCPOR</h3>
-                <p className="text-[10px] text-sky-400 font-medium tracking-tight">Ministry of Earth Sciences</p>
-              </div>
-            </div>
+            <PolarConnectLogo size="md" isDark={true} />
             <p className="text-xs text-slate-400 leading-relaxed">
               National Centre for Polar and Ocean Research is India's premier R&amp;D institution responsible for the country's research activities in the Polar and Southern Ocean realms.
             </p>
