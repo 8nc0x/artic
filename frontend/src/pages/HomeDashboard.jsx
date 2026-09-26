@@ -1,784 +1,729 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
-  Search,
-  Sparkles,
-  ArrowRight,
-  Database,
-  Share2,
-  FileText,
   Compass,
-  ChevronRight,
+  ArrowRight,
+  Share2,
   MapPin,
   Play,
-  Maximize2,
-  GraduationCap,
-  HelpCircle,
-  BookOpen,
-  Radio,
-  Image as ImageIcon,
-  Video,
-  Download,
-  Check
+  Thermometer,
+  Wind,
+  Layers,
+  Sparkles,
+  ExternalLink,
+  ChevronRight,
+  Info,
+  Calendar,
+  User,
+  X
 } from 'lucide-react';
-import FormattedMarkdown from '../components/FormattedMarkdown';
+import MediaCard from '../components/MediaCard';
+import TourGuide from '../components/TourGuide';
 
 export default function HomeDashboard() {
-
-  const [searchQuery, setSearchQuery] = useState('');
-  const [knowledgeTab, setKnowledgeTab] = useState('datasets'); // 'research' | 'publications' | 'datasets'
-  const [datasets, setDatasets] = useState([]);
-  const [publications, setPublications] = useState([]);
-  const [reports, setReports] = useState([]);
-  const [mediaItems, setMediaItems] = useState([]);
-  const [selectedMedia, setSelectedMedia] = useState(null);
-  const [selectedSummary, setSelectedSummary] = useState(null);
+  const [activeGraphNode, setActiveGraphNode] = useState('NCPOR');
+  const [selectedNodeDetails, setSelectedNodeDetails] = useState(null);
+  const [hoveredStation, setHoveredStation] = useState(null);
+  const [selectedMediaModal, setSelectedMediaModal] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Fetch authentic data from database
-    fetch('/api/datasets?limit=4')
-      .then(r => r.json())
-      .then(d => d.success && setDatasets(d.items || []));
-
-    fetch('/api/publications?limit=4')
-      .then(r => r.json())
-      .then(d => d.success && setPublications(d.items || []));
-
-    fetch('/api/reports?limit=4')
-      .then(r => r.json())
-      .then(d => d.success && setReports(d.items || []));
-
-    fetch('/api/media?limit=6')
-      .then(r => r.json())
-      .then(d => d.success && setMediaItems(d.items || []));
-  }, []);
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/datasets?q=${encodeURIComponent(searchQuery.trim())}`);
+  // ─────────────────────────────────────────────────────────────
+  // 1. TOUR STEPS FOR DRIVER / TOURGUIDE (Section 8)
+  // ─────────────────────────────────────────────────────────────
+  const homeTourSteps = [
+    {
+      target: '#home-hero',
+      title: 'Explore India’s Polar Science',
+      content: 'Welcome to the National Centre for Polar and Ocean Research portal. Discover research reports, publications, and telemetry from the Arctic, Antarctic, and Himalayas.'
+    },
+    {
+      target: '#home-knowledge-graph',
+      title: 'Polar Knowledge Graph',
+      content: 'An interactive relational network linking Indian expeditions, research stations, scientific domains, and climate datasets.'
+    },
+    {
+      target: '#home-media',
+      title: 'Expedition Media Dissemination',
+      content: 'High-definition 4K field photography and documentary video footage captured by Indian scientific teams on the ice.'
+    },
+    {
+      target: '#home-weather',
+      title: 'Indian Polar Stations Weather',
+      content: 'Live meteorological telemetry from Maitri, Bharati, Himansh, and Himadri stations across Antarctica, the Arctic, and the Himalayas.'
     }
-  };
+  ];
 
-  const handleQuickAiSummary = async (item) => {
-    setSelectedSummary({ title: item.title, text: '', loading: true });
-    try {
-      const res = await fetch('/api/ai/ask', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          question: `Provide a 3-bullet scientific summary and public relevance for this record: "${item.title}". Abstract/Details: "${item.abstract || item.description || ''}"`
-        })
-      });
-      const data = await res.json();
-      setSelectedSummary({
-        title: item.title,
-        text: data.answer || 'Summary generated from metadata.',
-        loading: false
-      });
-    } catch {
-      setSelectedSummary({
-        title: item.title,
-        text: item.abstract || 'A key scientific record from National Centre for Polar and Ocean Research.',
-        loading: false
-      });
+  // ─────────────────────────────────────────────────────────────
+  // 2. KNOWLEDGE GRAPH NODES (Meaningful scientific relationships)
+  // ─────────────────────────────────────────────────────────────
+  const graphNodes = [
+    {
+      id: 'NCPOR',
+      label: 'NCPOR Hub',
+      category: 'Institution',
+      color: 'bg-blue-600 ring-blue-300',
+      x: 50,
+      y: 48,
+      size: 'w-24 h-24 text-xs',
+      description: 'National Centre for Polar & Ocean Research, MoES Goa. Premier autonomous institute orchestrating Indian Polar Expeditions.',
+      links: ['Antarctica', 'Arctic', 'Himalayas', 'Southern Ocean', '44th IAE']
+    },
+    {
+      id: 'Antarctica',
+      label: 'Antarctica',
+      category: 'Location',
+      color: 'bg-teal-500 ring-teal-200',
+      x: 22,
+      y: 30,
+      size: 'w-20 h-20 text-[11px]',
+      description: 'Dronning Maud Land & Larsemann Hills research sectors covering Schirmacher Oasis to the South Pole.',
+      links: ['Maitri', 'Bharati', 'Cryosphere', 'Dr. Thamban']
+    },
+    {
+      id: 'Arctic',
+      label: 'Arctic',
+      category: 'Location',
+      color: 'bg-sky-500 ring-sky-200',
+      x: 78,
+      y: 28,
+      size: 'w-18 h-18 text-[11px]',
+      description: 'Ny-Ålesund, Svalbard international research settlement (79°N) focusing on Arctic amplification.',
+      links: ['Himadri', 'IndARC', 'Atmosphere']
+    },
+    {
+      id: 'Maitri',
+      label: 'Maitri Base',
+      category: 'Station',
+      color: 'bg-amber-600 ring-amber-200',
+      x: 12,
+      y: 62,
+      size: 'w-16 h-16 text-[10px]',
+      description: 'India’s inland Antarctic station commissioned in 1989 in Schirmacher Oasis (70°45′S, 11°44′E).',
+      links: ['Antarctica', 'Meteorology']
+    },
+    {
+      id: 'Bharati',
+      label: 'Bharati Base',
+      category: 'Station',
+      color: 'bg-orange-600 ring-orange-200',
+      x: 35,
+      y: 78,
+      size: 'w-16 h-16 text-[10px]',
+      description: 'State-of-the-art green research base in Larsemann Hills, East Antarctica (69°24′S, 76°11′E).',
+      links: ['Antarctica', 'Ice Cores']
+    },
+    {
+      id: 'Himadri',
+      label: 'Himadri Base',
+      category: 'Station',
+      color: 'bg-cyan-600 ring-cyan-200',
+      x: 88,
+      y: 60,
+      size: 'w-16 h-16 text-[10px]',
+      description: 'India’s permanent Arctic research station established in 2008 at Ny-Ålesund, Svalbard, Norway.',
+      links: ['Arctic', 'IndARC']
+    },
+    {
+      id: 'Himansh',
+      label: 'Himansh Base',
+      category: 'Station',
+      color: 'bg-emerald-600 ring-emerald-200',
+      x: 65,
+      y: 80,
+      size: 'w-16 h-16 text-[10px]',
+      description: 'High-altitude research facility in Chandra Basin, Spiti Valley, Himachal Pradesh (4,000m ASL).',
+      links: ['Himalayas', 'Glaciology']
+    },
+    {
+      id: '44th IAE',
+      label: '44th IAE',
+      category: 'Expedition',
+      color: 'bg-indigo-600 ring-indigo-200',
+      x: 36,
+      y: 18,
+      size: 'w-16 h-16 text-[10px]',
+      description: '44th Indian Antarctic Expedition (2024–2025) conducting deep ice-shelf drilling & atmospheric profiling.',
+      links: ['NCPOR', 'Antarctica', 'MV Golovnin']
+    },
+    {
+      id: 'IndARC',
+      label: 'IndARC Mooring',
+      category: 'Observatory',
+      color: 'bg-purple-600 ring-purple-200',
+      x: 82,
+      y: 78,
+      size: 'w-16 h-16 text-[10px]',
+      description: 'India’s first multi-sensor subsurface hydrographic observatory anchored in Kongsfjorden fjord, Svalbard.',
+      links: ['Arctic', 'Himadri']
     }
-  };
+  ];
 
-  const scrollToExplore = () => {
-    const el = document.getElementById('explore-regions');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  // ─────────────────────────────────────────────────────────────
+  // 3. MEDIA ASSETS: 5 PHOTOS IN A ROW + 2 LARGER VIDEOS BELOW
+  // ─────────────────────────────────────────────────────────────
+  const photoMediaCards = [
+    {
+      id: 'photo-1',
+      title: 'Aurora Australis Dancing over Maitri Base',
+      description: 'Vibrant emerald green ionospheric aurora australis captured during polar winter-over observations.',
+      url: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=800',
+      resolution: '3600 x 2400',
+      location: 'Antarctica',
+      station: 'Maitri Base',
+      expedition: '43rd IAE',
+      author: 'Indian Institute of Geomagnetism'
+    },
+    {
+      id: 'photo-2',
+      title: 'Himadri Station during Svalbard Arctic Summer',
+      description: 'India’s permanent research outpost in Ny-Ålesund facing Kongsfjorden fjord under the midnight sun.',
+      url: 'https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=800',
+      resolution: '3840 x 2160',
+      location: 'Arctic',
+      station: 'Himadri Base',
+      expedition: 'Arctic Summer 2024',
+      author: 'Dr. K. P. Krishnan (NCPOR)'
+    },
+    {
+      id: 'photo-3',
+      title: 'Ice Core Extraction & Paleoclimate Logging',
+      description: 'Field scientists measuring annual micro-dust and greenhouse gas bubbles in Princess Elizabeth Land.',
+      url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800',
+      resolution: '3840 x 2560',
+      location: 'Antarctica',
+      station: 'Bharati Base',
+      expedition: '44th IAE',
+      author: 'Ice Core Paleoclimate Team'
+    },
+    {
+      id: 'photo-4',
+      title: 'Research Vessel MV Vasiliy Golovnin in Pack Ice',
+      description: 'Chartered ice-class cargo vessel navigating consolidated floes during the annual Antarctic resupply.',
+      url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800',
+      resolution: '3840 x 2160',
+      location: 'Southern Ocean',
+      station: 'Vessel Operations',
+      expedition: 'Logistics Wing',
+      author: 'Capt. A. Nair'
+    },
+    {
+      id: 'photo-5',
+      title: 'Gepang Gath Benchmark Glacier Ablation Survey',
+      description: 'Cryosphere scientists installing automated hydro-meteorological stations at the glacier-lake outlet.',
+      url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800',
+      resolution: '4000 x 3000',
+      location: 'Himalayas',
+      station: 'Himansh Base',
+      expedition: 'Chandra Basin 2024',
+      author: 'Himalayan Glaciology Division'
+    }
+  ];
+
+  const videoMediaCards = [
+    {
+      id: 'video-1',
+      title: 'Launching High-Altitude Radiosonde Weather Balloon at Maitri Base',
+      description: 'IMD and NCPOR atmospheric scientists releasing a weather balloon to measure sub-zero vertical wind vectors and ozone profiles.',
+      url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200',
+      duration: '03:45',
+      resolution: '4K 60fps',
+      location: 'Antarctica',
+      station: 'Maitri Base',
+      expedition: '43rd IAE',
+      author: 'IMD Polar Meteorological Unit'
+    },
+    {
+      id: 'video-2',
+      title: 'Kongsfjorden Fjord Hydrographic Mooring Deployment (IndARC)',
+      description: 'Marine division engineers lowering the subsurface multi-sensor acoustic mooring to monitor Atlantic water incursions.',
+      url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200',
+      duration: '05:12',
+      resolution: '1080p 60fps',
+      location: 'Arctic',
+      station: 'Kongsfjorden Fjord',
+      expedition: 'IndARC Arctic Mission',
+      author: 'Marine Sciences Division'
+    }
+  ];
+
+  // ─────────────────────────────────────────────────────────────
+  // 4. WEATHER STATIONS DATA (Maitri, Bharati, Himansh, Himadri)
+  // ─────────────────────────────────────────────────────────────
+  const polarStations = [
+    {
+      id: 'maitri',
+      station: 'Antarctica - Maitri:',
+      region: 'Schirmacher Oasis, Antarctica',
+      temp: '-12.5° C',
+      timestamp: '24 Sep 2026 11:00 PM',
+      coordinates: "70°45'57\"S 11°44'09\"E",
+      condition: 'Blizzard & Clear Intervals',
+      windSpeed: '28 knots',
+      mapX: 48,
+      mapY: 82,
+      imageUrl: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=600'
+    },
+    {
+      id: 'bharati',
+      station: 'Antarctica - Bharati:',
+      region: 'Larsemann Hills, Antarctica',
+      temp: '-10.4° C',
+      timestamp: '24 Sep 2026 11:00 PM',
+      coordinates: "69°24'28\"S 76°11'14\"E",
+      condition: 'Partly Cloudy & High Gusts',
+      windSpeed: '19 knots',
+      mapX: 68,
+      mapY: 80,
+      imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=600'
+    },
+    {
+      id: 'himansh',
+      station: 'Himalaya - Himansh:',
+      region: 'Spiti Valley, Himachal Pradesh',
+      temp: '5.5° C',
+      timestamp: '24 Sep 2026 11:00 PM',
+      coordinates: "32°24'N 77°37'E",
+      condition: 'Clear Mountain Air',
+      windSpeed: '12 knots',
+      mapX: 62,
+      mapY: 42,
+      imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600'
+    },
+    {
+      id: 'himadri',
+      station: 'Arctic - Himadri:',
+      region: 'Ny-Ålesund, Svalbard, Norway',
+      temp: '-0.6° C',
+      timestamp: '24 Sep 2026 11:00 PM',
+      coordinates: "78°55'N 11°56'E",
+      condition: 'Light Flurries & Overcast',
+      windSpeed: '14 knots',
+      mapX: 52,
+      mapY: 18,
+      imageUrl: 'https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=600'
+    }
+  ];
 
   return (
-    <div className="space-y-16 pb-12 text-left">
+    <div className="space-y-16 pb-12 text-left font-sans">
       {/* ─────────────────────────────────────────────────────────── */}
-      {/* 1. HERO SECTION                                             */}
+      {/* 1. HERO SECTION (Reference media_1790447041257.png)         */}
       {/* ─────────────────────────────────────────────────────────── */}
-      <section className="relative rounded-3xl overflow-hidden shadow-xl bg-slate-950 text-white border border-slate-800">
-        <div className="absolute inset-0 z-0 pointer-events-none">
+      <section
+        id="home-hero"
+        className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-950 text-white min-h-[460px] flex items-center"
+      >
+        {/* Pastel Artistic Antarctica Scene with Penguins Background */}
+        <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=1800"
-            alt="Polar Expeditions"
-            className="w-full h-full object-cover opacity-35 mix-blend-screen scale-105"
+            src="/api/artifacts/antarctica_hero_bg_1790449248057.jpg"
+            alt="Pastel Antarctica Landscape with Penguins"
+            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000"
+            onError={(e) => {
+              // Graceful fallback to serene painterly polar mountain
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=1800';
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+          {/* Subtle gradient overlay to ensure perfect typography contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-950/20" />
         </div>
 
-        <div className="relative z-10 p-6 sm:p-10 md:p-14 max-w-4xl">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 text-sky-300 border border-blue-400/20 text-xs font-semibold backdrop-blur-md mb-4 shadow-sm">
+        {/* Hero Content */}
+        <div className="relative z-10 p-6 sm:p-10 md:p-14 max-w-2xl space-y-6">
+          {/* Small blue government/MoES-style tag above title */}
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-600/25 text-sky-200 border border-sky-400/40 text-xs font-semibold backdrop-blur-md shadow-xs">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>Ministry of Earth Sciences (MoES) • Government of India</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] font-heading">
+          {/* Title */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.08] font-heading">
             Explore India's<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-blue-200 to-indigo-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-blue-200 to-indigo-200">
               Polar Science
             </span>
           </h1>
 
-          <p className="mt-4 text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed">
-            Archiving expedition reports, scientific datasets, peer-reviewed publications, and outreach multimedia from the Arctic, Antarctic, and Southern Ocean.
+          {/* Supporting Text */}
+          <p className="text-xs sm:text-sm md:text-base text-slate-200 leading-relaxed font-normal">
+            Archiving expedition reports, scientific datasets, peer-reviewed publications and outreach multimedia from Arctic, Antarctic and Southern Ocean research.
           </p>
 
-          {/* Action Buttons as specified */}
-          <div className="mt-7 flex flex-wrap items-center gap-4">
-            <button
-              onClick={scrollToExplore}
-              className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-md transition-all flex items-center space-x-2 active:scale-95"
+          {/* Action Buttons: Explore Polar World & Virtual Expedition */}
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            <Link
+              to="/explore"
+              className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-600/30 transition-all flex items-center space-x-2 active:scale-95"
             >
               <span>Explore Polar World</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
 
             <Link
-              to="/expeditions"
-              className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-sm backdrop-blur-md transition-all flex items-center space-x-2 active:scale-95"
+              to="/explore"
+              className="px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 font-bold text-xs sm:text-sm backdrop-blur-md transition-all flex items-center space-x-2 active:scale-95"
             >
               <Compass className="w-4 h-4 text-sky-300" />
               <span>Virtual Expedition</span>
             </Link>
           </div>
-
-          {/* Clean Integrated Search Bar */}
-          <form onSubmit={handleSearchSubmit} className="mt-8 max-w-2xl">
-            <div className="relative flex items-center bg-white/10 hover:bg-white/15 focus-within:bg-white rounded-2xl border border-white/20 focus-within:border-blue-400 backdrop-blur-xl transition-all shadow-2xl p-1.5 group">
-              <Search className="w-5 h-5 text-slate-300 group-focus-within:text-blue-600 ml-3.5 flex-shrink-0" />
-              <input
-                type="text"
-                placeholder="Search across reports, datasets, publications, and expeditions..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent px-3.5 py-2.5 text-sm text-white group-focus-within:text-slate-900 placeholder-slate-300 group-focus-within:placeholder-slate-400 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition-all flex-shrink-0"
-              >
-                Search
-              </button>
-            </div>
-          </form>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────── */}
-      {/* 2. EXPLORE (Polar Regions)                                  */}
+      {/* 2. KNOWLEDGE GRAPH SECTION (Home-only, Reference Section 8)  */}
       {/* ─────────────────────────────────────────────────────────── */}
-      <section id="explore-regions" className="space-y-4">
-        <div>
-          <h2 className="text-2xl font-black text-slate-900 font-heading">Explore Polar Regions</h2>
-          <p className="text-xs text-slate-500 mt-1">
-            Discover research, observations, and stations across the three critical cryospheric frontiers
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Antarctica */}
-          <div className="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-            <div className="h-44 w-full relative overflow-hidden bg-slate-900">
-              <img
-                src="https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=600"
-                alt="Antarctica"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-              <span className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-slate-950/80 text-white backdrop-blur-md border border-white/20">
-                Antarctica (69°S - 70°S)
-              </span>
-            </div>
-            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg font-bold text-slate-900 font-heading group-hover:text-blue-600 transition-colors">
-                  Antarctica
-                </h3>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  Home to India’s permanent research stations <strong>Bharati</strong> (Larsemann Hills) and <strong>Maitri</strong> (Schirmacher Oasis). Continuous data on ice dynamics, geomagnetism, and meteorology since 1981.
-                </p>
-              </div>
-              <div className="pt-2">
-                <Link
-                  to="/datasets?region=Antarctica"
-                  className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-800 font-bold text-xs transition-colors flex items-center justify-center space-x-1.5"
-                >
-                  <span>Explore Antarctica Data</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Arctic */}
-          <div className="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-            <div className="h-44 w-full relative overflow-hidden bg-slate-900">
-              <img
-                src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=600"
-                alt="Arctic"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-              <span className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-slate-950/80 text-white backdrop-blur-md border border-white/20">
-                Arctic (78°55′N)
-              </span>
-            </div>
-            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg font-bold text-slate-900 font-heading group-hover:text-blue-600 transition-colors">
-                  Arctic
-                </h3>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  Operating the <strong>Himadri</strong> research station in Ny-Ålesund, Svalbard, and the <strong>IndARC</strong> subsurface moored observatory in Kongsfjorden fjord for oceanic monitoring.
-                </p>
-              </div>
-              <div className="pt-2">
-                <Link
-                  to="/datasets?region=Arctic"
-                  className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-800 font-bold text-xs transition-colors flex items-center justify-center space-x-1.5"
-                >
-                  <span>Explore Arctic Data</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Himalayas / Third Pole */}
-          <div className="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-            <div className="h-44 w-full relative overflow-hidden bg-slate-900">
-              <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600"
-                alt="Himalayas Third Pole"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-              <span className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full bg-slate-950/80 text-white backdrop-blur-md border border-white/20">
-                Himalayas (Third Pole)
-              </span>
-            </div>
-            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg font-bold text-slate-900 font-heading group-hover:text-blue-600 transition-colors">
-                  Himalayas / Third Pole
-                </h3>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                  High-altitude glaciological monitoring of benchmark glaciers in the Chandra basin (Himansh station). Crucial data on glacier mass balance, runoff, and climate impact.
-                </p>
-              </div>
-              <div className="pt-2">
-                <Link
-                  to="/datasets?region=Himalayas"
-                  className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-800 font-bold text-xs transition-colors flex items-center justify-center space-x-1.5"
-                >
-                  <span>Explore Himalayan Data</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────── */}
-      {/* 3. POLAR KNOWLEDGE (Real Database Records)                  */}
-      {/* ─────────────────────────────────────────────────────────── */}
-      <section className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <section
+        id="home-knowledge-graph"
+        className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6"
+      >
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-black text-slate-900 font-heading">Polar Knowledge Repository</h2>
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-2 border border-blue-200">
+              <Share2 className="w-3.5 h-3.5 text-blue-600" />
+              <span>Interactive Knowledge Graph</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight font-heading">
+              Polar Research Relational Network
+            </h2>
             <p className="text-xs text-slate-500 mt-1">
-              Authentic scientific output archived directly from the National Polar Data Center (NPDC)
+              Explore interconnected relationships between Indian expeditions, stations, scientific domains, and climate datasets. Hover for summary, click for details.
             </p>
           </div>
 
-          {/* Exact 3 Tabs specified */}
-          <div className="flex items-center space-x-1 p-1 bg-slate-100 rounded-2xl self-start sm:self-auto">
-            <button
-              onClick={() => setKnowledgeTab('datasets')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                knowledgeTab === 'datasets'
-                  ? 'bg-white text-blue-700 shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Scientific Datasets
-            </button>
-
-            <button
-              onClick={() => setKnowledgeTab('publications')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                knowledgeTab === 'publications'
-                  ? 'bg-white text-blue-700 shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Publications
-            </button>
-
-            <button
-              onClick={() => setKnowledgeTab('research')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                knowledgeTab === 'research'
-                  ? 'bg-white text-blue-700 shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Expedition Reports
-            </button>
+          <div className="flex items-center space-x-2">
+            <span className="text-[11px] font-semibold text-slate-400">Filter View:</span>
+            <div className="flex gap-1 bg-slate-100 p-1 rounded-xl">
+              {['All', 'Stations', 'Domains', 'Expeditions'].map((tab) => (
+                <button
+                  key={tab}
+                  className="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-600 hover:text-blue-600 hover:bg-white transition-all"
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Tab 1: Datasets */}
-        {knowledgeTab === 'datasets' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {datasets.map((d) => (
-              <div
-                key={d.id}
-                className="p-5 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100 uppercase">
-                      {d.region || 'Antarctica'}
-                    </span>
-                    <span className="text-[10px] text-slate-400 font-medium">
-                      Release: {d.release_date || 'Recent'}
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-bold text-slate-900 mt-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {d.title}
-                  </h3>
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                    {d.abstract || d.purpose}
-                  </p>
-                </div>
+        {/* Interactive Relational Node Graph Canvas */}
+        <div className="relative w-full h-[420px] bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex items-center justify-center p-4 select-none">
+          {/* Subtle Grid Dots */}
+          <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-70" />
 
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400 font-medium truncate max-w-[180px]">
-                    {d.scientist_name || 'NCPOR Mission'}
-                  </span>
-                  <div className="flex items-center space-x-2">
-                    <button
-                      type="button"
-                      onClick={() => handleQuickAiSummary(d)}
-                      className="px-2.5 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 text-[10px] font-bold text-purple-700 flex items-center space-x-1 transition-colors"
-                    >
-                      <Sparkles className="w-3 h-3 text-purple-600" />
-                      <span>AI Summary</span>
-                    </button>
-                    <Link
-                      to={`/datasets/${d.id}`}
-                      className="px-3 py-1 rounded-lg bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 text-xs font-bold transition-colors"
-                    >
-                      Inspect
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+          {/* Connected SVG Lines with Arrows */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-slate-300 stroke-[1.5]">
+            <line x1="50%" y1="48%" x2="22%" y2="30%" />
+            <line x1="50%" y1="48%" x2="78%" y2="28%" />
+            <line x1="22%" y1="30%" x2="12%" y2="62%" />
+            <line x1="22%" y1="30%" x2="35%" y2="78%" />
+            <line x1="78%" y1="28%" x2="88%" y2="60%" />
+            <line x1="78%" y1="28%" x2="82%" y2="78%" />
+            <line x1="50%" y1="48%" x2="65%" y2="80%" />
+            <line x1="50%" y1="48%" x2="36%" y2="18%" />
+          </svg>
 
-        {/* Tab 2: Publications */}
-        {knowledgeTab === 'publications' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {publications.map((p) => (
-              <div
-                key={p.id}
-                className="p-5 rounded-2xl bg-white border border-slate-200/80 hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-100">
-                      {p.year || '2024'}
-                    </span>
-                    <span className="text-[10px] text-slate-400 font-mono">
-                      {p.doi || 'DOI Indexed'}
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-bold text-slate-900 mt-2 group-hover:text-indigo-600 transition-colors line-clamp-2">
-                    {p.title}
-                  </h3>
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                    {p.abstract}
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400 font-medium truncate max-w-[200px]">
-                    {p.journal || 'Polar Science'}
-                  </span>
-                  <div className="flex items-center space-x-2">
-                    <button
-                      type="button"
-                      onClick={() => handleQuickAiSummary(p)}
-                      className="px-2.5 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 text-[10px] font-bold text-purple-700 flex items-center space-x-1 transition-colors"
-                    >
-                      <Sparkles className="w-3 h-3 text-purple-600" />
-                      <span>AI Summary</span>
-                    </button>
-                    <Link
-                      to={`/publications/${p.id}`}
-                      className="px-3 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-700 text-xs font-bold transition-colors"
-                    >
-                      Read Paper
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Tab 3: Expedition Reports */}
-        {knowledgeTab === 'research' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {reports.map((r) => (
-              <div
-                key={r.id}
-                className="p-5 rounded-2xl bg-white border border-slate-200/80 hover:border-emerald-300 hover:shadow-md transition-all flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-100">
-                      {r.season || 'Expedition Season'}
-                    </span>
-                    <span className="text-[10px] text-slate-400">
-                      {r.pages || '48'} pages
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-bold text-slate-900 mt-2 group-hover:text-emerald-700 transition-colors line-clamp-2">
-                    {r.title}
-                  </h3>
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                    {r.executive_summary || r.description || 'Official expedition and cruise scientific report.'}
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400 font-medium">
-                    Leader: {r.leader || 'NCPOR Scientific Officer'}
-                  </span>
-                  <Link
-                    to={`/reports/${r.id}`}
-                    className="px-3 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-700 text-xs font-bold transition-colors"
-                  >
-                    View Report
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="pt-2 text-center">
-          <Link
-            to="/datasets"
-            className="inline-flex items-center space-x-1.5 text-xs font-bold text-blue-600 hover:text-blue-700"
-          >
-            <span>View Complete Knowledge Repository ({datasets.length + publications.length + reports.length}+ verified records)</span>
-            <ChevronRight className="w-4 h-4" />
-          </Link>
+          {/* Graph Nodes */}
+          {graphNodes.map((node) => (
+            <button
+              key={node.id}
+              onClick={() => {
+                setActiveGraphNode(node.id);
+                setSelectedNodeDetails(node);
+              }}
+              style={{ top: `${node.y}%`, left: `${node.x}%` }}
+              className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-full text-white font-bold flex items-center justify-center shadow-md transition-all hover:scale-115 active:scale-95 cursor-pointer ring-4 ${node.size} ${node.color} ${
+                activeGraphNode === node.id ? 'scale-115 ring-8 ring-blue-400 z-20 shadow-xl' : 'z-10'
+              }`}
+              title={`${node.label} (${node.category})`}
+            >
+              <span className="text-center px-1 leading-tight">{node.label}</span>
+            </button>
+          ))}
         </div>
-      </section>
 
-      {/* ─────────────────────────────────────────────────────────── */}
-      {/* 4. VIRTUAL EXPERIENCE (Interactive 3D Station / Expedition) */}
-      {/* ─────────────────────────────────────────────────────────── */}
-      <section className="bg-slate-950 text-white rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-xl relative overflow-hidden">
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div className="max-w-xl space-y-3">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-semibold">
-              <Radio className="w-3.5 h-3.5 animate-pulse" />
-              <span>Virtual Experience &amp; 3D Observatories</span>
+        {/* Selected Node Details Drawer / Card */}
+        {selectedNodeDetails && (
+          <div className="p-4 rounded-2xl bg-blue-50/80 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-fadeIn">
+            <div className="flex items-start space-x-3.5">
+              <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-xs flex-shrink-0 mt-0.5">
+                ❄️
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-bold text-blue-950 font-heading">
+                    {selectedNodeDetails.label}
+                  </span>
+                  <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-blue-200/80 text-blue-800">
+                    {selectedNodeDetails.category}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed max-w-2xl">
+                  {selectedNodeDetails.description}
+                </p>
+                <div className="flex items-center space-x-2 pt-1 text-[11px] text-slate-500">
+                  <span className="font-semibold text-slate-700">Connected to:</span>
+                  <div className="flex flex-wrap gap-1">
+                    {selectedNodeDetails.links?.map((link, idx) => (
+                      <span key={idx} className="bg-white border border-slate-200 px-1.5 py-0.5 rounded text-[10px] text-slate-700 font-medium">
+                        {link}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-black font-heading tracking-tight text-white">
-              Interactive Polar Stations &amp; Expeditions
-            </h2>
-
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Step inside India's remote observatories. Inspect architectural layout, active radar equipment, atmospheric towers, and environmental sensors deployed across Himadri, Bharati, Maitri, and the IndARC underwater mooring.
-            </p>
-
-            <div className="pt-3">
-              <Link
-                to="/expeditions"
-                className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm shadow-lg transition-all active:scale-95"
+            <div className="flex items-center space-x-2 flex-shrink-0 self-end sm:self-center">
+              <button
+                onClick={() => setSelectedNodeDetails(null)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-200"
               >
-                <Compass className="w-4 h-4" />
-                <span>Explore Expedition</span>
+                <X className="w-4 h-4" />
+              </button>
+              <Link
+                to={`/explore?q=${encodeURIComponent(selectedNodeDetails.label)}`}
+                className="px-3.5 py-1.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 shadow-xs transition-colors"
+              >
+                Browse Records
               </Link>
             </div>
           </div>
-
-          {/* Station Visual Preview Grid */}
-          <div className="grid grid-cols-2 gap-3 max-w-md w-full">
-            <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-3 group hover:border-emerald-500 transition-colors">
-              <span className="text-[10px] text-emerald-400 font-bold block mb-1">Arctic Station</span>
-              <span className="text-xs font-bold text-white block">Himadri (78°N)</span>
-              <span className="text-[10px] text-slate-400">Atmospheric &amp; Biogeochem</span>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-3 group hover:border-emerald-500 transition-colors">
-              <span className="text-[10px] text-emerald-400 font-bold block mb-1">Antarctica Station</span>
-              <span className="text-xs font-bold text-white block">Bharati (69°S)</span>
-              <span className="text-[10px] text-slate-400">Continental &amp; Geomagnetic</span>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-3 group hover:border-emerald-500 transition-colors">
-              <span className="text-[10px] text-emerald-400 font-bold block mb-1">Antarctica Station</span>
-              <span className="text-xs font-bold text-white block">Maitri (70°S)</span>
-              <span className="text-[10px] text-slate-400">Meteorology &amp; Atmosphere</span>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-3 group hover:border-emerald-500 transition-colors">
-              <span className="text-[10px] text-sky-400 font-bold block mb-1">Moored Observatory</span>
-              <span className="text-xs font-bold text-white block">IndARC (Fjord)</span>
-              <span className="text-[10px] text-slate-400">192m Subsurface Sensors</span>
-            </div>
-          </div>
-        </div>
+        )}
       </section>
 
       {/* ─────────────────────────────────────────────────────────── */}
-      {/* 5. MEDIA (Photos, Videos, Expedition Stories)               */}
+      {/* 3. HOME MEDIA SECTION (5 Photos in a Row + 2 Videos Below)  */}
       {/* ─────────────────────────────────────────────────────────── */}
-      <section className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <section id="home-media" className="space-y-6">
+        <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-black text-slate-900 font-heading">Expedition Media Dissemination</h2>
-            <p className="text-xs text-slate-500 mt-1">
-              Field photography, documentary footage, and scientific expedition stories
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-2 border border-blue-200">
+              <span>Scientific Multimedia Archive</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight font-heading">
+              Expedition Media Dissemination
+            </h2>
+            <p className="text-xs text-slate-500 mt-0.5">
+              5 high-resolution expedition photo dispatches followed by 4K field documentary footage
             </p>
           </div>
-
           <Link
-            to="/media"
-            className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center space-x-1"
+            to="/explore"
+            className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center space-x-1"
           >
-            <span>View All Media Assets</span>
+            <span>View All Media</span>
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-          {mediaItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => setSelectedMedia(item)}
-              className="group relative rounded-2xl overflow-hidden bg-slate-900 aspect-square cursor-pointer shadow-xs hover:shadow-lg transition-all"
-            >
-              <img
-                src={item.url}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              {item.type === 'video' ? (
-                <div className="absolute top-2 right-2 p-1.5 rounded-full bg-slate-950/80 text-white">
-                  <Video className="w-3.5 h-3.5" />
-                </div>
-              ) : (
-                <div className="absolute top-2 right-2 p-1.5 rounded-full bg-slate-950/80 text-white">
-                  <ImageIcon className="w-3.5 h-3.5" />
-                </div>
-              )}
+        {/* Row 1: 5 Photo Cards in a Row (Responsive Grid: 1 col on mobile, 2 on sm, 3 on md, 5 on lg/xl) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {photoMediaCards.map((card) => (
+            <MediaCard
+              key={card.id}
+              item={card}
+              isVideo={false}
+              onClick={(item) => setSelectedMediaModal(item)}
+            />
+          ))}
+        </div>
 
-              <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="text-[10px] font-bold text-white leading-tight truncate">
-                  {item.title}
-                </p>
-              </div>
-            </div>
+        {/* Row 2: 2 Larger Video Cards in a Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          {videoMediaCards.map((card) => (
+            <MediaCard
+              key={card.id}
+              item={card}
+              isVideo={true}
+              onClick={(item) => setSelectedMediaModal(item)}
+            />
           ))}
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────── */}
-      {/* 6. LEARN (Smart Education for Students & Public)             */}
+      {/* 4. WEATHER AT INDIAN POLAR STATIONS (Section 8)             */}
       {/* ─────────────────────────────────────────────────────────── */}
-      <section className="space-y-4">
-        <div>
-          <h2 className="text-2xl font-black text-slate-900 font-heading">Smart Education &amp; Learning Hub</h2>
-          <p className="text-xs text-slate-500 mt-1">
-            Democratizing complex polar science for students, teachers, and curious citizens
+      <section
+        id="home-weather"
+        className="bg-slate-950 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl space-y-6"
+      >
+        <div className="text-center space-y-2 max-w-xl mx-auto">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-sky-300 text-xs font-bold border border-sky-500/30">
+            <Thermometer className="w-3.5 h-3.5" />
+            <span>Automated Weather Stations (AWS)</span>
+          </div>
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight font-heading text-white">
+            Weather at Indian Polar Stations
+          </h2>
+          <div className="h-1 w-20 bg-blue-500 mx-auto rounded-full" />
+          <p className="text-xs text-slate-400">
+            Live telemetry and meteorological conditions reported from Maitri, Bharati, Himansh, and Himadri.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1: For Students */}
-          <Link
-            to="/education"
-            className="p-6 rounded-3xl bg-white border border-slate-200/80 hover:border-blue-500 hover:shadow-xl transition-all flex flex-col justify-between group"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <GraduationCap className="w-6 h-6" />
+        {/* 4 Polar Station Cards (Exact match to Reference media_1790446855379.png) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {polarStations.map((station) => (
+            <div
+              key={station.id}
+              className="bg-white text-slate-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-2xl hover:scale-[1.02] transition-all flex flex-col justify-between"
+            >
+              {/* Station Image */}
+              <div className="relative aspect-4/3 w-full bg-slate-900 overflow-hidden">
+                <img
+                  src={station.imageUrl}
+                  alt={station.station}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <span className="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-950/80 text-white backdrop-blur-md">
+                  {station.coordinates}
+                </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors font-heading">
-                For Students
-              </h3>
-              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-                Simplified lessons on polar climates: Why is Antarctica colder than the Arctic? How do ice cores act as time capsules?
-              </p>
-            </div>
-            <div className="mt-5 flex items-center text-xs font-bold text-blue-600">
-              <span>Read Student Guides</span>
-              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
 
-          {/* Card 2: Quizzes */}
-          <Link
-            to="/education"
-            className="p-6 rounded-3xl bg-white border border-slate-200/80 hover:border-emerald-500 hover:shadow-xl transition-all flex flex-col justify-between group"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <HelpCircle className="w-6 h-6" />
+              {/* Station Carousel Dots Indicator (as seen in reference) */}
+              <div className="flex items-center justify-center space-x-1.5 py-2">
+                {[...Array(6)].map((_, i) => (
+                  <span
+                    key={i}
+                    className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-slate-700' : 'bg-slate-300'}`}
+                  />
+                ))}
               </div>
-              <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors font-heading">
-                Interactive Quizzes
-              </h3>
-              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-                Test your knowledge on Indian polar stations, Antarctic wildlife, katabatic winds, and sea-ice extent with instant scores.
-              </p>
-            </div>
-            <div className="mt-5 flex items-center text-xs font-bold text-emerald-600">
-              <span>Take Quiz</span>
-              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
 
-          {/* Card 3: Educational Resources */}
-          <Link
-            to="/education"
-            className="p-6 rounded-3xl bg-white border border-slate-200/80 hover:border-purple-500 hover:shadow-xl transition-all flex flex-col justify-between group"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <BookOpen className="w-6 h-6" />
+              {/* Station Name & Temperature */}
+              <div className="p-4 pt-0 text-center space-y-2">
+                <div className="font-extrabold text-sm text-blue-950">
+                  {station.station}
+                </div>
+
+                {/* Big Bold Red Temperature */}
+                <div className="flex items-center justify-center space-x-1 text-2xl font-black text-rose-600">
+                  <Thermometer className="w-5 h-5 text-rose-500" />
+                  <span>{station.temp}</span>
+                </div>
+
+                {/* Condition & Wind */}
+                <div className="text-[11px] text-slate-500 flex items-center justify-center space-x-2">
+                  <span>{station.condition}</span>
+                  <span>•</span>
+                  <span className="flex items-center space-x-0.5">
+                    <Wind className="w-3 h-3 text-sky-600" />
+                    <span>{station.windSpeed}</span>
+                  </span>
+                </div>
+
+                {/* Timestamp in Bold Green */}
+                <div className="text-xs font-bold text-emerald-800 tracking-wide border-t border-slate-100 pt-2">
+                  {station.timestamp}
+                </div>
               </div>
-              <h3 className="text-base font-bold text-slate-900 group-hover:text-purple-700 transition-colors font-heading">
-                Educational Resources
-              </h3>
-              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-                Downloadable infographics, classroom materials, and official NCPOR research summaries tailored for school curricula.
-              </p>
             </div>
-            <div className="mt-5 flex items-center text-xs font-bold text-purple-700">
-              <span>Access Resources</span>
-              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
+          ))}
+        </div>
+
+        {/* Global Terrain Map with Interactive Station Pins */}
+        <div className="pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-between mb-3 text-xs">
+            <span className="font-bold text-slate-300 uppercase tracking-wider">
+              Geographic Deployment Map
+            </span>
+            <span className="text-slate-400 text-[11px]">
+              Hover pin to view station details
+            </span>
+          </div>
+
+          <div className="relative w-full h-56 sm:h-64 rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden flex items-center justify-center">
+            {/* World Map Background Graphic */}
+            <img
+              src="https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=1400"
+              alt="World Polar Terrain Map"
+              className="w-full h-full object-cover opacity-25 filter grayscale contrast-125"
+            />
+            <div className="absolute inset-0 bg-radial-at-c from-transparent via-slate-950/70 to-slate-950" />
+
+            {/* Station Pins */}
+            {polarStations.map((station) => (
+              <div
+                key={station.id}
+                style={{ top: `${station.mapY}%`, left: `${station.mapX}%` }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-20 group"
+                onMouseEnter={() => setHoveredStation(station)}
+                onMouseLeave={() => setHoveredStation(null)}
+              >
+                <div className="relative cursor-pointer">
+                  <div className="w-4 h-4 rounded-full bg-rose-500 ring-4 ring-rose-400/40 animate-ping absolute inset-0" />
+                  <div className="w-4 h-4 rounded-full bg-rose-600 border border-white flex items-center justify-center shadow-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                  </div>
+                </div>
+
+                {/* Hover Tooltip */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden group-hover:block z-30 w-48 bg-slate-900/95 backdrop-blur-md text-white rounded-xl p-2.5 shadow-xl border border-slate-700 text-left pointer-events-none">
+                  <div className="font-bold text-xs text-sky-300">{station.station}</div>
+                  <div className="text-[10px] text-slate-300">{station.region}</div>
+                  <div className="text-xs font-black text-rose-400 mt-1">{station.temp}</div>
+                  <div className="text-[9px] text-emerald-400 font-medium">{station.condition}</div>
+                  <div className="text-[8px] text-slate-500 mt-0.5">{station.timestamp}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────── */}
-      {/* Lightbox / Media Modal                                      */}
+      {/* 5. MEDIA DETAILS MODAL                                      */}
       {/* ─────────────────────────────────────────────────────────── */}
-      {selectedMedia && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn"
-          onClick={() => setSelectedMedia(null)}
-        >
-          <div
-            className="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative bg-slate-950 max-h-[450px] flex items-center justify-center">
+      {selectedMediaModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-xs p-4 animate-fadeIn">
+          <div className="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 text-left">
+            <div className="relative aspect-video bg-black">
               <img
-                src={selectedMedia.url}
-                alt={selectedMedia.title}
-                className="max-h-[450px] w-full object-contain"
+                src={selectedMediaModal.url}
+                alt={selectedMediaModal.title}
+                className="w-full h-full object-cover"
               />
               <button
-                type="button"
-                onClick={() => setSelectedMedia(null)}
-                className="absolute top-3 right-3 p-1.5 rounded-full bg-slate-900/80 text-white hover:bg-black text-xs"
+                onClick={() => setSelectedMediaModal(null)}
+                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/80 transition-colors"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
-            <div className="p-5 flex items-center justify-between">
-              <div>
-                <h4 className="text-sm font-bold text-slate-900">{selectedMedia.title}</h4>
-                <p className="text-xs text-slate-500 mt-0.5">{selectedMedia.caption}</p>
-              </div>
-              <a
-                href={selectedMedia.url}
-                target="_blank"
-                rel="noreferrer"
-                download
-                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center space-x-1.5"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>Download</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ─────────────────────────────────────────────────────────── */}
-      {/* AI Summary Modal                                            */}
-      {/* ─────────────────────────────────────────────────────────── */}
-      {selectedSummary && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-fadeIn"
-          onClick={() => setSelectedSummary(null)}
-        >
-          <div
-            className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 space-y-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <div className="flex items-center space-x-2">
-                <div className="p-1.5 rounded-lg bg-purple-100 text-purple-700">
-                  <Sparkles className="w-4 h-4" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 font-heading">AI Scientific Summary</h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setSelectedSummary(null)}
-                className="text-slate-400 hover:text-slate-600 text-xs font-bold p-1 rounded-lg hover:bg-slate-100"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div>
-              <h4 className="text-xs font-bold text-slate-800 leading-snug">{selectedSummary.title}</h4>
-              <div className="mt-3 p-4 rounded-2xl bg-purple-50/70 border border-purple-100 text-xs text-slate-700 leading-relaxed min-h-[110px] flex items-center">
-                {selectedSummary.loading ? (
-                  <div className="flex items-center space-x-2.5 text-purple-700 font-medium">
-                    <div className="w-4 h-4 border-2 border-purple-600 border-t-transparent rounded-full animate-spin" />
-                    <span>Synthesizing scientific summary with Gemini...</span>
-                  </div>
-                ) : (
-                  <FormattedMarkdown content={selectedSummary.text} />
+            <div className="p-6 space-y-3">
+              <div className="flex items-center space-x-2 text-xs text-blue-700 font-bold uppercase tracking-wider">
+                <span>{selectedMediaModal.location}</span>
+                <span>•</span>
+                <span>{selectedMediaModal.station}</span>
+                {selectedMediaModal.expedition && (
+                  <>
+                    <span>•</span>
+                    <span className="text-slate-500">{selectedMediaModal.expedition}</span>
+                  </>
                 )}
-
               </div>
-            </div>
-
-            <div className="flex justify-end pt-2">
-              <button
-                type="button"
-                onClick={() => setSelectedSummary(null)}
-                className="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-colors"
-              >
-                Close Summary
-              </button>
+              <h3 className="text-lg font-bold text-slate-900 font-heading">
+                {selectedMediaModal.title}
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                {selectedMediaModal.description}
+              </p>
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span>Author / Credit: <strong>{selectedMediaModal.author}</strong></span>
+                <span className="bg-slate-100 px-2.5 py-1 rounded-md text-[11px] font-semibold text-slate-700">
+                  {selectedMediaModal.resolution}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* Driver.js Product Tour Guide Component */}
+      <TourGuide tourKey="home_tour" steps={homeTourSteps} />
     </div>
   );
 }

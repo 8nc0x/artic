@@ -35,6 +35,10 @@ app.get('/api/health', (req, res) => {
 // Mount Unversioned REST API
 app.use('/api', apiRoutes);
 
+// Brain artifacts static serving (for generated images, uploads & references)
+const brainArtifacts = 'C:/Users/snaxc/.gemini/antigravity-ide/brain/6fc28578-1fa6-432d-bef5-5e7474e99305';
+app.use('/api/artifacts', express.static(brainArtifacts));
+
 // Serve static frontend build in production if available
 import fs from 'fs';
 const distPath = path.resolve(__dirname, '../../frontend/dist');

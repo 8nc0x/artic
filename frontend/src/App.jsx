@@ -1,77 +1,115 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 
-// Pages
+// Layouts
+import MainLayout from './layouts/MainLayout';
+import AdminLayout from './layouts/AdminLayout';
+
+// Core 6 Public Pages (Master Prompt Section 45)
 import HomeDashboard from './pages/HomeDashboard';
-import PaperDetailView from './pages/PaperDetailView';
-import DatasetsCatalog from './pages/DatasetsCatalog';
-import ReportsLibrary from './pages/ReportsLibrary';
-import MediaGallery from './pages/MediaGallery';
-import KnowledgeGraphExplorer from './pages/KnowledgeGraphExplorer';
 import ExploreSearch from './pages/ExploreSearch';
-import ExpeditionExplorer from './pages/ExpeditionExplorer';
 import InstitutionalActivities from './pages/InstitutionalActivities';
-import SocialMediaStudio from './pages/SocialMediaStudio';
 import AIPolarIntelligence from './pages/AIPolarIntelligence';
 import SmartEducation from './pages/SmartEducation';
+import SocialMediaStudio from './pages/SocialMediaStudio';
+
+// User & Researcher Pages
+import UserProfile from './pages/UserProfile';
+import UserProfileSaved from './pages/UserProfileSaved';
+import UserHistory from './pages/UserHistory';
+import NotificationsCenter from './pages/NotificationsCenter';
+import Settings from './pages/Settings';
+import ResearcherUpload from './pages/ResearcherUpload';
+
+// Admin Suite Pages
+import AdminDashboard from './pages/AdminDashboard';
+import AdminContent from './pages/AdminContent';
+import AdminDatasets from './pages/AdminDatasets';
+import AdminUsers from './pages/AdminUsers';
+import AdminAIApproval from './pages/AdminAIApproval';
+import AdminAnalytics from './pages/AdminAnalytics';
+
+// Supporting Deep-Dive & Detail Pages
+import PaperDetailView from './pages/PaperDetailView';
+import ReportsLibrary from './pages/ReportsLibrary';
+import DatasetsCatalog from './pages/DatasetsCatalog';
+import MediaGallery from './pages/MediaGallery';
+import ExpeditionExplorer from './pages/ExpeditionExplorer';
 import AboutNCPOR from './pages/AboutNCPOR';
+import KnowledgeGraphExplorer from './pages/KnowledgeGraphExplorer';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col font-sans">
-        {/* Unified Top Navigation */}
-        <Navbar />
+      <Routes>
+        {/* ─────────────────────────────────────────────────────────── */}
+        {/* 1. PUBLIC PORTAL & USER AREA (Wrapped in MainLayout)        */}
+        {/* ─────────────────────────────────────────────────────────── */}
+        <Route element={<MainLayout />}>
+          {/* Page 1: Home Dashboard */}
+          <Route path="/" element={<HomeDashboard />} />
 
-        {/* Main Content Area */}
-        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Routes>
-            {/* 1. Home Dashboard */}
-            <Route path="/" element={<HomeDashboard />} />
+          {/* Page 2: Explore (Papers Carousel, Datasets, News) */}
+          <Route path="/explore" element={<ExploreSearch />} />
 
-            {/* 2. Explore & Search */}
-            <Route path="/explore" element={<ExploreSearch />} />
+          {/* Page 3: Outreach (Conferences, Seminars, Workshops, Events) */}
+          <Route path="/outreach" element={<InstitutionalActivities />} />
 
-            {/* 3. Research Publications & Reports */}
-            <Route path="/publications" element={<ExploreSearch />} />
-            <Route path="/publications/:id" element={<PaperDetailView />} />
-            <Route path="/reports" element={<ReportsLibrary />} />
-            <Route path="/reports/:id" element={<ReportsLibrary />} />
+          {/* Page 4: AI & Polar Intelligence */}
+          <Route path="/ai" element={<AIPolarIntelligence />} />
 
-            {/* 4. Scientific Datasets Catalog */}
-            <Route path="/datasets" element={<DatasetsCatalog />} />
-            <Route path="/datasets/:id" element={<DatasetsCatalog />} />
+          {/* Page 5: Polar Smart Education */}
+          <Route path="/learn" element={<SmartEducation />} />
 
-            {/* 5. Media Dissemination */}
-            <Route path="/media" element={<MediaGallery />} />
-            <Route path="/media/:id" element={<MediaGallery />} />
+          {/* Page 6: Social Media Studio */}
+          <Route path="/social-media" element={<SocialMediaStudio />} />
 
-            {/* 6. Virtual Expedition & 3D Stations */}
-            <Route path="/expeditions" element={<ExpeditionExplorer />} />
-            <Route path="/expeditions/:id" element={<ExpeditionExplorer />} />
+          {/* User Profile & Activity */}
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/profile/saved" element={<UserProfileSaved />} />
+          <Route path="/profile/history" element={<UserHistory />} />
+          <Route path="/notifications" element={<NotificationsCenter />} />
+          <Route path="/settings" element={<Settings />} />
 
-            {/* 7. Smart Education & Quizzes */}
-            <Route path="/education" element={<SmartEducation />} />
+          {/* Researcher Upload */}
+          <Route path="/upload" element={<ResearcherUpload />} />
 
-            {/* 8. About NCPOR */}
-            <Route path="/about" element={<AboutNCPOR />} />
+          {/* Deep-dive Publications & Datasets */}
+          <Route path="/publications" element={<ExploreSearch />} />
+          <Route path="/publications/:id" element={<PaperDetailView />} />
+          <Route path="/reports" element={<ReportsLibrary />} />
+          <Route path="/reports/:id" element={<ReportsLibrary />} />
+          <Route path="/datasets" element={<DatasetsCatalog />} />
+          <Route path="/datasets/:id" element={<DatasetsCatalog />} />
+          <Route path="/media" element={<MediaGallery />} />
+          <Route path="/media/:id" element={<MediaGallery />} />
+          <Route path="/expeditions" element={<ExpeditionExplorer />} />
+          <Route path="/expeditions/:id" element={<ExpeditionExplorer />} />
+          <Route path="/about" element={<AboutNCPOR />} />
+          <Route path="/knowledge-graph" element={<KnowledgeGraphExplorer />} />
 
-            {/* Supporting Features: Knowledge Network, Social Studio, AI Assistant */}
-            <Route path="/knowledge-graph" element={<KnowledgeGraphExplorer />} />
-            <Route path="/social-studio" element={<SocialMediaStudio />} />
-            <Route path="/ai-assistant" element={<AIPolarIntelligence />} />
-            <Route path="/activities" element={<InstitutionalActivities />} />
+          {/* Route Aliases for seamless navigation */}
+          <Route path="/education" element={<Navigate to="/learn" replace />} />
+          <Route path="/social-studio" element={<Navigate to="/social-media" replace />} />
+          <Route path="/ai-assistant" element={<Navigate to="/ai" replace />} />
+          <Route path="/activities" element={<Navigate to="/outreach" replace />} />
+        </Route>
 
-            {/* Fallback */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
+        {/* ─────────────────────────────────────────────────────────── */}
+        {/* 2. ADMIN PORTAL (Wrapped in AdminLayout)                   */}
+        {/* ─────────────────────────────────────────────────────────── */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="content" element={<AdminContent />} />
+          <Route path="datasets" element={<AdminDatasets />} />
+          <Route path="users" element={<AdminUsers />} />
+          <Route path="ai-approval" element={<AdminAIApproval />} />
+          <Route path="analytics" element={<AdminAnalytics />} />
+        </Route>
 
-        {/* Official MoES / NCPOR Footer */}
-        <Footer />
-      </div>
+        {/* Fallback to Home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </BrowserRouter>
   );
 }
