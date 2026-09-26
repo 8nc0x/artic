@@ -465,26 +465,28 @@ export default function MediaGallery() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
           <div className="bg-white rounded-3xl max-w-4xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col md:flex-row text-left max-h-[92vh]">
             {/* Left: Media Viewport */}
-            <div className="md:w-3/5 bg-slate-950 flex flex-col items-center justify-center relative min-h-[300px]">
+            <div className="md:w-3/5 bg-slate-950 flex flex-col items-center justify-center relative min-h-[340px] md:min-h-[460px]">
               <button
                 onClick={() => setLightboxItem(null)}
-                className="absolute top-4 left-4 md:hidden p-1.5 rounded-full bg-black/60 text-white z-10"
+                className="absolute top-4 left-4 md:hidden p-1.5 rounded-full bg-black/60 text-white z-20"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <img
-                src={lightboxItem.url}
-                alt={lightboxItem.title}
-                className="max-h-[550px] w-full object-contain"
-              />
-
-              {lightboxItem.type === 'video' && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                  <div className="p-4 rounded-full bg-polar-blue text-white shadow-xl cursor-pointer hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 ml-1" />
-                  </div>
-                </div>
+              {lightboxItem.type === 'video' ? (
+                <iframe
+                  className="w-full h-full min-h-[340px] md:min-h-[460px] object-cover"
+                  src={lightboxItem.youtube_embed_url || `https://www.youtube-nocookie.com/embed/${lightboxItem.youtube_id || 'v3x8Y3U_a9A'}?autoplay=1&rel=0`}
+                  title={lightboxItem.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <img
+                  src={lightboxItem.url}
+                  alt={lightboxItem.title}
+                  className="max-h-[550px] w-full object-contain"
+                />
               )}
             </div>
 
@@ -492,9 +494,16 @@ export default function MediaGallery() {
             <div className="md:w-2/5 p-6 flex flex-col justify-between overflow-y-auto max-h-[550px]">
               <div>
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                    {lightboxItem.category}
-                  </span>
+                  <div className="flex items-center space-x-1.5">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                      {lightboxItem.category}
+                    </span>
+                    {lightboxItem.type === 'video' && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50 text-red-700 border border-red-200">
+                        YouTube Resource
+                      </span>
+                    )}
+                  </div>
                   <button
                     onClick={() => setLightboxItem(null)}
                     className="hidden md:block p-1 rounded-full text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-colors"
@@ -514,28 +523,20 @@ export default function MediaGallery() {
                 {/* Metadata Table */}
                 <div className="mt-4 space-y-2 text-xs border-t border-slate-100 pt-3">
                   <div className="flex items-center justify-between py-1 border-b border-slate-50">
-                    <span className="text-slate-400 font-medium">Expedition</span>
-                    <span className="text-slate-800 font-semibold">{lightboxItem.expedition}</span>
+                    <span className="text-slate-400 font-medium">Source / Creator</span>
+                    <span className="text-slate-800 font-semibold">{lightboxItem.author || lightboxItem.photographer || 'NCPOR / MoES'}</span>
                   </div>
                   <div className="flex items-center justify-between py-1 border-b border-slate-50">
-                    <span className="text-slate-400 font-medium">Station / Site</span>
-                    <span className="text-slate-800 font-semibold">{lightboxItem.station}</span>
-                  </div>
-                  <div className="flex items-center justify-between py-1 border-b border-slate-50">
-                    <span className="text-slate-400 font-medium">Coordinates</span>
-                    <span className="text-slate-800 font-mono text-[11px]">{lightboxItem.coordinates}</span>
-                  </div>
-                  <div className="flex items-center justify-between py-1 border-b border-slate-50">
-                    <span className="text-slate-400 font-medium">Photographer</span>
-                    <span className="text-slate-800 font-semibold">{lightboxItem.photographer}</span>
+                    <span className="text-slate-400 font-medium">Region</span>
+                    <span className="text-slate-800 font-semibold">{lightboxItem.region}</span>
                   </div>
                   <div className="flex items-center justify-between py-1 border-b border-slate-50">
                     <span className="text-slate-400 font-medium">Capture Date</span>
                     <span className="text-slate-800 font-semibold">{lightboxItem.date}</span>
                   </div>
                   <div className="flex items-center justify-between py-1">
-                    <span className="text-slate-400 font-medium">Resolution</span>
-                    <span className="text-slate-800 font-bold">{lightboxItem.resolution}</span>
+                    <span className="text-slate-400 font-medium">Format</span>
+                    <span className="text-slate-800 font-bold">{lightboxItem.type === 'video' ? '1080p HD Video Stream' : (lightboxItem.resolution || 'High-Res Photo')}</span>
                   </div>
                 </div>
 
@@ -555,29 +556,41 @@ export default function MediaGallery() {
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center space-x-2">
+              <div className="mt-6 pt-4 border-t border-slate-100 flex flex-col gap-2">
+                {lightboxItem.type === 'video' ? (
+                  <a
+                    href={lightboxItem.url || `https://www.youtube.com/watch?v=${lightboxItem.youtube_id || 'v3x8Y3U_a9A'}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-sm transition-colors text-center"
+                  >
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                    <span>Watch Full Video on YouTube</span>
+                  </a>
+                ) : (
+                  <a
+                    href={lightboxItem.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    download
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert(`Downloading high-resolution photo: ${lightboxItem.title}`);
+                    }}
+                    className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow-sm transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Download High-Res Original</span>
+                  </a>
+                )}
+
                 <button
                   onClick={() => handleCopyLink(lightboxItem)}
-                  className="flex-1 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors"
+                  className="w-full py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors"
                 >
                   {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5" />}
-                  <span>{copiedLink ? "Link Copied!" : "Share Asset"}</span>
+                  <span>{copiedLink ? "Link Copied!" : "Share Resource Link"}</span>
                 </button>
-
-                <a
-                  href={lightboxItem.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  download
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert(`Downloading media: ${lightboxItem.title} (${lightboxItem.resolution})`);
-                  }}
-                  className="flex-1 py-2 rounded-xl bg-polar-blue hover:bg-sky-600 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow-sm transition-colors"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download High-Res</span>
-                </a>
               </div>
             </div>
           </div>

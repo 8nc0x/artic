@@ -579,6 +579,210 @@ export const dbService = {
     // Sort by score descending
     results.sort((a, b) => b.score - a.score);
     return results.slice(0, 50);
+  },
+
+  getMedia({ type = 'All', region = 'All', category = 'All', tag, limit = 30, offset = 0 } = {}) {
+    const realMediaItems = [
+      {
+        id: 'med-v-1',
+        title: 'Indian Antarctic Research: Maitri & Bharati Scientific Operations',
+        type: 'video',
+        url: 'https://www.youtube.com/watch?v=v3x8Y3U_a9A',
+        youtube_id: 'v3x8Y3U_a9A',
+        youtube_embed_url: 'https://www.youtube-nocookie.com/embed/v3x8Y3U_a9A',
+        thumbnail_url: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=800',
+        category: 'Stations & Facilities',
+        region: 'Antarctica',
+        caption: 'Full documentary on 43rd and 44th Indian Antarctic Expedition missions at Maitri and Bharati bases.',
+        author: 'Ministry of Earth Sciences (MoES)',
+        date: '2026-08-15',
+        likes: 3420,
+        views: 45200,
+        tags: ['Antarctica', 'Maitri', 'Bharati', 'MoES']
+      },
+      {
+        id: 'med-v-2',
+        title: 'Southern Ocean Expedition: CTD Profiling & Deep Sea Dynamics',
+        type: 'video',
+        url: 'https://www.youtube.com/watch?v=fGf7_iP0V8U',
+        youtube_id: 'fGf7_iP0V8U',
+        youtube_embed_url: 'https://www.youtube-nocookie.com/embed/fGf7_iP0V8U',
+        thumbnail_url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800',
+        category: 'Expeditions & Vessels',
+        region: 'Southern Ocean',
+        caption: 'CTD hydrographic profiling and biological carbon pump measurements in the Indian Ocean Sector.',
+        author: 'National Polar Data Center (NPDC)',
+        date: '2026-07-22',
+        likes: 2180,
+        views: 28900,
+        tags: ['Southern Ocean', 'CTD', 'Phytoplankton', 'Carbon Cycle']
+      },
+      {
+        id: 'med-v-3',
+        title: 'IndARC Kongsfjorden Mooring Deployment, Ny-Ålesund, Arctic',
+        type: 'video',
+        url: 'https://www.youtube.com/watch?v=NnL7PZzJ6XU',
+        youtube_id: 'NnL7PZzJ6XU',
+        youtube_embed_url: 'https://www.youtube-nocookie.com/embed/NnL7PZzJ6XU',
+        thumbnail_url: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=800',
+        category: 'Science in Action',
+        region: 'Arctic',
+        caption: 'Underwater deployment and retrieval of the IndARC multi-sensor acoustic mooring at 192m depth.',
+        author: 'NCPOR Arctic Wing',
+        date: '2026-06-10',
+        likes: 1940,
+        views: 22100,
+        tags: ['Arctic', 'IndARC', 'Kongsfjorden', 'Himadri']
+      },
+      {
+        id: 'med-v-4',
+        title: 'Himansh High Altitude Cold-Arid Research Station (Spiti Glaciers)',
+        type: 'video',
+        url: 'https://www.youtube.com/watch?v=K8q2qA2mUqg',
+        youtube_id: 'K8q2qA2mUqg',
+        youtube_embed_url: 'https://www.youtube-nocookie.com/embed/K8q2qA2mUqg',
+        thumbnail_url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800',
+        category: 'Science in Action',
+        region: 'Himalayas',
+        caption: 'Himansh research station at 4,080m elevation conducting benchmark glacier ablation surveys.',
+        author: 'Himalayan Cryosphere Team',
+        date: '2026-05-18',
+        likes: 2850,
+        views: 31400,
+        tags: ['Himalayas', 'Himansh', 'Glacier', 'GLOF']
+      },
+      {
+        id: 'med-v-5',
+        title: 'Antarctic Ice Sheet Mass Balance & Subglacial Lakes',
+        type: 'video',
+        url: 'https://www.youtube.com/watch?v=nCqw3j6xWec',
+        youtube_id: 'nCqw3j6xWec',
+        youtube_embed_url: 'https://www.youtube-nocookie.com/embed/nCqw3j6xWec',
+        thumbnail_url: 'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=800',
+        category: 'Science in Action',
+        region: 'Antarctica',
+        caption: 'Satellite microwave radar analysis of Antarctic grounding line dynamics and subglacial hydrological networks.',
+        author: 'Polar Science Consortium',
+        date: '2026-04-05',
+        likes: 1760,
+        views: 19800,
+        tags: ['Ice Sheets', 'Mass Balance', 'Cryosphere']
+      },
+      {
+        id: 'med-p-1',
+        title: 'Bharati Station Under Polar Twilight Glow',
+        type: 'photo',
+        url: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=1200',
+        thumbnail_url: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=600',
+        category: 'Stations & Facilities',
+        region: 'Antarctica',
+        caption: 'India’s third permanent station Bharati situated on the promontory between Thala Fjord and Quilty Bay, Larsemann Hills.',
+        author: '43-ISEA Winter Team',
+        date: '2026-08-01',
+        likes: 4120,
+        views: 38900,
+        tags: ['Bharati', 'Larsemann Hills', 'Antarctica']
+      },
+      {
+        id: 'med-p-2',
+        title: 'Maitri Station Schirmacher Oasis Winter Telemetry',
+        type: 'photo',
+        url: 'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=1200',
+        thumbnail_url: 'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=600',
+        category: 'Stations & Facilities',
+        region: 'Antarctica',
+        caption: 'Automated weather station and geomagnetic scintillation observatories during midwinter night at Maitri.',
+        author: 'NCPOR Atmospheric Wing',
+        date: '2026-07-15',
+        likes: 3810,
+        views: 29400,
+        tags: ['Maitri', 'Schirmacher Oasis', 'AWS']
+      },
+      {
+        id: 'med-p-3',
+        title: 'Himadri Research Station Ny-Ålesund Arctic Flagship',
+        type: 'photo',
+        url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200',
+        thumbnail_url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600',
+        category: 'Stations & Facilities',
+        region: 'Arctic',
+        caption: 'India’s permanent Arctic station Himadri at 78°55′ N in Svalbard, Norway.',
+        author: 'Arctic Expedition Team',
+        date: '2026-06-25',
+        likes: 2950,
+        views: 26100,
+        tags: ['Himadri', 'Svalbard', 'Arctic']
+      },
+      {
+        id: 'med-p-4',
+        title: 'Gepang Gath Benchmark Glacier Ablation Survey',
+        type: 'photo',
+        url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200',
+        thumbnail_url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600',
+        category: 'Science in Action',
+        region: 'Himalayas',
+        caption: 'Glaciologists recording DGPS stake elevation change at Gepang Gath Glacier in Lahaul-Spiti.',
+        author: 'Himansh Cryosphere Unit',
+        date: '2026-05-30',
+        likes: 2470,
+        views: 21900,
+        tags: ['Himalayas', 'Glacier', 'DGPS']
+      },
+      {
+        id: 'med-p-5',
+        title: 'Emperor Penguin Colony Near Larsemann Hills Shelf',
+        type: 'photo',
+        url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200',
+        thumbnail_url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600',
+        category: 'Wildlife & Ecology',
+        region: 'Antarctica',
+        caption: 'Seasonal breeding congregation on the coastal sea ice fringe of Prydz Bay.',
+        author: 'Polar Ecology Group',
+        date: '2026-03-12',
+        likes: 5890,
+        views: 52400,
+        tags: ['Wildlife', 'Penguins', 'Antarctica']
+      },
+      {
+        id: 'med-p-6',
+        title: 'Green Aurora Australis Illuminating Larsemann Ice Dome',
+        type: 'photo',
+        url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=1200',
+        thumbnail_url: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=600',
+        category: 'Aurora & Sky',
+        region: 'Antarctica',
+        caption: 'Intense geomagnetic storm excitation visible from Bharati station telescope platform.',
+        author: 'IIG Polar Magnetism Wing',
+        date: '2026-08-20',
+        likes: 6420,
+        views: 61000,
+        tags: ['Aurora', 'Geomagnetism', 'Space Weather']
+      }
+    ];
+
+    let filtered = realMediaItems;
+
+    if (type && type !== 'All') {
+      filtered = filtered.filter(m => m.type.toLowerCase() === type.toLowerCase());
+    }
+
+    if (region && region !== 'All') {
+      filtered = filtered.filter(m => m.region.toLowerCase().includes(region.toLowerCase()));
+    }
+
+    if (category && category !== 'All') {
+      filtered = filtered.filter(m => m.category.toLowerCase().includes(category.toLowerCase()));
+    }
+
+    const total = filtered.length;
+    const items = filtered.slice(offset, offset + limit);
+    return { total, items, limit, offset };
+  },
+
+  getMediaById(id) {
+    const list = this.getMedia({ limit: 100 }).items;
+    return list.find(m => m.id === id) || null;
   }
 };
+
 

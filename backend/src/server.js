@@ -9,9 +9,15 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 dotenv.config();
 
 import apiRoutes from './routes/api.routes.js';
+import { initializePostgres } from './db/postgres.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Initialize PostgreSQL if DATABASE_URL is configured
+initializePostgres().catch(err => {
+  console.warn('PostgreSQL initialization warning:', err.message);
+});
 
 app.use(cors());
 app.use(express.json());
