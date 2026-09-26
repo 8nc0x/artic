@@ -10,7 +10,6 @@ import {
   Eye,
   Plus,
   AlertTriangle,
-  Sparkles,
   BookOpen,
   Newspaper,
   Calendar,
@@ -124,46 +123,46 @@ export default function AdminContent() {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'PUBLISHED':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800">Published</span>;
+        return <span className="px-2.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Published</span>;
       case 'PENDING_REVIEW':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-950 text-amber-300 border border-amber-800">Pending Review</span>;
+        return <span className="px-2.5 py-0.5 rounded text-[11px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">Pending Review</span>;
       case 'DRAFT':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">Draft</span>;
+        return <span className="px-2.5 py-0.5 rounded text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">Draft</span>;
       case 'ARCHIVED':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-950 text-rose-300 border border-rose-800">Archived</span>;
+        return <span className="px-2.5 py-0.5 rounded text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">Archived</span>;
       default:
         return null;
     }
   };
 
   return (
-    <div className="space-y-6 text-left font-sans text-slate-100">
+    <div className="space-y-6 text-left font-sans text-slate-800">
       {/* Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center space-x-3 text-xs font-bold animate-fadeIn">
+        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-700 flex items-center space-x-3 text-xs font-semibold animate-fadeIn">
           <CheckCircle2 className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Page Header */}
-      <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-bold mb-2 border border-slate-700">
-            <FileText className="w-3.5 h-3.5 text-blue-400" />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200">
+            <FileText className="w-3.5 h-3.5 text-blue-600" />
             <span>Content Repository Control</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white font-heading">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
             Content Management
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-2xl">
             Author, review, publish, and archive research papers, news dispatches, events, media, and learning content.
           </p>
         </div>
 
         <button
           onClick={() => showToast('New content draft creation initialized.')}
-          className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-colors flex items-center space-x-2"
+          className="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-colors flex items-center space-x-2"
         >
           <Plus className="w-4 h-4" />
           <span>Create New Content</span>
@@ -171,7 +170,7 @@ export default function AdminContent() {
       </div>
 
       {/* Filters and Search */}
-      <div className="bg-slate-900 rounded-2xl p-4 border border-slate-800 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="flex flex-wrap gap-1.5 w-full md:w-auto">
           {[
             { id: 'ALL', label: 'All Content' },
@@ -185,10 +184,10 @@ export default function AdminContent() {
             <button
               key={tab.id}
               onClick={() => setSelectedType(tab.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
                 selectedType === tab.id
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-700'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200 border border-slate-200'
               }`}
             >
               {tab.label}
@@ -203,16 +202,16 @@ export default function AdminContent() {
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search content..."
-            className="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-4 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-hidden focus:border-blue-500"
+            className="w-full bg-slate-50 border border-slate-300 rounded-lg pl-9 pr-4 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-blue-600 focus:bg-white"
           />
         </div>
       </div>
 
       {/* Content Table */}
-      <div className="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-sm">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-950 border-b border-slate-800 text-slate-400 font-bold uppercase text-[10px] tracking-wider">
+            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase text-[11px] tracking-wider">
               <tr>
                 <th className="px-6 py-3.5">Title & Type</th>
                 <th className="px-6 py-3.5">Author / Wing</th>
@@ -221,32 +220,32 @@ export default function AdminContent() {
                 <th className="px-6 py-3.5 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {filteredContent.map(item => (
-                <tr key={item.id} className="hover:bg-slate-800/40 transition-colors">
+                <tr key={item.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-6 py-4">
-                    <div className="font-bold text-white text-sm line-clamp-1">
+                    <div className="font-bold text-slate-900 text-sm line-clamp-1">
                       {item.title}
                     </div>
-                    <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                    <div className="text-[11px] text-slate-400 font-mono mt-0.5">
                       Type: {item.type} • ID: {item.id}
                     </div>
                   </td>
-                  <td className="px-6 py-4 font-medium text-slate-300">
+                  <td className="px-6 py-4 font-semibold text-slate-800">
                     {item.author}
                   </td>
-                  <td className="px-6 py-4 text-slate-400">
+                  <td className="px-6 py-4 text-slate-500">
                     {item.date}
                   </td>
                   <td className="px-6 py-4">
                     {getStatusBadge(item.status)}
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <div className="flex items-center justify-end space-x-1">
+                    <div className="flex items-center justify-end space-x-1.5">
                       {item.status !== 'PUBLISHED' && (
                         <button
                           onClick={() => setDialogAction({ type: 'publish', item })}
-                          className="p-1.5 rounded-lg bg-emerald-950/80 text-emerald-400 hover:bg-emerald-900 border border-emerald-800 text-[11px] font-bold"
+                          className="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-semibold transition-colors"
                           title="Publish"
                         >
                           Publish
@@ -255,7 +254,7 @@ export default function AdminContent() {
                       {item.status === 'PUBLISHED' && (
                         <button
                           onClick={() => setDialogAction({ type: 'unpublish', item })}
-                          className="p-1.5 rounded-lg bg-amber-950/80 text-amber-400 hover:bg-amber-900 border border-amber-800 text-[11px] font-bold"
+                          className="px-2.5 py-1 rounded-md bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200 text-xs font-semibold transition-colors"
                           title="Unpublish to Draft"
                         >
                           Unpublish
@@ -263,7 +262,7 @@ export default function AdminContent() {
                       )}
                       <button
                         onClick={() => setDialogAction({ type: 'archive', item })}
-                        className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-rose-400 border border-slate-700 text-[11px]"
+                        className="p-1.5 rounded-md bg-slate-100 text-slate-600 hover:text-rose-600 hover:bg-rose-50 border border-slate-200 transition-colors"
                         title="Archive"
                       >
                         <Archive className="w-3.5 h-3.5" />
@@ -279,35 +278,35 @@ export default function AdminContent() {
 
       {/* Confirmation Dialog */}
       {dialogAction && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-slate-900 rounded-3xl max-w-md w-full p-6 border border-slate-700 shadow-2xl space-y-4 text-left">
-            <div className="flex items-center space-x-3 text-amber-400">
-              <div className="p-2.5 rounded-2xl bg-amber-950 border border-amber-800">
-                <AlertTriangle className="w-6 h-6 text-amber-400" />
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 border border-slate-200 shadow-2xl space-y-4 text-left">
+            <div className="flex items-center space-x-3 text-amber-600">
+              <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                <AlertTriangle className="w-5 h-5 text-amber-600" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-white font-heading">
+                <h3 className="text-base font-bold text-slate-900 font-heading">
                   Confirm Content Action
                 </h3>
-                <p className="text-xs text-slate-400 capitalize">Action: {dialogAction.type}</p>
+                <p className="text-xs text-slate-500 capitalize">Action: {dialogAction.type}</p>
               </div>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed">
               Are you sure you want to <strong>{dialogAction.type}</strong> "
-              <span className="text-white font-bold">{dialogAction.item.title}</span>"?
+              <span className="text-slate-900 font-semibold">{dialogAction.item.title}</span>"?
             </p>
 
             <div className="flex items-center justify-end space-x-3 pt-2">
               <button
                 onClick={() => setDialogAction(null)}
-                className="px-4 py-2 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-bold transition-colors"
+                className="px-4 py-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 text-xs font-semibold transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={executeAction}
-                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-colors"
+                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-colors"
               >
                 Confirm
               </button>

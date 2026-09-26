@@ -17,7 +17,7 @@ export default function ExpeditionExplorer() {
       type: 'Year-Round Active Station',
       capacity: '25 winter / 65 summer',
       description: 'India’s second permanent research station, carrying out continuous research in atmospheric science, meteorology, earth science, glaciology, and human physiology.',
-      image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=800'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/An_aerial_view_of_the_Indian_Station_Maitri%2C_Antarctica_on_February_2%2C_2005.jpg'
     },
     {
       id: 'bharati',
@@ -29,7 +29,7 @@ export default function ExpeditionExplorer() {
       type: 'Year-Round Active Station',
       capacity: '47 personnel',
       description: 'State-of-the-art third Antarctic base made of prefabricated shipping containers, focusing on oceanographic and continental break-up research.',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Bharati_permanent_Antarctic_research_station.jpg'
     },
     {
       id: 'dakshin-gangotri',
@@ -41,7 +41,7 @@ export default function ExpeditionExplorer() {
       type: 'Historical Base (Submerged in Ice)',
       capacity: 'Historical milestone',
       description: 'India’s first permanent station in Antarctica, operating through 1989 before being decommissioned and preserved as an ice core calibration and historic site.',
-      image: 'https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&q=80&w=800'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Dakshin_Gangotri_Station.jpg/800px-Dakshin_Gangotri_Station.jpg'
     },
     {
       id: 'himadri',
@@ -53,7 +53,19 @@ export default function ExpeditionExplorer() {
       type: 'Year-Round Active Station',
       capacity: '8 scientists',
       description: 'India’s permanent Arctic research base, monitoring Arctic climate change, atmospheric aerosols, Kongsfjorden fjord dynamics, and teleconnections with the Indian Monsoon.',
-      image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&q=80&w=800'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Indian_station_1.JPG'
+    },
+    {
+      id: 'himansh',
+      name: 'Himansh Station',
+      region: 'Himalayas',
+      coords: '32°24′00″ N, 77°37′00″ E',
+      established: 2016,
+      location: 'Sutri Dhaka, Chandra Basin, Lahaul-Spiti',
+      type: 'High-Altitude Cryosphere Base',
+      capacity: '12 scientists',
+      description: 'High-altitude research facility at 4,080m elevation conducting benchmark glacier ablation, mass balance, and GLOF risk surveys.',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bara_Shigri_Glacier.jpg/800px-Bara_Shigri_Glacier.jpg'
     }
   ];
 
@@ -105,7 +117,7 @@ export default function ExpeditionExplorer() {
               alt={currentStation.name}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-slate-950/60" />
             <div className="absolute bottom-4 left-4 text-white">
               <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-blue-600/90 text-white">
                 {currentStation.region}

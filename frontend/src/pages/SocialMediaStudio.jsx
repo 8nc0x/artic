@@ -48,7 +48,7 @@ export default function SocialMediaStudio() {
       accountName: 'National Centre for Polar and Ocean Research',
       followers: '42.8K followers',
       icon: Instagram,
-      color: 'from-pink-500 to-purple-600',
+      color: 'bg-pink-600',
       badgeBg: 'bg-pink-50 text-pink-700 border-pink-200',
       tagline: 'Expedition photo dispatches, beach clean-ups, and field science stories.',
       url: 'https://instagram.com/ncpor.goa'
@@ -60,7 +60,7 @@ export default function SocialMediaStudio() {
       accountName: 'NCPOR',
       followers: '115.4K followers',
       icon: Twitter,
-      color: 'from-slate-800 to-black',
+      color: 'bg-slate-900',
       badgeBg: 'bg-slate-100 text-slate-800 border-slate-300',
       tagline: 'Real-time expedition milestones, glacier hazard alerts, and MoES updates.',
       url: 'https://twitter.com/ncaor_goa'
@@ -72,7 +72,7 @@ export default function SocialMediaStudio() {
       accountName: 'National Centre for Polar and Ocean Research (NCPOR)',
       followers: '28.2K followers',
       icon: Linkedin,
-      color: 'from-blue-700 to-cyan-800',
+      color: 'bg-blue-700',
       badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
       tagline: 'SIH hackathons, peer-reviewed paper highlights, and research opportunities.',
       url: 'https://linkedin.com/company/ncpor'
@@ -84,7 +84,7 @@ export default function SocialMediaStudio() {
       accountName: 'National Centre for Polar and Ocean Research',
       followers: '68K followers',
       icon: Facebook,
-      color: 'from-blue-600 to-blue-800',
+      color: 'bg-blue-600',
       badgeBg: 'bg-indigo-50 text-indigo-700 border-indigo-200',
       tagline: 'Official institutional announcements, symposia registrations, and public seminars.',
       url: 'https://facebook.com/NCPOR.India'
@@ -357,7 +357,7 @@ export default function SocialMediaStudio() {
                 rel="noopener noreferrer"
                 className="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-2xs hover:shadow-md hover:border-blue-400 transition-all flex items-center space-x-3 group"
               >
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-tr ${p.color} text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform`}>
+                <div className={`w-10 h-10 rounded-xl ${p.color} text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform`}>
                   <Icon className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -564,7 +564,7 @@ export default function SocialMediaStudio() {
       {/* ─────────────────────────────────────────────────────────── */}
       <section
         id="ai-assistant"
-        className="bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 rounded-3xl p-6 sm:p-8 text-white shadow-2xl border border-blue-900/50 space-y-6"
+        className="bg-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-slate-800 space-y-6"
       >
         <div className="space-y-2">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-400/30">

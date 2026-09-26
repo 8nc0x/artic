@@ -136,7 +136,7 @@ export default function PaperDetailView() {
             alt="Antarctic Mountains"
             className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-blue-950/70" />
+          <div className="absolute inset-0 bg-slate-950/85" />
         </div>
 
         {/* Banner Details */}

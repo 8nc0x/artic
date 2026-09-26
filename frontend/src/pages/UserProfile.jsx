@@ -35,7 +35,7 @@ export default function UserProfile() {
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div className="flex items-center space-x-5">
           <div className="relative">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-blue-700 to-sky-500 text-white font-black text-2xl flex items-center justify-center shadow-lg ring-4 ring-blue-50">
+            <div className="w-20 h-20 rounded-2xl bg-blue-700 text-white font-black text-2xl flex items-center justify-center shadow-md ring-4 ring-blue-50">
               {name.split(' ').map(n => n[0]).slice(0, 2).join('')}
             </div>
             <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white text-[10px]" title="Active Researcher">

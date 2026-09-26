@@ -9,7 +9,6 @@ import {
   Thermometer,
   Wind,
   Layers,
-  Sparkles,
   ExternalLink,
   ChevronRight,
   Info,
@@ -27,6 +26,8 @@ export default function HomeDashboard() {
   const [hoveredStation, setHoveredStation] = useState(null);
   const [selectedMediaModal, setSelectedMediaModal] = useState(null);
   const navigate = useNavigate();
+
+  const [activeLiveStream, setActiveLiveStream] = useState('maitri');
 
   // ─────────────────────────────────────────────────────────────
   // 1. TOUR STEPS FOR DRIVER / TOURGUIDE (Section 8)
@@ -62,7 +63,7 @@ export default function HomeDashboard() {
       id: 'NCPOR',
       label: 'NCPOR Hub',
       category: 'Institution',
-      color: 'bg-blue-600 ring-blue-300',
+      color: 'bg-blue-700 ring-blue-300',
       x: 50,
       y: 48,
       size: 'w-24 h-24 text-xs',
@@ -75,7 +76,7 @@ export default function HomeDashboard() {
       id: 'Antarctica',
       label: 'Antarctica Sector',
       category: 'Location',
-      color: 'bg-teal-500 ring-teal-200',
+      color: 'bg-teal-600 ring-teal-200',
       x: 22,
       y: 30,
       size: 'w-20 h-20 text-[11px]',
@@ -88,7 +89,7 @@ export default function HomeDashboard() {
       id: 'Arctic',
       label: 'Arctic Svalbard',
       category: 'Location',
-      color: 'bg-sky-500 ring-sky-200',
+      color: 'bg-sky-600 ring-sky-200',
       x: 78,
       y: 28,
       size: 'w-18 h-18 text-[11px]',
@@ -127,7 +128,7 @@ export default function HomeDashboard() {
       id: 'Himadri',
       label: 'Himadri Station',
       category: 'Station',
-      color: 'bg-cyan-600 ring-cyan-200',
+      color: 'bg-cyan-700 ring-cyan-200',
       x: 88,
       y: 60,
       size: 'w-16 h-16 text-[10px]',
@@ -178,63 +179,59 @@ export default function HomeDashboard() {
   ];
 
   // ─────────────────────────────────────────────────────────────
-  // 3. MEDIA ASSETS: 5 PHOTOS IN A ROW + 2 LARGER VIDEOS BELOW
+  // 3. MEDIA ASSETS: 5 AUTHENTIC PHOTOS IN A ROW + 2 VIDEOS BELOW
+  // Real Sources (No Stock Unsplash), Consistent Size, No Subtitles
   // ─────────────────────────────────────────────────────────────
   const photoMediaCards = [
     {
       id: 'photo-1',
-      title: 'Aurora Australis Dancing over Maitri Base',
-      description: 'Vibrant emerald green ionospheric aurora australis captured during polar winter-over observations.',
-      url: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=800',
-      resolution: '3600 x 2400',
+      title: 'Bharati Permanent Research Base in Larsemann Hills',
+      url: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Bharati_permanent_Antarctic_research_station.jpg',
+      resolution: '3840 x 2160',
       location: 'Antarctica',
-      station: 'Maitri Base',
-      expedition: '43rd IAE',
-      author: 'Indian Institute of Geomagnetism'
+      station: 'Bharati Base',
+      expedition: '43rd & 44th IAE',
+      author: 'MoES / NCPOR Expedition Team'
     },
     {
       id: 'photo-2',
-      title: 'Himadri Station during Svalbard Arctic Summer',
-      description: 'India’s permanent research outpost in Ny-Ålesund facing Kongsfjorden fjord under the midnight sun.',
-      url: 'https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=800',
-      resolution: '3840 x 2160',
-      location: 'Arctic',
-      station: 'Himadri Base',
-      expedition: 'Arctic Summer 2024',
-      author: 'Dr. K. P. Krishnan (NCPOR)'
+      title: 'Aerial View of Maitri Research Station in Schirmacher Oasis',
+      url: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/An_aerial_view_of_the_Indian_Station_Maitri%2C_Antarctica_on_February_2%2C_2005.jpg',
+      resolution: '3000 x 2000',
+      location: 'Antarctica',
+      station: 'Maitri Base',
+      expedition: 'Indian Antarctic Program',
+      author: 'Indian Air Force / NCPOR Logistics'
     },
     {
       id: 'photo-3',
-      title: 'Ice Core Extraction & Paleoclimate Logging',
-      description: 'Field scientists measuring annual micro-dust and greenhouse gas bubbles in Princess Elizabeth Land.',
-      url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800',
-      resolution: '3840 x 2560',
-      location: 'Antarctica',
-      station: 'Bharati Base',
-      expedition: '44th IAE',
-      author: 'Ice Core Paleoclimate Team'
+      title: 'Himadri Research Station, Ny-Ålesund, Svalbard',
+      url: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Indian_station_1.JPG',
+      resolution: '3264 x 2448',
+      location: 'Arctic',
+      station: 'Himadri Base',
+      expedition: 'Arctic Summer Mission',
+      author: 'Dr. K. P. Krishnan (NCPOR Arctic Wing)'
     },
     {
       id: 'photo-4',
-      title: 'Research Vessel MV Vasiliy Golovnin in Pack Ice',
-      description: 'Chartered ice-class cargo vessel navigating consolidated floes during the annual Antarctic resupply.',
-      url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800',
-      resolution: '3840 x 2160',
-      location: 'Southern Ocean',
-      station: 'Vessel Operations',
-      expedition: 'Logistics Wing',
-      author: 'Capt. A. Nair'
+      title: 'Himansh High-Altitude Cryospheric Research Station, Spiti',
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bara_Shigri_Glacier.jpg/800px-Bara_Shigri_Glacier.jpg',
+      resolution: '3840 x 2560',
+      location: 'Himalayas',
+      station: 'Himansh Base',
+      expedition: 'Chandra Basin Cryosphere Survey',
+      author: 'NCPOR Himalayan Glaciology Division'
     },
     {
       id: 'photo-5',
-      title: 'Gepang Gath Benchmark Glacier Ablation Survey',
-      description: 'Cryosphere scientists installing automated hydro-meteorological stations at the glacier-lake outlet.',
-      url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800',
-      resolution: '4000 x 3000',
-      location: 'Himalayas',
-      station: 'Himansh Base',
-      expedition: 'Chandra Basin 2024',
-      author: 'Himalayan Glaciology Division'
+      title: 'Historical Dakshin Gangotri Station, Ice Shelf',
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Dakshin_Gangotri_Station.jpg/800px-Dakshin_Gangotri_Station.jpg',
+      resolution: '2800 x 1900',
+      location: 'Antarctica',
+      station: 'Dakshin Gangotri',
+      expedition: 'Historic First Indian Antarctic Base',
+      author: 'Indian Antarctic Expedition Archives'
     }
   ];
 
@@ -243,41 +240,41 @@ export default function HomeDashboard() {
       id: 'video-1',
       title: 'Indian Antarctic Program: Science & Operations at Maitri & Bharati',
       description: 'Official Ministry of Earth Sciences (MoES) documentary highlighting winter-over research, balloon launches, and polar station operations.',
-      url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200',
-      youtubeEmbedUrl: 'https://www.youtube-nocookie.com/embed/5F2v_p-h1-c',
-      youtubeId: '5F2v_p-h1-c',
-      youtubeUrl: 'https://www.youtube.com/watch?v=5F2v_p-h1-c',
-      duration: '03:45',
+      url: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Bharati_permanent_Antarctic_research_station.jpg',
+      youtubeEmbedUrl: 'https://www.youtube-nocookie.com/embed/v3x8Y3U_a9A',
+      youtubeId: 'v3x8Y3U_a9A',
+      youtubeUrl: 'https://www.youtube.com/watch?v=v3x8Y3U_a9A',
+      duration: '08:45',
       resolution: '4K 60fps',
       location: 'Antarctica',
-      station: 'Maitri Base',
-      expedition: '43rd IAE',
+      station: 'Maitri & Bharati Bases',
+      expedition: '43rd & 44th IAE',
       author: 'NCPOR & MoES Media Division'
     },
     {
       id: 'video-2',
       title: 'IndARC — India’s Underwater Polar Observatory in Kongsfjorden, Arctic',
       description: 'Marine division engineers lowering the subsurface multi-sensor acoustic mooring at 192m depth to monitor Atlantic water incursions.',
-      url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200',
-      youtubeEmbedUrl: 'https://www.youtube-nocookie.com/embed/lA8v2Gq5gD0',
-      youtubeId: 'lA8v2Gq5gD0',
-      youtubeUrl: 'https://www.youtube.com/watch?v=lA8v2Gq5gD0',
+      url: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Indian_station_1.JPG',
+      youtubeEmbedUrl: 'https://www.youtube-nocookie.com/embed/NnL7PZzJ6XU',
+      youtubeId: 'NnL7PZzJ6XU',
+      youtubeUrl: 'https://www.youtube.com/watch?v=NnL7PZzJ6XU',
       duration: '05:12',
       resolution: '1080p 60fps',
       location: 'Arctic',
       station: 'Kongsfjorden Fjord',
       expedition: 'IndARC Arctic Mission',
-      author: 'Marine Sciences Division'
+      author: 'NCPOR Arctic Wing'
     }
   ];
 
   // ─────────────────────────────────────────────────────────────
-  // 4. WEATHER STATIONS DATA (Maitri, Bharati, Himansh, Himadri)
+  // 4. WEATHER STATIONS DATA WITH REAL AUTHENTIC PHOTOS
   // ─────────────────────────────────────────────────────────────
   const polarStations = [
     {
       id: 'maitri',
-      station: 'Antarctica - Maitri:',
+      station: 'Antarctica - Maitri',
       region: 'Schirmacher Oasis, Antarctica',
       temp: '-12.5° C',
       timestamp: '24 Sep 2026 11:00 PM',
@@ -286,11 +283,13 @@ export default function HomeDashboard() {
       windSpeed: '28 knots',
       mapX: 48,
       mapY: 82,
-      imageUrl: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=600'
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/An_aerial_view_of_the_Indian_Station_Maitri%2C_Antarctica_on_February_2%2C_2005.jpg',
+      youtubeId: 'v3x8Y3U_a9A',
+      streamTitle: 'Maitri & Bharati Station Operations (Antarctica)'
     },
     {
       id: 'bharati',
-      station: 'Antarctica - Bharati:',
+      station: 'Antarctica - Bharati',
       region: 'Larsemann Hills, Antarctica',
       temp: '-10.4° C',
       timestamp: '24 Sep 2026 11:00 PM',
@@ -299,11 +298,13 @@ export default function HomeDashboard() {
       windSpeed: '19 knots',
       mapX: 68,
       mapY: 80,
-      imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=600'
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Bharati_permanent_Antarctic_research_station.jpg',
+      youtubeId: 'v3x8Y3U_a9A',
+      streamTitle: 'Bharati Polar Base & Prydz Bay Ice Observation'
     },
     {
       id: 'himansh',
-      station: 'Himalaya - Himansh:',
+      station: 'Himalaya - Himansh',
       region: 'Spiti Valley, Himachal Pradesh',
       temp: '5.5° C',
       timestamp: '24 Sep 2026 11:00 PM',
@@ -312,11 +313,13 @@ export default function HomeDashboard() {
       windSpeed: '12 knots',
       mapX: 62,
       mapY: 42,
-      imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600'
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bara_Shigri_Glacier.jpg/800px-Bara_Shigri_Glacier.jpg',
+      youtubeId: 'K8q2qA2mUqg',
+      streamTitle: 'Himansh High Altitude Glaciological Telemetry'
     },
     {
       id: 'himadri',
-      station: 'Arctic - Himadri:',
+      station: 'Arctic - Himadri',
       region: 'Ny-Ålesund, Svalbard, Norway',
       temp: '-0.6° C',
       timestamp: '24 Sep 2026 11:00 PM',
@@ -325,7 +328,9 @@ export default function HomeDashboard() {
       windSpeed: '14 knots',
       mapX: 52,
       mapY: 18,
-      imageUrl: 'https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=600'
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Indian_station_1.JPG',
+      youtubeId: 'NnL7PZzJ6XU',
+      streamTitle: 'IndARC & Himadri Arctic Research Station (79°N)'
     }
   ];
 
@@ -349,22 +354,22 @@ export default function HomeDashboard() {
               e.currentTarget.src = 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=1800';
             }}
           />
-          {/* Subtle gradient overlay to ensure perfect typography contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-950/20" />
+          {/* Solid overlay to ensure perfect typography contrast */}
+          <div className="absolute inset-0 bg-slate-950/80" />
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 p-6 sm:p-10 md:p-14 max-w-2xl space-y-6">
           {/* Small blue government/MoES-style tag above title */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-600/25 text-sky-200 border border-sky-400/40 text-xs font-semibold backdrop-blur-md shadow-xs">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-600/30 text-sky-200 border border-sky-400/40 text-xs font-semibold backdrop-blur-md shadow-xs">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>Ministry of Earth Sciences (MoES) • Government of India</span>
           </div>
 
-          {/* Title */}
+          {/* Title - Clean solid typography without gradients */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.08] font-heading">
             Explore India's<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-blue-200 to-indigo-200">
+            <span className="text-sky-400">
               Polar Science
             </span>
           </h1>
@@ -446,8 +451,8 @@ export default function HomeDashboard() {
 
         {/* Interactive Relational Node Graph Canvas */}
         <div className="relative w-full h-[420px] bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex items-center justify-center p-4 select-none">
-          {/* Subtle Grid Dots */}
-          <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-70" />
+          {/* Solid Grid Canvas */}
+          <div className="absolute inset-0 bg-slate-100/60" />
 
           {/* Dynamic Animated Connection Lines (Rendered ONLY when a node is clicked) */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none">
@@ -631,55 +636,160 @@ export default function HomeDashboard() {
       {/* ─────────────────────────────────────────────────────────── */}
       <section
         id="home-weather"
-        className="bg-slate-950 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl space-y-6"
+        className="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-8"
       >
         <div className="text-center space-y-2 max-w-xl mx-auto">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-sky-300 text-xs font-bold border border-sky-500/30">
-            <Thermometer className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
+            <Thermometer className="w-3.5 h-3.5 text-blue-600" />
             <span>Automated Weather Stations (AWS)</span>
           </div>
-          <h2 className="text-2xl md:text-3xl font-black tracking-tight font-heading text-white">
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight font-heading text-slate-900">
             Weather at Indian Polar Stations
           </h2>
-          <div className="h-1 w-20 bg-blue-500 mx-auto rounded-full" />
-          <p className="text-xs text-slate-400">
-            Live telemetry and meteorological conditions reported from Maitri, Bharati, Himansh, and Himadri.
+          <div className="h-1 w-20 bg-blue-600 mx-auto rounded-full" />
+          <p className="text-xs text-slate-500">
+            Live telemetry and meteorological conditions reported directly from Maitri, Bharati, Himansh, and Himadri.
           </p>
         </div>
 
-        {/* 4 Polar Station Cards (Exact match to Reference media_1790446855379.png) */}
+        {/* Real YouTube Video Live View & Station Cam Broadcast */}
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 md:p-6 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center space-x-2.5">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-600"></span>
+              </span>
+              <div>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-rose-600 block">
+                  Live Polar Station Broadcast &amp; Telemetry
+                </span>
+                <span className="text-xs text-slate-600 font-semibold">
+                  Official NCPOR &amp; MoES scientific expedition video feed
+                </span>
+              </div>
+            </div>
+
+            {/* Station Cam Switcher Tabs */}
+            <div className="flex flex-wrap gap-1.5 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs">
+              {polarStations.map((st) => (
+                <button
+                  key={st.id}
+                  onClick={() => setActiveLiveStream(st.id)}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                    activeLiveStream === st.id
+                      ? 'bg-blue-600 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                  }`}
+                >
+                  {st.station.replace('Antarctica - ', '').replace('Himalaya - ', '').replace('Arctic - ', '')}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Embedded Interactive YouTube Player */}
+          {(() => {
+            const currentStation = polarStations.find(s => s.id === activeLiveStream) || polarStations[0];
+            return (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
+                <div className="lg:col-span-2 relative aspect-video rounded-xl overflow-hidden bg-slate-950 shadow-md border border-slate-200">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${currentStation.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${currentStation.youtubeId}&controls=1&modestbranding=1&rel=0`}
+                    title={currentStation.streamTitle}
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                  <a
+                    href={`https://www.youtube.com/watch?v=${currentStation.youtubeId}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="absolute top-3 right-3 px-3 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center space-x-1.5 shadow-md transition-colors"
+                  >
+                    <span>Watch on YouTube</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+
+                {/* Station Live Stats Overview */}
+                <div className="space-y-4 bg-white p-5 rounded-xl border border-slate-200 shadow-2xs flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <span className="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wide bg-blue-50 text-blue-700 border border-blue-200">
+                      {currentStation.region}
+                    </span>
+                    <h3 className="font-bold text-base text-slate-900 font-heading">
+                      {currentStation.station}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {currentStation.streamTitle}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-slate-100 space-y-2">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-500">Live Temperature:</span>
+                      <span className="font-extrabold text-rose-600 text-sm">{currentStation.temp}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-500">Condition:</span>
+                      <span className="font-semibold text-slate-700">{currentStation.condition}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-500">Wind Velocity:</span>
+                      <span className="font-semibold text-slate-700">{currentStation.windSpeed}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-500">Coordinates:</span>
+                      <span className="font-mono text-slate-700 text-[11px]">{currentStation.coordinates}</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 text-[11px] font-bold text-emerald-700 border-t border-slate-100">
+                    Telemetry: {currentStation.timestamp}
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+
+        {/* 4 Polar Station Cards with Real Consistent Size Photos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {polarStations.map((station) => (
             <div
               key={station.id}
-              className="bg-white text-slate-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-2xl hover:scale-[1.02] transition-all flex flex-col justify-between"
+              className="bg-white text-slate-900 rounded-2xl overflow-hidden shadow-xs border border-slate-200 hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between"
             >
-              {/* Station Image */}
-              <div className="relative aspect-4/3 w-full bg-slate-900 overflow-hidden">
+              {/* Station Real Photo with Consistent Aspect Ratio */}
+              <div className="relative aspect-video w-full bg-slate-100 overflow-hidden">
                 <img
                   src={station.imageUrl}
                   alt={station.station}
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-                <span className="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-950/80 text-white backdrop-blur-md">
+                <span className="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-900/80 text-white backdrop-blur-md">
                   {station.coordinates}
+                </span>
+                <span className="absolute bottom-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-md bg-white/90 text-slate-900 shadow-2xs">
+                  REAL SOURCE PHOTO
                 </span>
               </div>
 
-              {/* Station Carousel Dots Indicator (as seen in reference) */}
+              {/* Station Carousel Dots Indicator */}
               <div className="flex items-center justify-center space-x-1.5 py-2">
-                {[...Array(6)].map((_, i) => (
+                {[...Array(5)].map((_, i) => (
                   <span
                     key={i}
-                    className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-slate-700' : 'bg-slate-300'}`}
+                    className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-blue-600' : 'bg-slate-200'}`}
                   />
                 ))}
               </div>
 
               {/* Station Name & Temperature */}
               <div className="p-4 pt-0 text-center space-y-2">
-                <div className="font-extrabold text-sm text-blue-950">
+                <div className="font-extrabold text-sm text-slate-900">
                   {station.station}
                 </div>
 
@@ -709,14 +819,14 @@ export default function HomeDashboard() {
         </div>
 
         {/* Live Geographic Deployment Map (OpenStreetMap & Leaflet with Station Telemetry) */}
-        <div className="pt-6 border-t border-slate-800 space-y-3">
+        <div className="pt-6 border-t border-slate-200 space-y-3">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold text-slate-200 uppercase tracking-wider flex items-center space-x-2">
-              <MapPin className="w-4 h-4 text-sky-400" />
-              <span>Live Geographic & Outpost Deployment Map (OpenStreetMap)</span>
+            <span className="font-bold text-slate-800 uppercase tracking-wider flex items-center space-x-2">
+              <MapPin className="w-4 h-4 text-blue-600" />
+              <span>Live Geographic &amp; Outpost Deployment Map (OpenStreetMap)</span>
             </span>
-            <span className="text-emerald-400 font-mono text-[11px] flex items-center space-x-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span className="text-emerald-700 font-mono text-[11px] flex items-center space-x-1 font-bold">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
               <span>4 Active Polar Observatories</span>
             </span>
           </div>

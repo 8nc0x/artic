@@ -15,7 +15,6 @@ import {
   Settings,
   LayoutDashboard,
   Compass,
-  Sparkles,
   ChevronDown,
   AlertTriangle
 } from 'lucide-react';
@@ -93,8 +92,8 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-2xs">
-        {/* Top MoES Tricolor Accent Line */}
-        <div className="h-0.5 w-full bg-gradient-to-r from-orange-500 via-sky-400 to-emerald-600" />
+        {/* Top MoES Solid Accent Line */}
+        <div className="h-1 w-full bg-blue-700" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-2">
@@ -213,7 +212,7 @@ export default function Navbar() {
                     onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                     className="flex items-center space-x-2 bg-slate-50 hover:bg-slate-100 border border-slate-200/90 rounded-xl px-2.5 py-1 transition-all"
                   >
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-700 to-sky-500 text-white flex items-center justify-center text-[10px] font-black">
+                    <div className="w-6 h-6 rounded-full bg-blue-700 text-white flex items-center justify-center text-[10px] font-bold">
                       {userRole === 'ADMIN' ? 'AD' : userRole === 'RESEARCHER' ? 'RS' : 'US'}
                     </div>
                     <div className="text-left hidden sm:block">

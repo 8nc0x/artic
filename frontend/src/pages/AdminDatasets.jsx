@@ -10,7 +10,6 @@ import {
   Clock,
   Layers,
   Search,
-  Sparkles,
   Server,
   Play
 } from 'lucide-react';
@@ -20,9 +19,8 @@ export default function AdminDatasets() {
   const [syncHistory, setSyncHistory] = useState([]);
   const [syncing, setSyncing] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
-  const [selectedSourceModal, setSelectedSourceModal] = useState(null);
 
-  // Initial datasets catalog table
+  // Datasets catalog table
   const [datasetsList, setDatasetsList] = useState([
     {
       id: 'ds-ncpor-01',
@@ -129,26 +127,26 @@ export default function AdminDatasets() {
   };
 
   return (
-    <div className="space-y-8 text-left font-sans text-slate-100">
+    <div className="space-y-6 text-left font-sans text-slate-800">
       {/* Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center space-x-3 text-xs font-bold animate-fadeIn">
+        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-700 flex items-center space-x-3 text-xs font-semibold animate-fadeIn">
           <CheckCircle2 className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Header */}
-      <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-bold mb-2 border border-slate-700">
-            <Database className="w-3.5 h-3.5 text-blue-400" />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200">
+            <Database className="w-3.5 h-3.5 text-blue-600" />
             <span>NPDC & External Ingestion Control</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white font-heading">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
             Dataset Management
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-2xl">
             Manage National Polar Data Center (NPDC) feeds, external cryospheric sources, versioning, and daily scheduled syncs.
           </p>
         </div>
@@ -156,9 +154,9 @@ export default function AdminDatasets() {
         <button
           onClick={handleTriggerSync}
           disabled={syncing}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center space-x-2 transition-all ${
+          className={`px-4 py-2.5 rounded-lg text-xs font-semibold flex items-center space-x-2 transition-all ${
             syncing
-              ? 'bg-blue-800 text-slate-300 cursor-not-allowed'
+              ? 'bg-blue-300 text-white cursor-not-allowed'
               : 'bg-blue-600 hover:bg-blue-700 text-white shadow-xs cursor-pointer'
           }`}
         >
@@ -169,7 +167,7 @@ export default function AdminDatasets() {
 
       {/* Source Registry Cards */}
       <div className="space-y-3">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wider text-[11px] font-mono">
+        <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider font-mono">
           Approved Data Sources Registry
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -199,20 +197,20 @@ export default function AdminDatasets() {
               description: 'Passive microwave satellite measurements for polar sea ice extent baselines.'
             }
           ].map(src => (
-            <div key={src.id} className="bg-slate-900 rounded-2xl p-5 border border-slate-800 space-y-2">
+            <div key={src.id} className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 font-semibold">
                   {src.type}
                 </span>
-                <span className="flex items-center space-x-1 text-[10px] font-bold text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span className="flex items-center space-x-1 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                   <span>{src.status}</span>
                 </span>
               </div>
-              <h4 className="text-sm font-bold text-white font-heading">{src.name}</h4>
-              <p className="text-xs text-slate-400 line-clamp-2">{src.description}</p>
-              <div className="text-[10px] text-slate-500 font-mono pt-1 flex items-center space-x-1">
-                <Clock className="w-3 h-3" />
+              <h4 className="text-sm font-bold text-slate-900 font-heading">{src.name}</h4>
+              <p className="text-xs text-slate-500 line-clamp-2">{src.description}</p>
+              <div className="text-[11px] text-slate-400 font-mono pt-1 flex items-center space-x-1.5">
+                <Clock className="w-3.5 h-3.5" />
                 <span>Cron: {src.schedule}</span>
               </div>
             </div>
@@ -221,13 +219,13 @@ export default function AdminDatasets() {
       </div>
 
       {/* Dataset Catalog Table */}
-      <div className="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-sm space-y-4 p-6">
-        <h3 className="text-sm font-bold text-white font-heading">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm space-y-4 p-6">
+        <h3 className="text-base font-bold text-slate-900 font-heading">
           Cataloged Scientific Datasets ({datasetsList.length})
         </h3>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto border border-slate-200 rounded-lg">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-950 border-b border-slate-800 text-slate-400 font-bold uppercase text-[10px] tracking-wider">
+            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase text-[11px] tracking-wider">
               <tr>
                 <th className="px-4 py-3">Dataset Title</th>
                 <th className="px-4 py-3">Source & Version</th>
@@ -236,28 +234,28 @@ export default function AdminDatasets() {
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-100 text-slate-700 font-sans">
               {datasetsList.map(ds => (
-                <tr key={ds.id} className="hover:bg-slate-800/40 transition-colors">
+                <tr key={ds.id} className="hover:bg-slate-50 transition-colors">
                   <td className="px-4 py-3.5">
-                    <div className="font-bold text-white text-sm">{ds.title}</div>
-                    <div className="text-[10px] text-slate-400 font-mono mt-0.5">ID: {ds.id}</div>
+                    <div className="font-bold text-slate-900 text-sm">{ds.title}</div>
+                    <div className="text-[11px] text-slate-400 font-mono mt-0.5">ID: {ds.id}</div>
                   </td>
                   <td className="px-4 py-3.5">
-                    <div className="text-slate-300 font-medium">{ds.source}</div>
-                    <div className="text-[10px] text-amber-400 font-mono">{ds.version}</div>
+                    <div className="text-slate-800 font-medium">{ds.source}</div>
+                    <div className="text-[11px] text-blue-700 font-mono font-semibold">{ds.version}</div>
                   </td>
                   <td className="px-4 py-3.5">
-                    <div className="text-slate-300">{ds.records.toLocaleString()} rows</div>
-                    <div className="text-[10px] text-slate-400 font-mono">{ds.format}</div>
+                    <div className="text-slate-800 font-semibold">{ds.records.toLocaleString()} rows</div>
+                    <div className="text-[11px] text-slate-500 font-mono">{ds.format}</div>
                   </td>
-                  <td className="px-4 py-3.5 text-slate-400">
+                  <td className="px-4 py-3.5 text-slate-500">
                     {ds.lastSynced}
                   </td>
                   <td className="px-4 py-3.5 text-right">
                     <button
                       onClick={() => showToast(`Dataset ${ds.id} re-validation triggered.`)}
-                      className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-[11px] font-bold"
+                      className="px-3 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 text-xs font-semibold transition-colors"
                     >
                       Re-index
                     </button>

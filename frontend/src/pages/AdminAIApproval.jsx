@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   CheckCircle2,
   XCircle,
-  Sparkles,
+  Cpu,
   Edit3,
   Eye,
   AlertTriangle,
@@ -10,10 +10,10 @@ import {
   BookOpen,
   Share2,
   Newspaper,
-  Bot,
   Check,
   X,
-  ShieldCheck
+  ShieldCheck,
+  FileCheck
 } from 'lucide-react';
 
 export default function AdminAIApproval() {
@@ -51,11 +51,11 @@ export default function AdminAIApproval() {
       source: 'IndARC_Kongsfjorden_CTD_2026.csv',
       generatedAt: '2 days ago',
       status: 'PENDING_REVIEW',
-      content: 'Exploring Svalbard Arctic fjords with India’s IndARC observatory! 🌊❄️ Year-round sensor depth telemetry at 192m depth reveals changing Atlantic Water intrusions. Open access data available on the National Polar Data Center portal. #NCPOR #IndARC #ArcticResearch #Oceanography'
+      content: 'Exploring Svalbard Arctic fjords with India’s IndARC observatory! Year-round sensor depth telemetry at 192m depth reveals changing Atlantic Water intrusions. Open access data available on the National Polar Data Center portal. #NCPOR #IndARC #ArcticResearch #Oceanography'
     },
     {
       id: 'ai-rev-4',
-      title: 'Smart Education Concept: Polar Jet Stream and Sea Ice Teleconnections',
+      title: 'Education Concept: Polar Jet Stream and Sea Ice Teleconnections',
       type: 'LEARNING_NOTE',
       model: 'Groq / llama-3.3-70b-versatile',
       source: 'IPSC 2026 Colloquium Notes',
@@ -102,32 +102,32 @@ export default function AdminAIApproval() {
   };
 
   return (
-    <div className="space-y-6 text-left font-sans text-slate-100">
+    <div className="space-y-6 text-left font-sans text-slate-800">
       {/* Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center space-x-3 text-xs font-bold animate-fadeIn">
+        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-700 flex items-center space-x-3 text-xs font-semibold animate-fadeIn">
           <CheckCircle2 className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Header */}
-      <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-bold mb-2 border border-slate-700">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>AI Governance & Human-in-the-Loop</span>
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200">
+            <Cpu className="w-3.5 h-3.5 text-blue-600" />
+            <span>AI Governance & Grounding Verification</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white font-heading">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
             AI Content Review & Approval
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Enforce scientific accuracy before AI-generated summaries, social posts, or news articles are published publicly.
+          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-2xl">
+            Enforce scientific accuracy and factual grounding before model-generated summaries, social posts, or press drafts are released publicly.
           </p>
         </div>
 
-        <div className="px-3.5 py-1.5 rounded-xl bg-amber-950 border border-amber-800 text-amber-300 text-xs font-bold flex items-center space-x-1.5">
-          <ShieldCheck className="w-4 h-4 text-amber-400" />
+        <div className="px-3.5 py-1.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold flex items-center space-x-2">
+          <ShieldCheck className="w-4 h-4 text-amber-600" />
           <span>
             {aiQueue.filter(i => i.status === 'PENDING_REVIEW').length} Pending Human Review
           </span>
@@ -138,7 +138,7 @@ export default function AdminAIApproval() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left List of AI Generated Drafts */}
         <div className="lg:col-span-1 space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-600 font-mono">
             Pending Approval Queue
           </h3>
           <div className="space-y-2.5">
@@ -146,35 +146,35 @@ export default function AdminAIApproval() {
               <div
                 key={item.id}
                 onClick={() => handleOpenReview(item)}
-                className={`p-4 rounded-2xl border cursor-pointer transition-all ${
+                className={`p-4 rounded-xl border cursor-pointer transition-all ${
                   selectedItem?.id === item.id
-                    ? 'bg-slate-800/90 border-blue-500 ring-1 ring-blue-500'
-                    : 'bg-slate-900 border-slate-800 hover:border-slate-700'
+                    ? 'bg-blue-50/50 border-blue-600 shadow-xs ring-1 ring-blue-600'
+                    : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className={`px-2 py-0.5 rounded text-[9px] font-bold border ${
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-semibold border ${
                     item.status === 'APPROVED'
-                      ? 'bg-emerald-950 text-emerald-300 border-emerald-800'
+                      ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                       : item.status === 'REJECTED'
-                      ? 'bg-rose-950 text-rose-300 border-rose-800'
-                      : 'bg-amber-950 text-amber-300 border-amber-800'
+                      ? 'bg-rose-50 text-rose-700 border-rose-200'
+                      : 'bg-amber-50 text-amber-800 border-amber-200'
                   }`}>
                     {item.status.replace('_', ' ')}
                   </span>
-                  <span className="text-[10px] text-slate-500 font-mono">
+                  <span className="text-[11px] text-slate-400 font-mono">
                     {item.generatedAt}
                   </span>
                 </div>
-                <h4 className="text-xs font-bold text-white line-clamp-1 font-heading">
+                <h4 className="text-xs font-bold text-slate-900 line-clamp-1 font-heading">
                   {item.title}
                 </h4>
-                <p className="text-[11px] text-slate-400 line-clamp-2 mt-1">
+                <p className="text-xs text-slate-600 line-clamp-2 mt-1">
                   {item.content}
                 </p>
-                <div className="mt-2 pt-2 border-t border-slate-800 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
                   <span>{item.type}</span>
-                  <span className="text-amber-400 truncate max-w-[120px]">{item.model.split('/')[1]}</span>
+                  <span className="text-blue-700 font-medium truncate max-w-[120px]">{item.model.split('/')[1]}</span>
                 </div>
               </div>
             ))}
@@ -184,19 +184,19 @@ export default function AdminAIApproval() {
         {/* Right Inspection & Review Console */}
         <div className="lg:col-span-2">
           {selectedItem ? (
-            <div className="bg-slate-900 rounded-3xl border border-slate-800 p-6 space-y-6">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
                 <div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-xs font-bold text-amber-400 font-mono">
+                    <span className="text-xs font-semibold text-blue-700 font-mono">
                       {selectedItem.model}
                     </span>
-                    <span className="text-slate-600">•</span>
-                    <span className="text-xs text-slate-400 font-mono">
+                    <span className="text-slate-300">•</span>
+                    <span className="text-xs text-slate-500 font-mono">
                       Source: {selectedItem.source}
                     </span>
                   </div>
-                  <h2 className="text-lg font-bold text-white font-heading mt-1">
+                  <h2 className="text-base font-bold text-slate-900 font-heading mt-1">
                     {selectedItem.title}
                   </h2>
                 </div>
@@ -204,14 +204,14 @@ export default function AdminAIApproval() {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => setConfirmationAction({ type: 'reject', item: selectedItem })}
-                    className="px-3 py-1.5 rounded-xl bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 text-xs font-bold transition-colors flex items-center space-x-1"
+                    className="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 text-xs font-semibold transition-colors flex items-center space-x-1"
                   >
                     <XCircle className="w-3.5 h-3.5" />
                     <span>Reject</span>
                   </button>
                   <button
                     onClick={() => setConfirmationAction({ type: 'approve', item: selectedItem })}
-                    className="px-3 py-1.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 text-xs font-bold shadow-xs transition-colors flex items-center space-x-1"
+                    className="px-3 py-1.5 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 text-xs font-semibold shadow-xs transition-colors flex items-center space-x-1"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Approve & Publish</span>
@@ -221,20 +221,20 @@ export default function AdminAIApproval() {
 
               {/* Editable Area */}
               <div className="space-y-2">
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-bold text-slate-300">Content Body (Editable before release)</span>
-                  <span className="font-mono text-[11px]">{editDraftContent.length} chars</span>
+                <div className="flex items-center justify-between text-xs text-slate-500">
+                  <span className="font-semibold text-slate-700">Content Body (Human review & edits before release)</span>
+                  <span className="font-mono text-[11px] text-slate-400">{editDraftContent.length} chars</span>
                 </div>
                 <textarea
                   rows={8}
                   value={editDraftContent}
                   onChange={e => setEditDraftContent(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-2xl p-4 text-xs text-slate-200 leading-relaxed font-sans focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl p-4 text-xs text-slate-800 leading-relaxed font-sans focus:outline-hidden focus:border-blue-600 focus:bg-white"
                 />
                 <div className="flex justify-end">
                   <button
                     onClick={handleSaveEdit}
-                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition-colors"
+                    className="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold border border-slate-300 transition-colors"
                   >
                     Save In-Memory Edits
                   </button>
@@ -242,24 +242,24 @@ export default function AdminAIApproval() {
               </div>
 
               {/* Scientific Verification Checklist */}
-              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
-                <div className="text-xs font-bold text-slate-300 flex items-center space-x-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>NCPOR Scientific Integrity Verification</span>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <div className="text-xs font-bold text-slate-800 flex items-center space-x-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <span>Scientific Factuality & Grounding Checklist</span>
                 </div>
-                <ul className="text-[11px] text-slate-400 space-y-1 list-disc list-inside">
-                  <li>Context is fully grounded in supplied expedition PDF / sensor logs.</li>
-                  <li>Coordinates, station names (Maitri, Bharati, Himadri, Himansh) are authentic.</li>
+                <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
+                  <li>Context is strictly grounded in verified expedition documentation and sensor logs.</li>
+                  <li>Coordinates and facility names (Maitri, Bharati, Himadri, Himansh) are authentic.</li>
                   <li>No speculative climate extrapolations outside peer-reviewed MoES parameters.</li>
                 </ul>
               </div>
             </div>
           ) : (
-            <div className="bg-slate-900 rounded-3xl border border-slate-800 p-12 text-center text-slate-400 space-y-3">
-              <Bot className="w-10 h-10 mx-auto text-slate-500" />
-              <h4 className="text-sm font-bold text-slate-300">Select an AI draft from the queue</h4>
-              <p className="text-xs max-w-sm mx-auto">
-                Click on any pending research summary or social post to inspect its source, edit content, and approve publication.
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-12 text-center text-slate-400 space-y-3">
+              <FileCheck className="w-10 h-10 mx-auto text-slate-400" />
+              <h4 className="text-sm font-bold text-slate-800">Select a draft from the review queue</h4>
+              <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                Click on any pending research summary or outreach dispatch to inspect its source, verify facts, edit content, and approve publication.
               </p>
             </div>
           )}
@@ -268,35 +268,35 @@ export default function AdminAIApproval() {
 
       {/* Confirmation Dialog */}
       {confirmationAction && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-slate-900 rounded-3xl max-w-md w-full p-6 border border-slate-700 shadow-2xl space-y-4 text-left">
-            <div className="flex items-center space-x-3 text-amber-400">
-              <div className="p-2.5 rounded-2xl bg-amber-950 border border-amber-800">
-                <AlertTriangle className="w-6 h-6 text-amber-400" />
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 border border-slate-200 shadow-2xl space-y-4 text-left">
+            <div className="flex items-center space-x-3 text-amber-600">
+              <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                <AlertTriangle className="w-5 h-5 text-amber-600" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-white font-heading">
+                <h3 className="text-base font-bold text-slate-900 font-heading">
                   Confirm AI Content Action
                 </h3>
-                <p className="text-xs text-slate-400 capitalize">Action: {confirmationAction.type}</p>
+                <p className="text-xs text-slate-500 capitalize">Action: {confirmationAction.type}</p>
               </div>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed">
               Are you sure you want to <strong>{confirmationAction.type}</strong> this AI-generated scientific output for "
-              <span className="text-white font-bold">{confirmationAction.item.title}</span>"?
+              <span className="text-slate-900 font-semibold">{confirmationAction.item.title}</span>"?
             </p>
 
             <div className="flex items-center justify-end space-x-3 pt-2">
               <button
                 onClick={() => setConfirmationAction(null)}
-                className="px-4 py-2 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-bold transition-colors"
+                className="px-4 py-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 text-xs font-semibold transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={executeApprovalOrRejection}
-                className={`px-4 py-2 rounded-xl text-xs font-bold shadow-xs transition-colors ${
+                className={`px-4 py-2 rounded-lg text-xs font-semibold shadow-xs transition-colors ${
                   confirmationAction.type === 'approve'
                     ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
                     : 'bg-rose-600 hover:bg-rose-700 text-white'

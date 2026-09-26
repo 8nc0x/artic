@@ -397,7 +397,7 @@ export default function MediaGallery() {
                 alt={item.title}
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
 
               {/* Type Badge */}
               <div className="absolute top-2.5 left-2.5 flex items-center space-x-1.5">

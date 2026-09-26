@@ -19,8 +19,8 @@ export default function OpenPolarMap() {
       condition: 'Clear Antarctic Sky',
       elevation: '117 m',
       status: 'Active (37th Wintering Crew)',
-      image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=400',
-      description: 'India’s second permanent Antarctic research base, operating since 1989. Coordinates atmospheric, geomagnetic, and meteorology telemetry.'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/An_aerial_view_of_the_Indian_Station_Maitri%2C_Antarctica_on_February_2%2C_2005.jpg',
+      description: 'India’s second permanent Antarctic research base, operating since 1989 in Schirmacher Oasis. Coordinates atmospheric, geomagnetic, and meteorology telemetry.'
     },
     {
       id: 'bharati',
@@ -33,8 +33,8 @@ export default function OpenPolarMap() {
       condition: 'Scattered Cirrus',
       elevation: '35 m',
       status: 'Active (Commissioned 2012)',
-      image: 'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=400',
-      description: 'Ultra-modern Antarctic research facility constructed using 134 prefabricated shipping containers. Focuses on oceanography and continental breakup.'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Bharati_permanent_Antarctic_research_station.jpg',
+      description: 'Ultra-modern Antarctic research facility constructed on the promontory between Thala Fjord and Quilty Bay. Focuses on oceanography and continental breakup.'
     },
     {
       id: 'himadri',
@@ -47,7 +47,7 @@ export default function OpenPolarMap() {
       condition: 'Fjord Mist',
       elevation: '15 m',
       status: 'Active (Operational since 2008)',
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=400',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Indian_station_1.JPG',
       description: 'India’s permanent Arctic research base in Spitsbergen. Houses aerosol spectrometers, fjord telemetry, and atmospheric profiling lasers.'
     },
     {
@@ -61,7 +61,7 @@ export default function OpenPolarMap() {
       condition: 'Alpine Sunshine',
       elevation: '4,050 m',
       status: 'Active (Third Pole Cryosphere)',
-      image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=400',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bara_Shigri_Glacier.jpg/800px-Bara_Shigri_Glacier.jpg',
       description: 'High-altitude Himalayan cryospheric station established to monitor benchmark glaciers (Chhota Shigri, Batal, Samudra Tapu) and GLOF dynamics.'
     }
   ];

@@ -9,7 +9,6 @@ import {
   Compass,
   Database,
   BookOpen,
-  Sparkles,
   Calendar,
   AlertCircle
 } from 'lucide-react';
@@ -57,17 +56,19 @@ export default function NotificationsCenter() {
   const getNotificationIcon = (type) => {
     switch (type) {
       case 'report':
-        return <Compass className="w-4 h-4 text-blue-600" />;
+        return <Compass className="w-4 h-4 text-blue-700" />;
       case 'dataset':
-        return <Database className="w-4 h-4 text-emerald-600" />;
+        return <Database className="w-4 h-4 text-blue-700" />;
       case 'publication':
-        return <BookOpen className="w-4 h-4 text-indigo-600" />;
+        return <BookOpen className="w-4 h-4 text-blue-700" />;
       case 'ai':
-        return <Sparkles className="w-4 h-4 text-purple-600" />;
+      case 'system':
+      case 'update':
+        return <CheckCircle2 className="w-4 h-4 text-blue-700" />;
       case 'event':
-        return <Calendar className="w-4 h-4 text-amber-600" />;
+        return <Calendar className="w-4 h-4 text-blue-700" />;
       default:
-        return <Bell className="w-4 h-4 text-slate-500" />;
+        return <Bell className="w-4 h-4 text-blue-700" />;
     }
   };
 

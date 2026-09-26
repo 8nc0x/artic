@@ -226,7 +226,7 @@ export default function ReportsLibrary() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white rounded-3xl max-w-2xl w-full border border-slate-200 shadow-2xl overflow-hidden text-left animate-scaleUp max-h-[90vh] flex flex-col">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-slate-900 via-purple-950 to-blue-950 text-white p-6 relative flex-shrink-0">
+            <div className="bg-slate-900 text-white p-6 relative flex-shrink-0">
               <button
                 onClick={() => setActiveReport(null)}
                 className="absolute top-5 right-5 p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors"

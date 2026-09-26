@@ -72,7 +72,7 @@ export default function AuthModal({ isOpen, onClose, currentUser, onSelectUser }
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn">
       <div className="bg-white rounded-3xl max-w-xl w-full border border-slate-100 shadow-2xl overflow-hidden text-left animate-scaleUp">
         {/* Header */}
-        <div className="relative bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white p-6">
+        <div className="relative bg-slate-900 text-white p-6">
           <button
             onClick={onClose}
             className="absolute top-5 right-5 p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
@@ -81,7 +81,7 @@ export default function AuthModal({ isOpen, onClose, currentUser, onSelectUser }
           </button>
 
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-600 p-0.5 shadow-md flex items-center justify-center">
+            <div className="w-10 h-10 rounded-2xl bg-blue-600 shadow-md flex items-center justify-center">
               <ShieldCheck className="w-6 h-6 text-white" />
             </div>
             <div>

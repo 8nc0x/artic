@@ -10,7 +10,6 @@ import {
   ExternalLink,
   Award,
   BookOpen,
-  Sparkles,
   Heart,
   Share2,
   CheckCircle2
@@ -25,7 +24,7 @@ export default function InstitutionalActivities() {
     setBookmarkedEvents(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  // 1. Conferences Data (Matching CONFERENCE REFERENCE with verified external links)
+  // 1. Conferences Data (Matching CONFERENCE REFERENCE with verified external links & real photography)
   const conferences = [
     {
       id: 'conf-1',
@@ -33,7 +32,7 @@ export default function InstitutionalActivities() {
       city: 'Goa / Pucón',
       fee: 'Free / Academic',
       rating: '★★★★★',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=500',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Bharati_permanent_Antarctic_research_station.jpg',
       url: 'https://www.scar.org/events/',
       portalName: 'SCAR Official'
     },
@@ -43,7 +42,7 @@ export default function InstitutionalActivities() {
       city: 'New Delhi',
       fee: 'Funded by MoES',
       rating: '★★★★☆',
-      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=500',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/An_aerial_view_of_the_Indian_Station_Maitri%2C_Antarctica_on_February_2%2C_2005.jpg',
       url: 'https://afops.org/',
       portalName: 'AFoPS Portal'
     },
@@ -53,7 +52,7 @@ export default function InstitutionalActivities() {
       city: 'Svalbard, Norway',
       fee: 'Institutional',
       rating: '★★★★★',
-      image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=500',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Indian_station_1.JPG',
       url: 'https://nyalesundresearch.no/',
       portalName: 'Ny-Ålesund Portal'
     },
@@ -63,7 +62,7 @@ export default function InstitutionalActivities() {
       city: 'NCPOR Goa',
       fee: 'Complimentary',
       rating: '★★★★★',
-      image: 'https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&q=80&w=500',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bara_Shigri_Glacier.jpg/800px-Bara_Shigri_Glacier.jpg',
       url: 'https://ncpor.res.in/',
       portalName: 'NCPOR Portal'
     },
@@ -73,20 +72,20 @@ export default function InstitutionalActivities() {
       city: 'Hobart / Kolkata',
       fee: 'Open Registration',
       rating: '★★★★☆',
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=500',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Dakshin_Gangotri_Station.jpg/800px-Dakshin_Gangotri_Station.jpg',
       url: 'https://soos.aq/',
       portalName: 'SOOS Portal'
     }
   ];
 
-  // 2. Seminars Data (Matching SEMINAR REFERENCE - "The Best of Live Events" style)
+  // 2. Seminars Data (Matching SEMINAR REFERENCE with solid colors and real photos)
   const seminarTiles = [
     {
       id: 'sem-1',
       title: 'CRYOSPHERE COLLOQUIUMS',
       subtitle: '15+ Seminars',
-      color: 'from-purple-700 to-indigo-900',
-      image: 'https://images.unsplash.com/photo-1524334228333-0f6db392f8a1?auto=format&fit=crop&q=80&w=400',
+      color: 'bg-indigo-900',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Bharati_permanent_Antarctic_research_station.jpg',
       posterTitle: 'Antarctic Marginal Ice Zone Dynamics & Polar Jet Coupling',
       speaker: 'Prof. J. Turner (British Antarctic Survey & MoES Guest)',
       date: 'Thursday, 15 October 2026 • 15:00 IST',
@@ -97,8 +96,8 @@ export default function InstitutionalActivities() {
       id: 'sem-2',
       title: 'OCEAN DYNAMICS',
       subtitle: '8 Seminars',
-      color: 'from-sky-600 to-blue-800',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=400',
+      color: 'bg-blue-900',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Indian_station_1.JPG',
       posterTitle: 'Kongsfjorden Fjord Hydrography and IndARC Telemetry',
       speaker: 'Dr. K. P. Krishnan (Scientist F, NCPOR Arctic Wing)',
       date: 'Tuesday, 20 October 2026 • 11:00 IST',
@@ -109,8 +108,8 @@ export default function InstitutionalActivities() {
       id: 'sem-3',
       title: 'SPACE WEATHER',
       subtitle: '10+ Seminars',
-      color: 'from-teal-600 to-emerald-800',
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=400',
+      color: 'bg-teal-900',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/An_aerial_view_of_the_Indian_Station_Maitri%2C_Antarctica_on_February_2%2C_2005.jpg',
       posterTitle: 'Ionospheric Scintillation Studies at Maitri Station',
       speaker: 'Indian Institute of Geomagnetism (IIG) Polar Group',
       date: 'Wednesday, 28 October 2026 • 14:30 IST',
@@ -121,8 +120,8 @@ export default function InstitutionalActivities() {
       id: 'sem-4',
       title: 'POLAR MICROBES',
       subtitle: '6 Seminars',
-      color: 'from-purple-800 to-fuchsia-950',
-      image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80&w=400',
+      color: 'bg-slate-900',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bara_Shigri_Glacier.jpg/800px-Bara_Shigri_Glacier.jpg',
       posterTitle: 'Psychrophilic Enzymes from Schirmacher Oasis Lakes',
       speaker: 'Centre for Cellular and Molecular Biology (CCMB)',
       date: 'Friday, 06 November 2026 • 16:00 IST',
@@ -296,7 +295,7 @@ export default function InstitutionalActivities() {
       <section className="space-y-4">
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold mb-1 border border-purple-200">
-            <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+            <BookOpen className="w-3.5 h-3.5 text-purple-600" />
             <span>Colloquiums & Webinars</span>
           </div>
           <h2 className="text-2xl font-black text-slate-900 font-heading">
@@ -320,7 +319,7 @@ export default function InstitutionalActivities() {
                 alt={sem.title}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className={`absolute inset-0 bg-gradient-to-t ${sem.color} opacity-85 group-hover:opacity-95 transition-opacity`} />
+              <div className={`absolute inset-0 ${sem.color} opacity-85 group-hover:opacity-95 transition-opacity`} />
               
               <div className="relative z-10 space-y-1">
                 <div className="text-lg md:text-xl font-black tracking-tight leading-tight uppercase font-heading">
@@ -341,10 +340,10 @@ export default function InstitutionalActivities() {
       {/* ─────────────────────────────────────────────────────────── */}
       {/* 2.5 EMBEDDED POLAR EXPEDITION DOCUMENTARY VIDEO & REAL NEWS */}
       {/* ─────────────────────────────────────────────────────────── */}
-      <section className="space-y-4 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 rounded-3xl p-6 md:p-8 text-white shadow-xl border border-blue-900/50">
+      <section className="space-y-4 bg-slate-900 rounded-3xl p-6 md:p-8 text-white shadow-xl border border-slate-800">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold mb-2 border border-blue-400/30">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-600/30 text-blue-300 text-xs font-bold mb-2 border border-blue-500/40">
               <span>Live Polar Broadcast & Documentary</span>
             </div>
             <h2 className="text-2xl font-black font-heading text-white">
@@ -574,7 +573,7 @@ export default function InstitutionalActivities() {
       {selectedPosterModal && (
         <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200 animate-fadeIn">
-            <div className="bg-gradient-to-r from-blue-900 via-indigo-950 to-slate-900 p-6 text-white relative">
+            <div className="bg-slate-900 p-6 text-white relative">
               <button
                 onClick={() => setSelectedPosterModal(null)}
                 className="absolute top-4 right-4 p-1.5 rounded-full bg-white/20 hover:bg-white/30 text-white"

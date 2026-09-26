@@ -765,7 +765,7 @@ export default function DatasetsCatalog() {
               {/* TAB 4: AI COPILOT & SUMMARY */}
               {detailTab === 'ai' && (
                 <div className="space-y-5">
-                  <div className="p-4 bg-gradient-to-r from-blue-50 via-sky-50 to-indigo-50 rounded-2xl border border-blue-100">
+                  <div className="p-4 bg-blue-50/70 rounded-2xl border border-blue-200">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
                         <Sparkles className="w-4 h-4 text-polar-blue" />

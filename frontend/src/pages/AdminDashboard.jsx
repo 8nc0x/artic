@@ -8,7 +8,7 @@ import {
   Share2,
   TrendingUp,
   Clock,
-  Sparkles,
+  FileCheck,
   Upload,
   RefreshCw,
   AlertTriangle,
@@ -91,24 +91,24 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-6 pb-16 text-left max-w-6xl mx-auto">
       {/* 1. Header Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white rounded-2xl p-6 border border-slate-800 shadow-sm flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white text-slate-900 rounded-2xl p-6 border border-slate-200 shadow-2xs flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <span className="p-2 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-400/30">
-              <ShieldCheck className="w-5 h-5" />
+            <span className="p-2 rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
+              <ShieldCheck className="w-5 h-5 text-blue-700" />
             </span>
-            <h1 className="text-xl md:text-2xl font-extrabold text-white tracking-tight">
+            <h1 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight">
               NCPOR Administrative &amp; Moderation Oversight
             </h1>
           </div>
-          <p className="text-xs text-blue-200/80 mt-1 max-w-2xl">
+          <p className="text-xs text-slate-500 mt-1 max-w-2xl">
             Human-in-the-loop review for AI-generated outreach, research metadata compliance, and repository ingestion pipelines.
           </p>
         </div>
 
         <div className="flex items-center space-x-3">
-          <span className="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs font-bold flex items-center space-x-1.5">
-            <AlertTriangle className="w-3.5 h-3.5" />
+          <span className="px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-300 text-xs font-bold flex items-center space-x-1.5">
+            <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
             <span>{pendingQueue.length} Pending Approval</span>
           </span>
         </div>
@@ -156,8 +156,8 @@ export default function AdminDashboard() {
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div>
               <h2 className="text-sm font-extrabold text-slate-900 flex items-center space-x-1.5">
-                <Sparkles className="w-4 h-4 text-purple-600" />
-                <span>AI Content Approval Queue</span>
+                <FileCheck className="w-4 h-4 text-blue-600" />
+                <span>Institutional Content Approval Queue</span>
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
                 Review and approve public-facing AI outreach posts and summaries before release
