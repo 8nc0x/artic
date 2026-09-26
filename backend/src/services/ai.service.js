@@ -14,7 +14,12 @@ function getApiKey() {
 async function callGemini(prompt) {
   const apiKey = getApiKey();
   if (!apiKey) return null;
-  const models = ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite', 'gemini-flash-lite-latest', 'gemini-3.6-flash'];
+  const models = [
+    'gemini-1.5-flash',
+    'gemini-2.0-flash',
+    'gemini-1.5-pro',
+    'gemini-flash-lite-latest'
+  ];
   for (const model of models) {
     try {
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
