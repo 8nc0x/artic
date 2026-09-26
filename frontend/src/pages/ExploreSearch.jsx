@@ -149,7 +149,8 @@ export default function ExploreSearch() {
         <div className="flex items-center justify-between">
           <div>
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-1 border border-blue-200">
-              <span>REACHER PAPER AS CAROUSEL REFERENCE</span>
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              <span>Featured Research Spotlight</span>
             </div>
             <h2 className="text-2xl font-black text-slate-900 font-heading">
               Featured Research Papers & Publications
@@ -232,8 +233,9 @@ export default function ExploreSearch() {
       {/* ─────────────────────────────────────────────────────────── */}
       <section className="space-y-6">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-1 border border-blue-200">
-            <span>DATASET REFERENCES</span>
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-1 border border-emerald-200">
+            <Database className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Open Scientific Datasets</span>
           </div>
           <h2 className="text-2xl font-black text-slate-900 font-heading">
             Scientific Datasets Catalog
@@ -406,8 +408,9 @@ export default function ExploreSearch() {
       {/* ─────────────────────────────────────────────────────────── */}
       <section className="space-y-6 pt-4 border-t border-slate-200">
         <div className="text-center space-y-1">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-1 border border-blue-200">
-            <span>NEWS ARTICAL REFERENCE</span>
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold mb-1 border border-amber-200">
+            <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+            <span>Field Dispatches & News</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight font-heading">
             Latest News

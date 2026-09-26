@@ -153,7 +153,8 @@ export default function SmartEducation() {
       <section className="bg-white rounded-3xl p-8 border border-slate-200 shadow-xs text-center space-y-5">
         <div className="max-w-2xl mx-auto space-y-4">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-            <span>SEARCH TOPIC REFERENCE</span>
+            <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+            <span>Polar Knowledge Exploration</span>
           </div>
 
           {/* Minimalist Search Input ("Type to search") */}
@@ -162,8 +163,8 @@ export default function SmartEducation() {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Type to search"
-              className="w-full text-center text-3xl sm:text-4xl font-light text-slate-800 placeholder-slate-400 focus:outline-none py-2 border-b border-slate-200 focus:border-blue-500 transition-colors"
+              placeholder="Type to search polar concepts (e.g. Sea Ice, Maitri, Permafrost)"
+              className="w-full text-center text-xl sm:text-3xl font-light text-slate-800 placeholder-slate-400 focus:outline-none py-2 border-b border-slate-200 focus:border-blue-500 transition-colors"
             />
           </div>
 
@@ -245,7 +246,8 @@ export default function SmartEducation() {
       <section className="space-y-6">
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-1 border border-blue-200">
-            <span>LEARNING MODULES REFERENCE</span>
+            <GraduationCap className="w-3.5 h-3.5 text-blue-600" />
+            <span>Interactive Learning Curriculum</span>
           </div>
           <h2 className="text-2xl font-black text-slate-900 font-heading">
             Student Education Modules
@@ -318,7 +320,8 @@ export default function SmartEducation() {
       <section className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold mb-1 border border-purple-200">
-            <span>QUIZ SECTION REFERENCE</span>
+            <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+            <span>Interactive Assessment</span>
           </div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight font-heading">
             Test Your Knowledge

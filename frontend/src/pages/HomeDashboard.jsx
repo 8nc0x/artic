@@ -406,6 +406,19 @@ export default function HomeDashboard() {
           </div>
         </div>
 
+        {/* User-friendly Legend & Quick Guide */}
+        <div className="flex flex-wrap items-center justify-between gap-2 p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600">
+          <div className="flex items-center space-x-2">
+            <span className="font-bold text-slate-800">Quick Guide:</span>
+            <span>Click any node circle below to view connected research papers and field stations.</span>
+          </div>
+          <div className="flex items-center gap-3 text-[11px] font-medium">
+            <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Polar Stations</span>
+            <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-sky-500"></span> Research Fields</span>
+            <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Missions</span>
+          </div>
+        </div>
+
         {/* Interactive Relational Node Graph Canvas */}
         <div className="relative w-full h-[420px] bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden flex items-center justify-center p-4 select-none">
           {/* Subtle Grid Dots */}

@@ -194,7 +194,8 @@ export default function InstitutionalActivities() {
       <section className="space-y-4">
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-1 border border-blue-200">
-            <span>CONFERENCE REFERENCE</span>
+            <Users className="w-3.5 h-3.5 text-blue-600" />
+            <span>Scientific Assemblies</span>
           </div>
           <h2 className="text-2xl font-black text-slate-900 font-heading">
             International & National Conferences
@@ -258,7 +259,8 @@ export default function InstitutionalActivities() {
       <section className="space-y-4">
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold mb-1 border border-purple-200">
-            <span>SEMINAR REFERENCE</span>
+            <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+            <span>Colloquiums & Webinars</span>
           </div>
           <h2 className="text-2xl font-black text-slate-900 font-heading">
             The Best of Polar Seminars & Colloquiums
@@ -305,7 +307,8 @@ export default function InstitutionalActivities() {
       <section className="space-y-4">
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-1 border border-emerald-200">
-            <span>WORKSHOP REFERENCE</span>
+            <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Technical Training</span>
           </div>
           <h2 className="text-2xl font-black text-slate-900 font-heading">
             Technical & Field Training Workshops
@@ -350,7 +353,8 @@ export default function InstitutionalActivities() {
       <section className="space-y-4">
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-1 border border-blue-200">
-            <span>AWARENESS EVENT REFERENCE</span>
+            <Heart className="w-3.5 h-3.5 text-rose-500" />
+            <span>Community Outreach</span>
           </div>
           <h2 className="text-2xl font-black text-slate-900 font-heading">
             Community & Public Awareness Drives
